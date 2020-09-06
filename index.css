@@ -11,13 +11,17 @@
 }
 
 .band {
-    background: #0001;
+    /* background: #0001; */
     width: 100%;
-    text-align: center;
+    text-align: left;
     margin-bottom: 16px;
 }
 
 textarea {
     width: 100%;
     height: 150px;
+}
+
+label {
+    text-align: center;
 }
