@@ -13,13 +13,18 @@ var result = {};
 
 
 
+
+
+
 $(document).on('submit', '.no-submit', function(ev) {
     ev.preventDefault();
 });
 
 $(document).on('change', '.edit-tab', function(ev) {
-    if (ev.target.value == '') return;
     let num = editBox.getIndex(ev.target, '.edit-tab');
+    if ( num > 0 ) {
+        if (result.word == '') { return ev.target.value = ''; }
+    }
     let len = $('.edit-tab').length;
     if ( num == len - 2 ) editBox.addLine();
     $('.edit-tab').get(num+1).focus();
@@ -34,6 +39,7 @@ $(document).on('change', '.edit-tab', function(ev) {
 
 
 const editBox = {};
+
     editBox.getIndex = (el, str) => {
         for ( i=0 ; i<$(str).length ; i++ ) { if ( el == $(str).get(i)) return i; }
     }
@@ -77,7 +83,7 @@ const editBox = {};
         arr.forEach( (val,i) => {
             if (val == '') arr.splice(i,1);
         });
-        // console.log(arr);
+        console.log(arr);
         return arr;
     }
 
