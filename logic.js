@@ -7,75 +7,84 @@ console.log('logic.js at your service.');
 
 
 
+var result = {};
+    result.word = '';
+    result.arr = [];
 
-// const inputForm = document.getElementById('input-form');
-// const word = document.getElementById('word');
-// const def = document.getElementById('def');
-// const total = document.getElementById('total');
-
-const vocab = {};
 
 
 $(document).on('submit', '.no-submit', function(ev) {
     ev.preventDefault();
 });
 
-
-function indOfClass(elem, classSelector) {
-    for ( i=0 ; i<$(classSelector).length ; i++ ) {
-        if ( elem == $(classSelector).get(i)) return i;
-    }
-}
-
-
-
-$(document).on('change', '.tab-group-1', function(ev) {
-    let num = indOfClass(ev.target, '.tab-group-1');
-    $('.tab-group-1').get(num+1).focus();
+$(document).on('change', '.edit-tab', function(ev) {
+    if (ev.target.value == '') return;
+    let num = editBox.getIndex(ev.target, '.edit-tab');
+    let len = $('.edit-tab').length;
+    if ( num == len - 2 ) editBox.addLine();
+    $('.edit-tab').get(num+1).focus();
+    editBox.fillResult();
+    editBox.display();
 });
 
 
 
 
-// word.onchange = () => {
-//     findIndex(word);
-//     console.log(word);
 
-    // if (!word.value) return;
-    // if (!def.value) return;
-    // vocab.word = word.value;
-    // display();
-    // parse();
-// }
 
-// def.onchange = () => {
-//     if (!word.value) return;
-//     if (!def.value) return;
-//     vocab.def = def.value;
-//     display();
-//     parse();
-    // addLine();
-// }
 
-function display() { total.innerHTML = `${vocab.word}&#10;${vocab.def}`; }
+const editBox = {};
+    editBox.getIndex = (el, str) => {
+        for ( i=0 ; i<$(str).length ; i++ ) { if ( el == $(str).get(i)) return i; }
+    }
+    editBox.addLine = () => {
+        let index = $('.no-submit').length;
+        let str = '<div class="form-row form-group">';
+        str += '<div class="col-3 col-md-2"></div>';
+        str += '<div class="input-group col-9 col-md-10">';
+        str += '<input type="text" class="form-control edit-tab" placeholder="">';
+        str += '<div class="input-group-append">';
+        str += '<button type="button" class="btn btn-primary" tabindex="-1" onclick="editBox.removeLine(this)">';
+        str += '<b>&#x2715;</b></button></div></div></div>';
+        $(str).insertBefore( $('.no-submit').get(index-1) );
+    }
+    editBox.removeLine = (el) => {
+        $(el).parents().eq(2).remove();
+        editBox.fillResult();
+        editBox.display();
+    }
+    editBox.display = () => {        
+        let str = '';
+        str += "vocab: " + result.word + '&#10;';
+        result.arr.forEach( (list,i) => {
+            str += `def ${i+1}:  ${list}&#10;`;
+        });
+        $('#total').html(str);
+    }
+    editBox.fillResult = () => {
+        let $elem = $('.edit-tab');
+        let len = $elem.length;
+        result.word = $elem.eq(0).val();
+        result.arr = [];
+        for ( i=1 ; i<len-2 ; i++ ) {
+            result.arr.push( editBox.parse($elem.eq(i).val()) );
+        }
+    }
+    editBox.parse = str => {
+        let newStr = str.replace( /[,;.]/g, "/");
+        newStr = newStr.replace( /[\W][\W]+/g, "/");
+        let arr = newStr.split('/');
+        arr.forEach( (val,i) => {
+            if (val == '') arr.splice(i,1);
+        });
+        // console.log(arr);
+        return arr;
+    }
 
-function parse() {
-    if (!vocab.def) return;
-    vocab.arr = vocab.def.split("/");
-}
 
-function addLine() {
-    
-    let index = $('.no-submit').length;
-    // console.log(index);
 
-    let str = '<div class="form-row form-group">';
-    str += '<div class="col-3 col-md-2"></div>';
-    str += '<div class="input-group col-9 col-md-10">';
-    str += '<input type="text" class="form-control" placeholder="dos">';
-    str += '<div class="input-group-append">';
-    str += '<button type="button" class="btn btn-primary">';
-    str += '<b>&#x2715;</b></button></div></div></div>';
 
-    $(str).insertBefore( $('.no-submit').get(index-1) );
-}
+
+
+
+
