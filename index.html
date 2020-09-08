@@ -26,57 +26,47 @@
 
         <div class="row">
             <div class="col-12">
-                <div class="card">
+                <div class="card bg-light">
                     <div class="card-body">
-                        
-                        <!-- <div class="band">Enter words, then the definitions.</div> -->
-
-                        <form>
-
+                    
+                        <form class="no-submit">
                             <div class="form-row form-group">
-                                <label for="word" class="col-3 col-md-2 col-form-label">WORD</label>
+                                <label for="word" class="col-3 col-md-2 col-form-label text-right">
+                                    WORD
+                                </label>
                                 <div class="col-9 col-md-10">
-                                    <input type="text" class="form-control" id="word" placeholder="legw" autocomplete="off">
+                                    <input type="text" class="form-control tab-group-1" placeholder="logos" autocomplete="off">
                                 </div>
                             </div>
+                        </form>
 
-                            <!-- <div class="band">Definitions</div> -->
-
+                        <form class="no-submit">
                             <div class="form-row form-group">
-
-                                <div class="input-group col-3 col-md-2">
-                                    <select name="" id="meaning" class="form-control">
-                                        <option value="">Def #1</option>
-                                        <option value="">Add</option>
-                                        <option value="">View</option>
-                                    </select>
-                                </div>
-
+                                <label for="word" class="col-3 col-md-2 col-form-label text-right">
+                                    DEFINITION
+                                </label>
                                 <div class="input-group col-9 col-md-10">
-                                    <input type="text" class="form-control" placeholder="to say">
-                                    <div class="input-group-append">
-                                        <button type="button" class="btn btn-primary">
-                                            <b>&#x2b;</b>
-                                        </button>
-                                    </div>
+                                    <input type="text" class="form-control tab-group-1" placeholder="">
                                 </div>
-
-                            </div>                            
+                            </div>
+                        </form>
                             
+                        <form class="no-submit">
                             <div class="form-row form-group">
                                 <div class="col-3 col-md-2"></div>
                                 <div class="col-9 col-md-10">
-                                    <textarea readonly name="yes" id="total"></textarea>
+                                    <textarea readonly name="yes"></textarea>
                                 </div>
                             </div>
+                        </form>
 
+                        <form class='no-submit'>
                             <div class="form-row form-group">
                                 <div class="col-3 col-md-2"></div>
                                 <div class="col-3 col-md-2">
-                                    <button class="btn btn-primary btn-block">DONE</button>
+                                    <button class="btn btn-primary btn-block tab-group-1">DONE</button>
                                 </div>
                             </div>
-                            
                         </form>
 
                     </div>
@@ -88,7 +78,7 @@
     
     
 
-    <script src="logic.js"></script>
+    <script defer src="logic.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
