@@ -9,6 +9,8 @@ console.log('logic.js at your service.');
 
 var result = {};
     result.word = '';
+    result.category = '';
+    result.frequency = 0;
     result.arr = [];
 
 
@@ -22,11 +24,28 @@ $(document).on('submit', '.no-submit', function(ev) {
 
 $(document).on('change', '.edit-tab', function(ev) {
     let num = editBox.getIndex(ev.target, '.edit-tab');
-    if ( num > 0 ) {
-        if (result.word == '') { return ev.target.value = ''; }
+    console.log('num is', num);
+    if ( num == 0 ) {
+        let str = $('#edit-word').val();
+
+        let arr = strToSyllableArr(str).reverse();
+        str = arr.join('');
+        arr = str.split('');
+    
+        Object.keys(En_to_He).forEach( key => {
+            arr.forEach( (char,i) => {
+                if ( char == key ) arr[i] = En_to_He[key];
+            });
+        });
+        
+        str = arr.join('');
+    
+        $('#output').html( str );
+        $('#experiment').val('');
     }
-    let len = $('.edit-tab').length;
-    if ( num == len - 2 ) editBox.addLine();
+    if ( num > 0 ) { if (result.word == '') { return ev.target.value = ''; } }
+    // let len = $('.edit-tab').length;
+    if ( num == $('.edit-tab').length - 2 ) editBox.addLine();
     $('.edit-tab').get(num+1).focus();
     editBox.fillResult();
     editBox.display();
@@ -64,9 +83,9 @@ const editBox = {};
     }
     editBox.display = () => {        
         let str = '';
-        str += "vocab: " + result.word + '&#10;';
+        // str += "vocab: " + result.word + '&#10;';
         result.arr.forEach( (list,i) => {
-            str += `def ${i+1}:  ${list}&#10;`;
+            str += `${i+1}.&nbsp;&nbsp;&nbsp;${list}&#10;`;
         });
         $('#total').html(str);
     }
@@ -220,25 +239,6 @@ const vowels = [
     '\–', ';', '\:', '}', '\‘', "\'", '\"', '\]', '\“', '‡'
 ]
 
-
-$('#experiment').on('change', function() {
-    let str = $('#experiment').val();
-
-    let arr = strToSyllableArr(str).reverse();
-    str = arr.join('');
-    arr = str.split('');
-
-    Object.keys(En_to_He).forEach( key => {
-        arr.forEach( (char,i) => {
-            if ( char == key ) arr[i] = En_to_He[key];
-        });
-    });
-    
-    str = arr.join('');
-
-    $('#output').html( str );
-    $('#experiment').val('');
-});
 
 // function reverseStr(str) { return str.split('').reverse().join(''); }
     // Not used at the moment
