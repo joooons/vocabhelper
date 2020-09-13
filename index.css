@@ -1,9 +1,9 @@
-/* @font-face {
+@font-face {
     font-family: BibHib;
     src: url(SBL_Hbrw.ttf);
     font-weight: normal;
     font-style: normal;
-} */
+}
 
 
 
@@ -35,6 +35,12 @@ label {
     text-align: center;
 }
 
-/* #edit-word {
+.hebrew {
     font-family: BibHib;
-} */
+    font-size: 2em;
+}
+
+div.rtl { 
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
