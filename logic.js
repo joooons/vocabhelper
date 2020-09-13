@@ -30,6 +30,7 @@ $(document).on('change', '.edit-tab', function(ev) {
     $('.edit-tab').get(num+1).focus();
     editBox.fillResult();
     editBox.display();
+    console.table(result);
 });
 
 
@@ -45,19 +46,21 @@ const editBox = {};
     }
     editBox.addLine = () => {
         let index = $('.no-submit').length;
-        let str = '<div class="form-row form-group">';
-        str += '<div class="col-3 col-md-2"></div>';
-        str += '<div class="input-group col-9 col-md-10">';
+        let str = '<form class="no-submit">';
+        str += '<div class="form-row form-group">';
+        str += '<div class="col-3 col-md-3"></div>';
+        str += '<div class="input-group col-9 col-md-9">';
         str += '<input type="text" class="form-control edit-tab" placeholder="">';
         str += '<div class="input-group-append">';
         str += '<button type="button" class="btn btn-primary" tabindex="-1" onclick="editBox.removeLine(this)">';
-        str += '<b>&#x2715;</b></button></div></div></div>';
-        $(str).insertBefore( $('.no-submit').get(index-1) );
+        str += '<b>&#x2715;</b></button></div></div></div></form>';
+        $(str).insertAfter( $('.no-submit').get(index-1) );
     }
     editBox.removeLine = (el) => {
         $(el).parents().eq(2).remove();
         editBox.fillResult();
         editBox.display();
+        console.table(result);
     }
     editBox.display = () => {        
         let str = '';

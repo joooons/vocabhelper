@@ -16,7 +16,7 @@
 </head>
 <body>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="edit-page">
 
         <div class="row" id="head">
             <div class="col-12">
@@ -25,46 +25,47 @@
         </div>
 
         <div class="row">
-            <div class="col-12">
+
+            <div class="col-12 col-md-6">
                 <div class="card bg-light">
                     <div class="card-body">
                     
                         <form class="no-submit">
                             <div class="form-row form-group">
-                                <label for="word" class="col-3 col-md-2 col-form-label text-right">
-                                    WORD
+                                <label for="word" class="col-3 col-md-3 col-form-label text-right">
+                                    Word
                                 </label>
-                                <div class="col-9 col-md-10">
-                                    <input type="text" class="form-control edit-tab" placeholder="" autocomplete="off">
+                                <div class="col-9 col-md-9">
+                                    <input lang="he" type="text" class="form-control edit-tab" placeholder="" id="edit-word" autocomplete="off">
                                 </div>
                             </div>
                         </form>
 
                         <form class="no-submit">
                             <div class="form-row form-group">
-                                <label for="word" class="col-3 col-md-2 col-form-label text-right">
-                                    DEFINITION
+                                <label for="word" class="col-3 col-md-3 col-form-label text-right">
+                                    Meaning
                                 </label>
-                                <div class="input-group col-9 col-md-10">
+                                <div class="input-group col-9 col-md-9">
                                     <input type="text" class="form-control edit-tab" placeholder="">
                                 </div>
                             </div>
                         </form>
                             
-                        <form class="no-submit">
+                        <!-- <form class="no-submit">
                             <div class="form-row form-group">
                                 <div class="col-3 col-md-2"></div>
                                 <div class="col-9 col-md-10">
                                     <textarea readonly class="p-3" tabindex="-1" id="total"></textarea>
                                 </div>
                             </div>
-                        </form>
+                        </form> -->
 
                         <!-- <form class='no-submit'> -->
                         <form>
                             <div class="form-row form-group">
-                                <div class="col-3 col-md-2"></div>
-                                <div class="col-3 col-md-2">
+                                <div class="col-3 col-md-3"></div>
+                                <div class="col-3 col-md-3">
                                     <button class="btn btn-primary btn-block edit-tab">DONE</button>
                                 </div>
                             </div>
@@ -74,9 +75,16 @@
                 </div>
             </div>
 
+            <div class="col-12 col-md-6">
+                <div class="card bg-light p-3 h-100">
+                    <textarea readonly class="p-3 h-100" tabindex="-1" id="total"></textarea>
+                </div>
+            </div>
+
         </div>
     </div>
     
+
     
 
     <script defer src="logic.js"></script>

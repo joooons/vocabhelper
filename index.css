@@ -1,3 +1,11 @@
+/* @font-face {
+    font-family: BibHib;
+    src: url(SBL_Hbrw.ttf);
+    font-weight: normal;
+    font-style: normal;
+} */
+
+
 
 #head {
     padding: 20px;
@@ -26,3 +34,7 @@ textarea {
 label {
     text-align: center;
 }
+
+/* #edit-word {
+    font-family: BibHib;
+} */
