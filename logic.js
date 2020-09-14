@@ -290,5 +290,8 @@ function showHE(a,b) {
     // showHE(64285, 64334);
 }
 
-
+function showTextArea(obj) {
+    let str = `wordArr = ${JSON.stringify(obj)};`;
+    $('#total').html(str);
+}
 
