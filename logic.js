@@ -287,8 +287,10 @@ function strToSyllableArr(str) {
 }
 
 
-
-
+// hideThings();
+function hideThings() {
+    $('#edit-page').toggle();
+}
 
 function showHE(a,b) {
     let str = '';
