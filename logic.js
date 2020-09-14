@@ -24,7 +24,6 @@ $(document).on('submit', '.no-submit', function(ev) {
 
 $(document).on('change', '.edit-tab', function(ev) {
     let num = editBox.getIndex(ev.target, '.edit-tab');
-    console.log('num is', num);
     if ( num == 0 ) {
         let str = $('#edit-word').val();
 
@@ -40,22 +39,29 @@ $(document).on('change', '.edit-tab', function(ev) {
         str = arr.join('');
         result.word = str;
         $('#output').html( str );
-        // $('#experiment').val('');
     }
     if ( num > 0 ) { if (result.word == '') { return ev.target.value = ''; } }
-    // let len = $('.edit-tab').length;
     if ( num == $('.edit-tab').length - 2 ) editBox.addLine();
     $('.edit-tab').get(num+1).focus();
     editBox.fillResult();
     editBox.display();
-    console.table(result);
+    // console.table(result);
 });
 
+
+$('#edit-push').on('click', ev => {
+    showTextArea(result);
+    // bank.push(result);
+    result = {};
+    editBox.clear();
+    $('#total').select();
+    document.execCommand('copy');
+    console.log('text copied to clipboard');
+});
 
 $('#total').on('click', (ev) => {
 	ev.target.select();
 	document.execCommand('copy');
-    // alert('text copied to clipboard!');
     console.log('text copied to clipboard');
 });
 
@@ -79,7 +85,7 @@ const editBox = {};
         str += '<div class="input-group-append">';
         str += '<button type="button" class="btn btn-primary" tabindex="-1" onclick="editBox.removeLine(this)">';
         str += '<b>&#x2715;</b></button></div></div></div></form>';
-        $(str).insertAfter( $('.no-submit').get(index-1) );
+        $(str).insertAfter( $('.no-submit').get(index-2) );
     }
     editBox.removeLine = (el) => {
         $(el).parents().eq(2).remove();
@@ -88,8 +94,7 @@ const editBox = {};
         console.table(result);
     }
     editBox.display = () => {        
-        let str = '';
-        str = JSON.stringify(result);
+        let str = JSON.stringify(result);
         $('#total').html(str);
     }
     editBox.fillResult = () => {
@@ -109,8 +114,15 @@ const editBox = {};
         arr.forEach( (val,i) => {
             if (val == '') arr.splice(i,1);
         });
-        console.log(arr);
         return arr;
+    }
+    editBox.clear = () => {
+        let len = $('.edit-tab').length;
+        for ( i=0 ; i<len ; i++ ) { $('.edit-tab').eq(i).val(''); }
+        for ( i=4 ; i< len-1 ; i++ ) {
+            let elem = $('.edit-tab').eq(4).parents().eq(2);
+            elem.remove();
+        }
     }
 
     
@@ -264,7 +276,6 @@ function strToSyllableArr(str) {
             }
         }
     });
-    console.log(newArr);
     ScootTheDagh(newArr);
     function ScootTheDagh(arr) {
         if ( arr[0] == '∂' ) {
@@ -291,7 +302,8 @@ function showHE(a,b) {
 }
 
 function showTextArea(obj) {
-    let str = `wordArr = ${JSON.stringify(obj)};`;
+    let str = `bank[x] = ${JSON.stringify(obj)};`;
     $('#total').html(str);
+    $('#output').html(obj.word);
 }
 
