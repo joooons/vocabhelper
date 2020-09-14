@@ -37,11 +37,10 @@ $(document).on('change', '.edit-tab', function(ev) {
                 if ( char == key ) arr[i] = En_to_He[key];
             });
         });
-        
         str = arr.join('');
-    
+        result.word = str;
         $('#output').html( str );
-        $('#experiment').val('');
+        // $('#experiment').val('');
     }
     if ( num > 0 ) { if (result.word == '') { return ev.target.value = ''; } }
     // let len = $('.edit-tab').length;
@@ -52,6 +51,13 @@ $(document).on('change', '.edit-tab', function(ev) {
     console.table(result);
 });
 
+
+$('#total').on('click', (ev) => {
+	ev.target.select();
+	document.execCommand('copy');
+    // alert('text copied to clipboard!');
+    console.log('text copied to clipboard');
+});
 
 
 
@@ -83,18 +89,16 @@ const editBox = {};
     }
     editBox.display = () => {        
         let str = '';
-        // str += "vocab: " + result.word + '&#10;';
-        result.arr.forEach( (list,i) => {
-            str += `${i+1}.&nbsp;&nbsp;&nbsp;${list}&#10;`;
-        });
+        str = JSON.stringify(result);
         $('#total').html(str);
     }
     editBox.fillResult = () => {
         let $elem = $('.edit-tab');
         let len = $elem.length;
-        result.word = $elem.eq(0).val();
+        result.category = $elem.eq(1).val();
+        result.frequency = $elem.eq(2).val();
         result.arr = [];
-        for ( i=1 ; i<len-2 ; i++ ) {
+        for ( i=3 ; i<len-2 ; i++ ) {
             result.arr.push( editBox.parse($elem.eq(i).val()) );
         }
     }
