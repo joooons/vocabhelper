@@ -30,13 +30,13 @@
 
     <ul class="nav justify-content-left bg-secondary">
         <li class="nav-item">
-            <a href="#" class="nav-link active text-light">ADD</a>
+            <a href="#" class="nav-link active text-light" onclick="showPage('add');">ADD</a>
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link active text-light">EDIT</a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link active text-light">VIEW</a>
+            <a href="#" class="nav-link active text-light" onclick="showPage('view');">VIEW</a>
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link active text-light">QUIZ</a>
@@ -56,7 +56,7 @@
 <!--  MM    MM  MM    MM  MM    MM   -->
 <!--  MM    MM  MMMMMM    MMMMMM     -->
 
-    <div class="container-fluid" id="edit-page" style="display:none;">
+    <div class="container-fluid" id="add-page" style="display:none;">
 
         <div class="row" id="head">
             <div class="col-12">
@@ -70,55 +70,57 @@
                 <div class="card bg-light">
                     <div class="card-body">
                     
-                        <form class="no-submit">
+                        <form class="no-submit add-form">
                             <div class="form-row form-group">
                                 <label for="word" class="col-3 col-md-3 col-form-label text-right">
                                     Word
                                 </label>
                                 <div class="col-9 col-md-9">
-                                    <input lang="he" type="text" class="form-control edit-tab" placeholder="" id="edit-word" autocomplete="off">
+                                    <input lang="he" type="text" class="form-control add-tab" placeholder="" id="add-word" autocomplete="off">
                                 </div>
                             </div>
                         </form>
 
-                        <form class="no-submit">
+                        <form class="no-submit add-form">
                             <div class="form-row form-group">
                                 <label for="word" class="col-3 col-md-3 col-form-label text-right">
                                     Category
                                 </label>
                                 <div class="col-9 col-md-9">
-                                    <input lang="he" type="text" class="form-control edit-tab" placeholder="" id="edit-category" autocomplete="off">
+                                    <input lang="he" type="text" class="form-control add-tab" placeholder="" id="add-category" autocomplete="off">
                                 </div>
                             </div>
                         </form>
 
-                        <form class="no-submit">
+                        <form class="no-submit add-form">
                             <div class="form-row form-group">
                                 <label for="word" class="col-3 col-md-3 col-form-label text-right">
                                     Frequency
                                 </label>
                                 <div class="col-9 col-md-9">
-                                    <input lang="he" type="text" class="form-control edit-tab" placeholder="" id="edit-frequency" autocomplete="off">
+                                    <input lang="he" type="text" class="form-control add-tab" placeholder="" id="add-frequency" autocomplete="off">
                                 </div>
                             </div>
                         </form>
 
-                        <form class="no-submit">
+                        <form class="no-submit add-form">
                             <div class="form-row form-group">
                                 <label for="word" class="col-3 col-md-3 col-form-label text-right">
                                     Meaning
                                 </label>
                                 <div class="input-group col-9 col-md-9">
-                                    <input type="text" class="form-control edit-tab" placeholder="">
+                                    <input type="text" class="form-control add-tab" placeholder="">
                                 </div>
                             </div>
                         </form>
                             
-                        <form class="no-submit">
+                        <form class="no-submit add-form">
                             <div class="form-row form-group">
                                 <div class="col-3 col-md-3"></div>
                                 <div class="col-3 col-md-3">
-                                    <button class="btn btn-primary btn-block edit-tab" id="edit-push">DONE</button>
+                                    <button class="btn btn-primary btn-block add-tab" id="add-push">
+                                        DONE
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -152,6 +154,95 @@
 <!--      MM      MMMMMM  MMMMMMMM    MM  MM     -->
 
     <div class="container-fluid" id="view-page" style="display:none;">
+
+        <div class="row" id="head">
+            <div class="col-12">
+                VOCAB HELPER VIEWER
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col col-12 col-sm-11 col-md-9 col-lg-8 col-xl-6 mb-5">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col col-5">
+                                <form class="no-submit view-form">
+                                    <div class="form-row form-group">
+                                        <label for="" class="col-form-label col-4 text-right">
+                                            Start
+                                        </label>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control" placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="no-submit view-form">
+                                    <div class="form-row form-group">
+                                        <label for="" class="col-form-label col-4 text-right">
+                                            End
+                                        </label>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control" placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="no-submit view-form">
+                                    <div class="form-row form-group">
+                                        <label for="" class="col-form-label col-4 text-right">
+                                            #ofQ
+                                        </label>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control" placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col col-7">
+                                <form class="no-submit view-form">
+                                    <div class="form-row form-group">
+                                        <label for="" class="col-form-label col-4 text-right">
+                                            Category
+                                        </label>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control" placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="no-submit view-form">
+                                    <div class="form-row form-group">
+                                        <label for="" class="col-form-label col-4 text-right">
+                                            Frequency
+                                        </label>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control" placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="no-submit view-form">
+                                    <div class="form-row form-group">
+                                        <label for="" class="col-form-label col-4 text-right">
+                                            Definition
+                                        </label>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control" placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+
+                        
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+
+
         <div class="table-responsive">
             <table class="table table-hover table-sm">
                 <thead>

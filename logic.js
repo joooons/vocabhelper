@@ -151,16 +151,16 @@ const editBox = {
         for ( i=0 ; i<$(str).length ; i++ ) { if ( el == $(str).get(i)) return i; }
     },
     addLine : () => {
-        let index = $('.no-submit').length;
-        let str = '<form class="no-submit">';
+        let index = $('.add-form').length;
+        let str = '<form class="no-submit add-form">';
         str += '<div class="form-row form-group">';
         str += '<div class="col-3 col-md-3"></div>';
         str += '<div class="input-group col-9 col-md-9">';
-        str += '<input type="text" class="form-control edit-tab" placeholder="">';
+        str += '<input type="text" class="form-control add-tab" placeholder="">';
         str += '<div class="input-group-append">';
         str += '<button type="button" class="btn btn-primary" tabindex="-1" onclick="editBox.removeLine(this)">';
         str += '<b>&#x2715;</b></button></div></div></div></form>';
-        $(str).insertAfter( $('.no-submit').get(index-2) );
+        $(str).insertAfter( $('.add-form').get(index-2) );
     },
     removeLine : (el) => {
         $(el).parents().eq(2).remove();
@@ -173,7 +173,7 @@ const editBox = {
         $('#total').html(str);
     },
     fillResult : () => {
-        let $elem = $('.edit-tab');
+        let $elem = $('.add-tab');
         let len = $elem.length;
         result.category = $elem.eq(1).val();
         result.frequency = $elem.eq(2).val();
@@ -192,10 +192,10 @@ const editBox = {
         return arr;
     },
     clear : () => {
-        let len = $('.edit-tab').length;
-        for ( i=0 ; i<len ; i++ ) { $('.edit-tab').eq(i).val(''); }
+        let len = $('.add-tab').length;
+        for ( i=0 ; i<len ; i++ ) { $('.add-tab').eq(i).val(''); }
         for ( i=4 ; i< len-1 ; i++ ) {
-            let elem = $('.edit-tab').eq(4).parents().eq(2);
+            let elem = $('.add-tab').eq(4).parents().eq(2);
             elem.remove();
         }
     }
@@ -221,10 +221,10 @@ $(document).on('submit', '.no-submit', function(ev) {
     ev.preventDefault();
 });
 
-$(document).on('change', '.edit-tab', function(ev) {
-    let num = editBox.getIndex(ev.target, '.edit-tab');
+$(document).on('change', '.add-tab', function(ev) {
+    let num = editBox.getIndex(ev.target, '.add-tab');
     if ( num == 0 ) {
-        let str = $('#edit-word').val();
+        let str = $('#add-word').val();
 
         let arr = strToSyllableArr(str).reverse();
         str = arr.join('');
@@ -240,14 +240,14 @@ $(document).on('change', '.edit-tab', function(ev) {
         $('#output').html( str );
     }
     if ( num > 0 ) { if (result.word == '') { return ev.target.value = ''; } }
-    if ( num == $('.edit-tab').length - 2 ) editBox.addLine();
-    $('.edit-tab').get(num+1).focus();
+    if ( num == $('.add-tab').length - 2 ) editBox.addLine();
+    $('.add-tab').get(num+1).focus();
     editBox.fillResult();
     editBox.display();
     // console.table(result);
 });
 
-$('#edit-push').on('click', ev => {
+$('#add-push').on('click', ev => {
     showTextArea(result);
     result = {};
     editBox.clear();
@@ -267,8 +267,29 @@ $('#total').on('click', (ev) => {
 
 
 
+//    MMMM    MMMMMMMM  MM    MM  MMMMMMMM  MMMMMM      MMMM    MM            MMMMMMMM  MM    MM    MMMM    
+//  MM    MM  MM        MMMM  MM  MM        MM    MM  MM    MM  MM            MM        MMMM  MM  MM    MM  
+//  MM        MMMMMMMM  MM  MMMM  MMMMMMMM  MMMMMM    MMMMMMMM  MM            MMMMMMMM  MM  MMMM    MM      
+//  MM  MMMM  MM        MM    MM  MM        MM    MM  MM    MM  MM            MM        MM    MM      MM    
+//  MM    MM  MM        MM    MM  MM        MM    MM  MM    MM  MM            MM        MM    MM  MM    MM  
+//    MMMM    MMMMMMMM  MM    MM  MMMMMMMM  MM    MM  MM    MM  MMMMMM        MM        MM    MM    MMMM    
 
     
+
+
+showPage('view');
+function showPage(str) {
+    $('#add-page').hide();
+    $('#view-page').hide();
+    $(`#${str}-page`).show();
+}
+
+
+
+
+
+
+
 
 
 
@@ -311,17 +332,13 @@ function strToSyllableArr(str) {
     return newArr;
 }
 
-
-
-// hideThings();
-function hideThings() {
-    $('#edit-page').toggle();
+function showTextArea(obj) {
+    let str = `bank[x] = ${JSON.stringify(obj)};`;
+    $('#total').html(str);
+    $('#output').html(obj.word);
 }
 
-tempShowView();
-function tempShowView() {
-    $('#view-page').show();
-}
+
 
 
 
@@ -339,11 +356,7 @@ function showHE(a,b) {
     // showHE(64285, 64334);
 }
 
-function showTextArea(obj) {
-    let str = `bank[x] = ${JSON.stringify(obj)};`;
-    $('#total').html(str);
-    $('#output').html(obj.word);
-}
+
 
 
 
@@ -385,9 +398,7 @@ function fillTable() {
 
 function splitArrToLines(arrGroup) {
     let str = '';
-    arrGroup.forEach( (arr,i) => {
-        str += `${i+1}. ${arr.join(', ')}<br>`;
-    });
+    arrGroup.forEach( (arr,i) => { str += `${i+1}. ${arr.join(', ')}<br>`; });
     return str;
 }
 

@@ -11,7 +11,7 @@ bank[2] = {"word":"ל","category":"prp.","frequency":"20321","arr":[["to"],["for
 
 bank[3] = {"word":"בּ","category":"prp.","frequency":"15559","arr":[["in"],["at"],["with"],["by"],["among"],["into"],["when"]]};
 
-bank[4] = {"word":"אֵ֫ת / אֶת־","category":"prt.","frequency":"10987","arr":[["untranslatble","DDOM","direct object marker","direct definite object marker","an untranslatable particle indicating the direct object"]]};
+bank[4] = {"word":"אֵ֫ת / אֶת־","category":"prt.","frequency":"10987","arr":[["untranslatble","an untranslatable particle indicating the direct object"],["DDOM","direct object marker","direct definite object marker"]]};
 
 bank[5] = {"word":" ּמִן / מִ","category":"prp.","frequency":"7529","arr":[["from"],["out of"],["since"],["than","more than","(more) than"]]};
 
