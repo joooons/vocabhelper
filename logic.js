@@ -247,6 +247,22 @@ $(document).on('change', '.add-tab', function(ev) {
     // console.table(result);
 });
 
+$(document).on('change', '.view-input', function(ev) {
+    let num = $('.view-input').length;
+    let index = -1;     // arbitrary -1
+    for ( i=0 ; i<num ; i++ ) { if ( ev.target == $('.view-input').get(i) ) { index = i; } }
+    index++;
+    if (index == num) index = 0;
+    $('.view-input').get(index).focus();
+    let viewStart = $('.view-input').get(0).value;
+    let viewEnd = $('.view-input').get(1).value;
+    // console.log(viewStart, viewEnd);
+    if ( viewEnd == '' ) viewEnd = bank.length;
+    fillTable(viewStart,viewEnd);
+    
+});
+
+
 $('#add-push').on('click', ev => {
     showTextArea(result);
     result = {};
@@ -370,20 +386,19 @@ function showHE(a,b) {
 //    MM  MM      MM    MM        MM  MM  MM        MM        MM    MM  MM    MM  
 //      MM      MMMMMM  MMMMMMMM    MM  MM          MM        MM    MM    MMMM    
 
-function loadTable() {
-    $('.vocab-id').eq(0).text( 0 );
-    $('.vocab-word').eq(0).text( bank[0].word );
-    $('.vocab-category').eq(0).text( bank[0].category );
-    $('.vocab-frequency').eq(0).text( bank[0].frequency );
-    $('.vocab-definitions').eq(0).html( bank[2].arr );
-}
 
-fillTable();
-function fillTable() {
+
+fillTable(1, 10);
+function fillTable(start, end) {
+    if ( start == undefined ) start = 1;
+    if ( start < 1 ) start = 1;
+    if ( start >= bank.length ) start = bank.length-1;
+    if ( end == undefined ) end = bank.length;
+    if ( end >= bank.length ) end = bank.length;
+
     let num = $('.vocab-row').length;
     for ( i=0 ; i<num ; i++ ) { $('.vocab-row').eq(0).remove(); }
-    num = bank.length;
-    for ( i=0 ; i<num ; i++ ) { 
+    for ( i=start-1 ; i<end ; i++ ) { 
         let arrText = splitArrToLines(bank[i].arr);
         let str = '<tr class="vocab-row">';
         str += `<th class="vocab-id" scope="row">${i+1}</th>`;
@@ -397,8 +412,10 @@ function fillTable() {
 }
 
 function splitArrToLines(arrGroup) {
+    // The definition of each word is contained in an array of an array.
+    // This function puts each array into a separate line.
     let str = '';
-    arrGroup.forEach( (arr,i) => { str += `${i+1}. ${arr.join(', ')}<br>`; });
+    arrGroup.forEach( (arr,i) => { str += `${i+1}.&nbsp;&nbsp;${arr.join(', ')}<br>`; });
     return str;
 }
 
