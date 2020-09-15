@@ -184,7 +184,7 @@ const editBox = {
     },
     parse : str => {
         let newStr = str.replace( /[,;.]/g, "/");
-        newStr = newStr.replace( /[\W][\W]+/g, "/");
+        newStr = newStr.replace( /[\s\,\;\.\/][\s\,\;\.\/]+/g, "/");
         let arr = newStr.split('/');
         arr.forEach( (val,i) => {
             if (val == '') arr.splice(i,1);
