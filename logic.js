@@ -273,12 +273,12 @@ $('#total').on('click', (ev) => {
 
 
 
-//  MMMMMMMM  MM    MM  MM    MM    MMMM    MMMMMM  MMMMMM    MMMM    MM    MM    MMMM    
-//  MM        MM    MM  MMMM  MM  MM    MM    MM      MM    MM    MM  MMMM  MM  MM    MM  
-//  MMMMMMMM  MM    MM  MM  MMMM  MM          MM      MM    MM    MM  MM  MMMM    MM      
-//  MM        MM    MM  MM    MM  MM          MM      MM    MM    MM  MM    MM      MM    
-//  MM        MM    MM  MM    MM  MM    MM    MM      MM    MM    MM  MM    MM  MM    MM  
-//  MM          MMMM    MM    MM    MMMM      MM    MMMMMM    MMMM    MM    MM    MMMM    
+//  MMMMMMMM  MMMMMM    MMMMMM  MMMMMM        MMMMMMMM  MM    MM    MMMM    
+//  MM        MM    MM    MM      MM          MM        MMMM  MM  MM    MM  
+//  MMMMMMMM  MM    MM    MM      MM          MMMMMMMM  MM  MMMM    MM      
+//  MM        MM    MM    MM      MM          MM        MM    MM      MM    
+//  MM        MM    MM    MM      MM          MM        MM    MM  MM    MM  
+//  MMMMMMMM  MMMMMM    MMMMMM    MM          MM        MM    MM    MMMM    
 
 
 // function reverseStr(str) { return str.split('').reverse().join(''); }
@@ -344,3 +344,54 @@ function showTextArea(obj) {
     $('#total').html(str);
     $('#output').html(obj.word);
 }
+
+
+
+
+
+
+//  MM      MM  MMMMMM  MMMMMMMM  MM      MM        MMMMMMMM  MM    MM    MMMM    
+//  MM      MM    MM    MM        MM      MM        MM        MMMM  MM  MM    MM  
+//  MM      MM    MM    MMMMMMMM  MM      MM        MMMMMMMM  MM  MMMM    MM      
+//  MM      MM    MM    MM        MM  MM  MM        MM        MM    MM      MM    
+//    MM  MM      MM    MM        MM  MM  MM        MM        MM    MM  MM    MM  
+//      MM      MMMMMM  MMMMMMMM    MM  MM          MM        MM    MM    MMMM    
+
+function loadTable() {
+    $('.vocab-id').eq(0).text( 0 );
+    $('.vocab-word').eq(0).text( bank[0].word );
+    $('.vocab-category').eq(0).text( bank[0].category );
+    $('.vocab-frequency').eq(0).text( bank[0].frequency );
+    $('.vocab-definitions').eq(0).html( bank[2].arr );
+}
+
+fillTable();
+function fillTable() {
+    let num = $('.vocab-row').length;
+    for ( i=0 ; i<num ; i++ ) { $('.vocab-row').eq(0).remove(); }
+    num = bank.length;
+    for ( i=0 ; i<num ; i++ ) { 
+        let arrText = splitArrToLines(bank[i].arr);
+        let str = '<tr class="vocab-row">';
+        str += `<th class="vocab-id" scope="row">${i+1}</th>`;
+        str += `<td class="vocab-word hebrew text-right" >${bank[i].word}</td>`;
+        str += `<td class="vocab-category" >${bank[i].category}</td>`;
+        str += `<td class="vocab-frequency" >${bank[i].frequency}</td>`;
+        str += `<td class="vocab-definitions" >${arrText}</td>`;
+        str += '</tr>';
+        $('.vocab-table').append(str);
+    }
+}
+
+function splitArrToLines(arrGroup) {
+    let str = '';
+    arrGroup.forEach( (arr,i) => {
+        str += `${i+1}. ${arr.join(', ')}<br>`;
+    });
+    return str;
+}
+
+
+
+
+

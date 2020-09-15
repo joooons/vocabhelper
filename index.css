@@ -37,6 +37,10 @@ label {
 
 .hebrew {
     font-family: BibHib;
+    /* font-size: 1.8em; */
+}
+
+.bigger {
     font-size: 1.8em;
 }
 

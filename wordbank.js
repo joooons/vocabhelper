@@ -13,7 +13,7 @@ bank[3] = {"word":"בּ","category":"prp.","frequency":"15559","arr":[["in"],["at
 
 bank[4] = {"word":"אֵ֫ת / אֶת־","category":"prt.","frequency":"10987","arr":[["untranslatble","DDOM","direct object marker","direct definite object marker","an untranslatable particle indicating the direct object"]]};
 
-bank[5] = {"word":" ּמִן / מִ","category":"prp.","frequency":"7529","arr":[["from"],["out of"],["since"],["than","more than","more","than"]]};
+bank[5] = {"word":" ּמִן / מִ","category":"prp.","frequency":"7529","arr":[["from"],["out of"],["since"],["than","more than","(more) than"]]};
 
 bank[6] = {"word":"עַל","category":"prp.","frequency":"5777","arr":[["on"],["over"],["against"],["on account of"],["to"]]};
 
