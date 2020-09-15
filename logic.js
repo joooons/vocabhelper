@@ -5,127 +5,18 @@ console.log('logic.js at your service.');
 
 
 
-
+//  MM      MM    MMMM    MMMMMM    MMMMMM    MMMM    MMMMMM    MM      MMMMMMMM    MMMM    
+//  MM      MM  MM    MM  MM    MM    MM    MM    MM  MM    MM  MM      MM        MM    MM  
+//  MM      MM  MMMMMMMM  MMMMMM      MM    MMMMMMMM  MMMMMM    MM      MMMMMMMM    MM      
+//  MM      MM  MM    MM  MM    MM    MM    MM    MM  MM    MM  MM      MM            MM    
+//    MM  MM    MM    MM  MM    MM    MM    MM    MM  MM    MM  MM      MM        MM    MM  
+//      MM      MM    MM  MM    MM  MMMMMM  MM    MM  MMMMMM    MMMMMM  MMMMMMMM    MMMM    
 
 var result = {};
     result.word = '';
     result.category = '';
     result.frequency = 0;
     result.arr = [];
-
-
-
-
-
-
-$(document).on('submit', '.no-submit', function(ev) {
-    ev.preventDefault();
-});
-
-$(document).on('change', '.edit-tab', function(ev) {
-    let num = editBox.getIndex(ev.target, '.edit-tab');
-    if ( num == 0 ) {
-        let str = $('#edit-word').val();
-
-        let arr = strToSyllableArr(str).reverse();
-        str = arr.join('');
-        arr = str.split('');
-    
-        Object.keys(En_to_He).forEach( key => {
-            arr.forEach( (char,i) => {
-                if ( char == key ) arr[i] = En_to_He[key];
-            });
-        });
-        str = arr.join('');
-        result.word = str;
-        $('#output').html( str );
-    }
-    if ( num > 0 ) { if (result.word == '') { return ev.target.value = ''; } }
-    if ( num == $('.edit-tab').length - 2 ) editBox.addLine();
-    $('.edit-tab').get(num+1).focus();
-    editBox.fillResult();
-    editBox.display();
-    // console.table(result);
-});
-
-
-$('#edit-push').on('click', ev => {
-    showTextArea(result);
-    // bank.push(result);
-    result = {};
-    editBox.clear();
-    $('#total').select();
-    document.execCommand('copy');
-    console.log('text copied to clipboard');
-});
-
-$('#total').on('click', (ev) => {
-	ev.target.select();
-	document.execCommand('copy');
-    console.log('text copied to clipboard');
-});
-
-
-
-
-
-
-const editBox = {};
-
-    editBox.getIndex = (el, str) => {
-        for ( i=0 ; i<$(str).length ; i++ ) { if ( el == $(str).get(i)) return i; }
-    }
-    editBox.addLine = () => {
-        let index = $('.no-submit').length;
-        let str = '<form class="no-submit">';
-        str += '<div class="form-row form-group">';
-        str += '<div class="col-3 col-md-3"></div>';
-        str += '<div class="input-group col-9 col-md-9">';
-        str += '<input type="text" class="form-control edit-tab" placeholder="">';
-        str += '<div class="input-group-append">';
-        str += '<button type="button" class="btn btn-primary" tabindex="-1" onclick="editBox.removeLine(this)">';
-        str += '<b>&#x2715;</b></button></div></div></div></form>';
-        $(str).insertAfter( $('.no-submit').get(index-2) );
-    }
-    editBox.removeLine = (el) => {
-        $(el).parents().eq(2).remove();
-        editBox.fillResult();
-        editBox.display();
-        console.table(result);
-    }
-    editBox.display = () => {        
-        let str = JSON.stringify(result);
-        $('#total').html(str);
-    }
-    editBox.fillResult = () => {
-        let $elem = $('.edit-tab');
-        let len = $elem.length;
-        result.category = $elem.eq(1).val();
-        result.frequency = $elem.eq(2).val();
-        result.arr = [];
-        for ( i=3 ; i<len-2 ; i++ ) {
-            result.arr.push( editBox.parse($elem.eq(i).val()) );
-        }
-    }
-    editBox.parse = str => {
-        let newStr = str.replace( /[,;.]/g, "/");
-        newStr = newStr.replace( /[\W][\W]+/g, "/");
-        let arr = newStr.split('/');
-        arr.forEach( (val,i) => {
-            if (val == '') arr.splice(i,1);
-        });
-        return arr;
-    }
-    editBox.clear = () => {
-        let len = $('.edit-tab').length;
-        for ( i=0 ; i<len ; i++ ) { $('.edit-tab').eq(i).val(''); }
-        for ( i=4 ; i< len-1 ; i++ ) {
-            let elem = $('.edit-tab').eq(4).parents().eq(2);
-            elem.remove();
-        }
-    }
-
-    
 
 const En_to_He = {
     'a' : '&#1488;',
@@ -254,6 +145,140 @@ const vowels = [
     'e', 'E', 'i', 'I', 'o', 'O', 'ø', 'u', '&', ',', '\<',
     '\–', ';', '\:', '}', '\‘', "\'", '\"', '\]', '\“', '‡'
 ]
+    
+const editBox = {
+    getIndex : (el, str) => {
+        for ( i=0 ; i<$(str).length ; i++ ) { if ( el == $(str).get(i)) return i; }
+    },
+    addLine : () => {
+        let index = $('.no-submit').length;
+        let str = '<form class="no-submit">';
+        str += '<div class="form-row form-group">';
+        str += '<div class="col-3 col-md-3"></div>';
+        str += '<div class="input-group col-9 col-md-9">';
+        str += '<input type="text" class="form-control edit-tab" placeholder="">';
+        str += '<div class="input-group-append">';
+        str += '<button type="button" class="btn btn-primary" tabindex="-1" onclick="editBox.removeLine(this)">';
+        str += '<b>&#x2715;</b></button></div></div></div></form>';
+        $(str).insertAfter( $('.no-submit').get(index-2) );
+    },
+    removeLine : (el) => {
+        $(el).parents().eq(2).remove();
+        editBox.fillResult();
+        editBox.display();
+        console.table(result);
+    },
+    display : () => {        
+        let str = JSON.stringify(result);
+        $('#total').html(str);
+    },
+    fillResult : () => {
+        let $elem = $('.edit-tab');
+        let len = $elem.length;
+        result.category = $elem.eq(1).val();
+        result.frequency = $elem.eq(2).val();
+        result.arr = [];
+        for ( i=3 ; i<len-2 ; i++ ) {
+            result.arr.push( editBox.parse($elem.eq(i).val()) );
+        }
+    },
+    parse : str => {
+        let newStr = str.replace( /[,;.]/g, "/");
+        newStr = newStr.replace( /[\W][\W]+/g, "/");
+        let arr = newStr.split('/');
+        arr.forEach( (val,i) => {
+            if (val == '') arr.splice(i,1);
+        });
+        return arr;
+    },
+    clear : () => {
+        let len = $('.edit-tab').length;
+        for ( i=0 ; i<len ; i++ ) { $('.edit-tab').eq(i).val(''); }
+        for ( i=4 ; i< len-1 ; i++ ) {
+            let elem = $('.edit-tab').eq(4).parents().eq(2);
+            elem.remove();
+        }
+    }
+};
+
+
+
+
+
+
+
+
+
+
+//  MMMMMMMM  MM      MM  MMMMMMMM  MM    MM  MMMMMM        MM    MM    MMMM    MM    MM  MMMMMM    MM      MMMMMMMM  MMMMMM      MMMM    
+//  MM        MM      MM  MM        MMMM  MM    MM          MM    MM  MM    MM  MMMM  MM  MM    MM  MM      MM        MM    MM  MM    MM  
+//  MMMMMMMM  MM      MM  MMMMMMMM  MM  MMMM    MM          MMMMMMMM  MMMMMMMM  MM  MMMM  MM    MM  MM      MMMMMMMM  MMMMMM      MM      
+//  MM        MM      MM  MM        MM    MM    MM          MM    MM  MM    MM  MM    MM  MM    MM  MM      MM        MM    MM      MM    
+//  MM          MM  MM    MM        MM    MM    MM          MM    MM  MM    MM  MM    MM  MM    MM  MM      MM        MM    MM  MM    MM  
+//  MMMMMMMM      MM      MMMMMMMM  MM    MM    MM          MM    MM  MM    MM  MM    MM  MMMMMM    MMMMMM  MMMMMMMM  MM    MM    MMMM    
+
+$(document).on('submit', '.no-submit', function(ev) {
+    ev.preventDefault();
+});
+
+$(document).on('change', '.edit-tab', function(ev) {
+    let num = editBox.getIndex(ev.target, '.edit-tab');
+    if ( num == 0 ) {
+        let str = $('#edit-word').val();
+
+        let arr = strToSyllableArr(str).reverse();
+        str = arr.join('');
+        arr = str.split('');
+    
+        Object.keys(En_to_He).forEach( key => {
+            arr.forEach( (char,i) => {
+                if ( char == key ) arr[i] = En_to_He[key];
+            });
+        });
+        str = arr.join('');
+        result.word = str;
+        $('#output').html( str );
+    }
+    if ( num > 0 ) { if (result.word == '') { return ev.target.value = ''; } }
+    if ( num == $('.edit-tab').length - 2 ) editBox.addLine();
+    $('.edit-tab').get(num+1).focus();
+    editBox.fillResult();
+    editBox.display();
+    // console.table(result);
+});
+
+$('#edit-push').on('click', ev => {
+    showTextArea(result);
+    result = {};
+    editBox.clear();
+    $('#total').select();
+    document.execCommand('copy');
+    console.log('text copied to clipboard');
+});
+
+$('#total').on('click', (ev) => {
+	ev.target.select();
+	document.execCommand('copy');
+    console.log('text copied to clipboard');
+});
+
+
+
+
+
+
+
+    
+
+
+
+
+//  MMMMMMMM  MM    MM  MM    MM    MMMM    MMMMMM  MMMMMM    MMMM    MM    MM    MMMM    
+//  MM        MM    MM  MMMM  MM  MM    MM    MM      MM    MM    MM  MMMM  MM  MM    MM  
+//  MMMMMMMM  MM    MM  MM  MMMM  MM          MM      MM    MM    MM  MM  MMMM    MM      
+//  MM        MM    MM  MM    MM  MM          MM      MM    MM    MM  MM    MM      MM    
+//  MM        MM    MM  MM    MM  MM    MM    MM      MM    MM    MM  MM    MM  MM    MM  
+//  MM          MMMM    MM    MM    MMMM      MM    MMMMMM    MMMM    MM    MM    MMMM    
 
 
 // function reverseStr(str) { return str.split('').reverse().join(''); }
@@ -287,12 +312,23 @@ function strToSyllableArr(str) {
 }
 
 
+
 // hideThings();
 function hideThings() {
     $('#edit-page').toggle();
 }
 
+tempShowView();
+function tempShowView() {
+    $('#view-page').show();
+}
+
+
+
+
 function showHE(a,b) {
+    // Temporarily useful function that shows all html entities between the
+    // specified range.
     let str = '';
     if (!b) { str += `${a} &nbsp;&nbsp;&nbsp;&#${a};&#10;`; } 
     else if ( a < b ) {
@@ -308,4 +344,3 @@ function showTextArea(obj) {
     $('#total').html(str);
     $('#output').html(obj.word);
 }
-
