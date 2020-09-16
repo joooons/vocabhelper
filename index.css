@@ -49,6 +49,10 @@ div.rtl {
     unicode-bidi: bidi-override;
 }
 
+div .quiz-spoiler {
+    transition: 1s;
+}
+
 div .quiz-spoiler:hover {
     background: #DDD !important;
 }

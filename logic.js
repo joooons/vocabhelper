@@ -203,6 +203,18 @@ const addBoxFn = {
 
 const tempBank = [];
 
+const questionRef = [];
+
+const scoreArr = [];
+
+function scoreObj() {
+    this.gotMain = 0;
+    this.gotAny = 0;
+    this.gotThisMany = 0;
+    this.defs = [];
+    this.alreadyGot = [];
+}
+
 
 
 
@@ -264,12 +276,36 @@ $(document).on('change', '.view-input', function(ev) {
 $(document).on('change', '.quiz-form', function(ev) {
     let num = $('.quiz-question').length;
     let index = -1;
-    for ( i=0 ; i<num ; i++ ) {
-        if ( ev.target == $('.quiz-question').get(i) ) index = i;
-    }
+    for ( i=0 ; i<num ; i++ ) { if ( ev.target == $('.quiz-question').get(i) ) index = i; }
     index++;
     if ( index == num ) index = 0;
-    $('.quiz-question').get(index).focus();
+    // $('.quiz-question').get(index).focus();
+});
+
+$(document).on('change', '.quiz-question', function(ev) {
+    let ans = ev.target.value;
+
+    let num = $('.quiz-question').length;
+    let index = -1;
+    for ( i=0 ; i<num ; i++ ) { 
+        if ( ev.target == $('.quiz-question').get(i) ) index = i; 
+    }
+    let ref = questionRef[index];
+    
+    // let range = tempBank[ref].arr.length;
+    // console.log(range);
+
+    let isCorrect = false;
+    tempBank[ref].arr.forEach( list => {
+        if (list.includes(ans)) isCorrect = true;
+    });
+
+    if (isCorrect) { 
+        ev.target.readOnly = true;
+        $('.quiz-question').get(index+1).focus(); 
+    } 
+    else { ev.target.value = ''; }
+
 });
 
 
@@ -444,6 +480,11 @@ function fillTable(start, end) {
 //  MM    MM    MM    MM    MM    MM                MM        MM    MM  MM    MM  
 //    MMMM  MM    MMMM    MMMMMM  MMMMMMMMMM        MM        MM    MM    MMMM    
 
+function fillScoreArr() {
+    if (!tempBank.length) return;
+    scoreArr.splice(0, scoreArr.length);
+    tempBank.forEach( () => { scoreArr.push( new scoreObj() ); });
+}
 
 function fillTempBank() {
     let startNum = $('.quiz-input').get(0).value;
@@ -455,12 +496,13 @@ function fillTempBank() {
     // console.log(startNum,endNum);
     tempBank.splice(0, tempBank.length);
     for ( i=startNum-1 ; i<endNum ; i++ ) { tempBank.push( bank[i] ); }
+    fillScoreArr();
     addQuizQuestions();
 }
 
 function addQuizQuestions() {
-    // removeQuizQuestions();
     let str = '';
+    questionRef.splice(0,questionRef.length);
     let loop = new Array(tempBank.length).fill(0);
     loop.forEach( (v,i) => {
         str += '<div class="card bg-light mb-3 quiz-card">';
@@ -477,6 +519,7 @@ function addQuizQuestions() {
         let num = tempBank[i].arr.length;
 
         for ( n=0 ; n<num ; n++ ) {
+            questionRef.push(i);
             str += '<form class="no-submit quiz-form">';
             str += '<div class="form-row form-group">';
             str += `<label for="" class="col-form-label col-2 text-right"></label>`;
@@ -485,7 +528,7 @@ function addQuizQuestions() {
             str += '<input type="text" class="form-control quiz-question">';
             str += '<div class="input-group-append">';
             str += '<span class="input-group-text bg-primary">';
-            str += '<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check" fill="white" xmlns="http://www.w3.org/2000/svg">';
+            str += '<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check check-answer" fill="white" xmlns="http://www.w3.org/2000/svg">';
             str += '<path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>';
             str += '</svg></span>';
             str += '</div></div>';
