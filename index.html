@@ -305,14 +305,14 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-3">
             <!-- QUIZ FILTER -->
-            <div class="col col-12 col-sm-11 col-md-9 col-lg-8 col-xl-6 mb-3">
+            <div class="col col-12 col-sm-11 col-md-9 col-lg-8 col-xl-6">
                 <div class="card bg-light">
                     <div class="card-body">
                         <div class="row">
                             <div class="col col-5">
-                                <form class="no-submit quiz-form">
+                                <form class="no-submit quiz-filter">
                                     <div class="form-row form-group">
                                         <label for="" class="col-form-label col-4 text-right">
                                             Start
@@ -322,7 +322,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                <form class="no-submit quiz-form">
+                                <form class="no-submit quiz-filter">
                                     <div class="form-row form-group">
                                         <label for="" class="col-form-label col-4 text-right">
                                             End
@@ -332,7 +332,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                <form class="no-submit quiz-form">
+                                <form class="no-submit quiz-filter">
                                     <div class="form-row form-group">
                                         <label for="" class="col-form-label col-4 text-right">
                                             #ofQ
@@ -344,7 +344,7 @@
                                 </form>
                             </div>
                             <div class="col col-7">
-                                <form class="no-submit quiz-form">
+                                <form class="no-submit quiz-filter">
                                     <div class="form-row form-group">
                                         <label for="" class="col-form-label col-4 text-right">
                                             Category
@@ -354,7 +354,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                <form class="no-submit quiz-form">
+                                <form class="no-submit quiz-filter">
                                     <div class="form-row form-group">
                                         <label for="" class="col-form-label col-4 text-right">
                                             Frequency
@@ -364,7 +364,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                <form class="no-submit quiz-form">
+                                <form class="no-submit quiz-filter">
                                     <div class="form-row form-group">
                                         <div class="col col-4">
                                         </div>
@@ -380,137 +380,23 @@
             </div>
         </div>
 
+        <div class="row mb-3">
+            <div class="col col-12" id="quiz-score">
+                <div class="card">
+                    <div class="card-header text-center">
+                        SCORE
+                    </div>
+                    <div class="card-body text-center">
+                        5 out of 5
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <!-- ACTUAL QUIZ -->
             <div class="col col-12" id="quiz-cards">
-
                 
-                <div class="card bg-light mb-3 quiz-card">
-                    <div class="card-body">
-                        <div class="row">
-
-                            <div class="col col-12 col-md-8">
-                                <div class="row mb-3">
-                                    <div class="col col-2 text-right quiz-word">
-                                        UNO.&nbsp;
-                                    </div>
-                                    <div class="col col-10 ">
-                                        Hello
-                                    </div>
-                                </div>
-                                
-                                <form class="no-submit quiz-q-form">
-                                    <div class="form-row form-group">
-                                        <label for="" class="col-form-label col-2">
-                                            1. 
-                                        </label>
-                                        <div class="col-10">
-                                            <input type="text" class="form-control quiz-question" placeholder="" autocomplete="off">
-                                        </div>
-                                    </div>
-                                </form>
-
-                                <form class="no-submit quiz-q-form">
-                                    <div class="form-row form-group">
-                                        <label for="" class="col-form-label col-2">
-                                            2. 
-                                        </label>
-                                        <div class="col-10">
-                                            <input type="text" class="form-control quiz-question" placeholder="" autocomplete="off">
-                                        </div>
-                                    </div>
-                                </form>
-
-                                <form class="no-submit quiz-q-form">
-                                    <div class="form-row form-group">
-                                        <div class="col col-2">
-                                        </div>
-                                        <div class="col col-5">
-                                            <button class="btn btn-primary">NEXT</button>
-                                        </div>
-                                    </div>
-                                </form>
-
-                            </div>
-
-                            <div class="col col-12 col-md-4">
-                                <div class="card h-100 bg-warning">
-                                    <div class="card-body">
-                                        WOW
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="card bg-light mb-3 quiz-card">
-                    <div class="card-body">
-                        <div class="row">
-
-                            <div class="col col-12 col-md-8">
-                                <div class="row mb-3">
-                                    <div class="col col-2 text-right">
-                                        DOS.&nbsp;
-                                    </div>
-                                    <div class="col col-10 quiz-word">
-                                        Hello
-                                    </div>
-                                </div>
-                                
-                                <form class="no-submit quiz-q-form">
-                                    <div class="form-row form-group">
-                                        <label for="" class="col-form-label col-2">
-                                            1. 
-                                        </label>
-                                        <div class="col-10">
-                                            <input type="text" class="form-control quiz-question" placeholder="" autocomplete="off">
-                                        </div>
-                                    </div>
-                                </form>
-
-                                <form class="no-submit quiz-q-form">
-                                    <div class="form-row form-group">
-                                        <label for="" class="col-form-label col-2">
-                                            2. 
-                                        </label>
-                                        <div class="col-10">
-                                            <input type="text" class="form-control quiz-question" placeholder="" autocomplete="off">
-                                        </div>
-                                    </div>
-                                </form>
-
-                                <form class="no-submit quiz-q-form">
-                                    <div class="form-row form-group">
-                                        <div class="col col-2">
-                                        </div>
-                                        <div class="col col-5">
-                                            <button class="btn btn-primary">NEXT</button>
-                                        </div>
-                                    </div>
-                                </form>
-
-                            </div>
-
-
-                            <div class="col col-12 col-md-4">
-                                <div class="card h-100 bg-warning">
-                                    <div class="card-body">
-                                        WOW
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-
-
             </div>
         </div>
         

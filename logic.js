@@ -262,6 +262,19 @@ $(document).on('change', '.view-input', function(ev) {
     
 });
 
+$(document).on('change', '.quiz-form', function(ev) {
+    let num = $('.quiz-question').length;
+    // console.log(num);
+    let index = -1;
+    for ( i=0 ; i<num ; i++ ) {
+        if ( ev.target == $('.quiz-question').get(i) ) index = i;
+    }
+    index++;
+    if ( index == num ) index = 0;
+    $('.quiz-question').get(index).focus();
+    // console.log( index, num );
+});
+
 
 $('#add-push').on('click', ev => {
     showTextArea(result);
@@ -301,7 +314,13 @@ function showPage(str) {
     $(`#${str}-page`).show();
 }
 
-
+function splitArrToLines(arrGroup) {
+    // The definition of each word is contained in an array of an array.
+    // This function puts each array into a separate line.
+    let str = '';
+    arrGroup.forEach( (arr,i) => { str += `${i+1}.&nbsp;&nbsp;${arr.join(', ')}<br>`; });
+    return str;
+}
 
 
 
@@ -412,13 +431,7 @@ function fillTable(start, end) {
     }
 }
 
-function splitArrToLines(arrGroup) {
-    // The definition of each word is contained in an array of an array.
-    // This function puts each array into a separate line.
-    let str = '';
-    arrGroup.forEach( (arr,i) => { str += `${i+1}.&nbsp;&nbsp;${arr.join(', ')}<br>`; });
-    return str;
-}
+
 
 
 
@@ -441,6 +454,8 @@ function removeQuizQuestions() {
     for ( i=0 ; i<num ; i++ ) { $('.quiz-card').eq(0).remove(); }
 }
 
+
+addQuizQuestions();
 function addQuizQuestions() {
     removeQuizQuestions();
 
@@ -453,32 +468,37 @@ function addQuizQuestions() {
         str += '<div class="row">';
         str += '<div class="col col-12 col-md-8">';
         str += '<div class="row mb-3">';
-        str += '<div class="col col-2 text-right quiz-word">';
+        str += '<div class="col col-2 text-right quiz-word ">';
         str += `${i+1}.</div>`;
-        str += `<div class="col col-10 hebrew">${bank[i].word}</div></div>`;
-                                    
-                                    // <form class="no-submit quiz-q-form">
-                                    //     <div class="form-row form-group">
-                                    //         <label for="" class="col-form-label col-2">
-                                    //             1. 
-                                    //         </label>
-                                    //         <div class="col-10">
-                                    //             <input type="text" class="form-control quiz-question" placeholder="" autocomplete="off">
-                                    //         </div>
-                                    //     </div>
-                                    // </form>
-    
-        // str += '<form class="no-submit quiz-q-form">';
-        // str += '<div class="form-row form-group">';
-        // str += '<div class="col col-2"></div>';
-        // str += '<div class="col col-5">';
-        // str += '<button class="btn btn-primary">NEXT</button>';
-        // str += '</div></div></form>';
+        str += `<div class="col col-5 hebrew bigger">${bank[i].word}</div>`;
+        str += `<div class="col col-2 text-right">${bank[i].category}</div>`;
+        str += `<div class="col col-3 text-right">${bank[i].frequency}</div></div>`;
+
+        let num = bank[i].arr.length;
+
+        for ( n=0 ; n<num ; n++ ) {
+            str += '<form class="no-submit quiz-form">';
+            str += '<div class="form-row form-group">';
+            str += `<label for="" class="col-form-label col-2 text-right"></label>`;
+            str += '<div class="col-10">';
+
+            str += '<div class="input-group">';
+            str += '<input type="text" class="form-control quiz-question">';
+            str += '<div class="input-group-append">';
+            str += '<span class="input-group-text bg-warning">';
+            str += '<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">';
+            str += '<path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>';
+            str += '</svg></span>';
+            str += '</div></div>';
+
+            str += '</div></div></form>';
+        }
         str += '</div>';
     
-        // str += '<div class="col col-12 col-md-4">';
-        // str += '<div class="card h-100 bg-warning">';
-        // str += '<div class="card-body">WOW</div></div></div>';
+        str += '<div class="col col-12 col-md-4">';
+        str += '<div class="card h-100 ">';
+        str += `<div class="card-body bg-light text-light">${splitArrToLines(bank[i].arr)}</div></div></div>`;
+
         str += '</div></div></div>';
     });
 
