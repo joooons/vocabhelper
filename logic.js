@@ -293,10 +293,11 @@ $('#total').on('click', (ev) => {
     
 
 
-showPage('view');
+showPage('quiz');
 function showPage(str) {
     $('#add-page').hide();
     $('#view-page').hide();
+    $('#quiz-page').hide();
     $(`#${str}-page`).show();
 }
 
@@ -423,3 +424,64 @@ function splitArrToLines(arrGroup) {
 
 
 
+
+
+
+
+//    MMMMMM    MM    MM  MMMMMM  MMMMMMMMMM        MMMMMMMM  MM    MM    MMMM    
+//  MM      MM  MM    MM    MM          MM          MM        MMMM  MM  MM    MM  
+//  MM      MM  MM    MM    MM        MM            MMMMMMMM  MM  MMMM    MM      
+//  MM  MM  MM  MM    MM    MM      MM              MM        MM    MM      MM    
+//  MM    MM    MM    MM    MM    MM                MM        MM    MM  MM    MM  
+//    MMMM  MM    MMMM    MMMMMM  MMMMMMMMMM        MM        MM    MM    MMMM    
+
+
+function removeQuizQuestions() {
+    let num = $('.quiz-card').length;
+    for ( i=0 ; i<num ; i++ ) { $('.quiz-card').eq(0).remove(); }
+}
+
+function addQuizQuestions() {
+    removeQuizQuestions();
+
+    let str = '';
+    
+    let loop = new Array(bank.length).fill(0);
+    loop.forEach( (v,i) => {
+        str += '<div class="card bg-light mb-3 quiz-card">';
+        str += '<div class="card-body">';
+        str += '<div class="row">';
+        str += '<div class="col col-12 col-md-8">';
+        str += '<div class="row mb-3">';
+        str += '<div class="col col-2 text-right quiz-word">';
+        str += `${i+1}.</div>`;
+        str += `<div class="col col-10 hebrew">${bank[i].word}</div></div>`;
+                                    
+                                    // <form class="no-submit quiz-q-form">
+                                    //     <div class="form-row form-group">
+                                    //         <label for="" class="col-form-label col-2">
+                                    //             1. 
+                                    //         </label>
+                                    //         <div class="col-10">
+                                    //             <input type="text" class="form-control quiz-question" placeholder="" autocomplete="off">
+                                    //         </div>
+                                    //     </div>
+                                    // </form>
+    
+        // str += '<form class="no-submit quiz-q-form">';
+        // str += '<div class="form-row form-group">';
+        // str += '<div class="col col-2"></div>';
+        // str += '<div class="col col-5">';
+        // str += '<button class="btn btn-primary">NEXT</button>';
+        // str += '</div></div></form>';
+        str += '</div>';
+    
+        // str += '<div class="col col-12 col-md-4">';
+        // str += '<div class="card h-100 bg-warning">';
+        // str += '<div class="card-body">WOW</div></div></div>';
+        str += '</div></div></div>';
+    });
+
+    $('#quiz-cards').append(str);
+
+}

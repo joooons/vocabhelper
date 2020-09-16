@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Vocab Helper</title>
 
+    <link rel="icon" href="icon.svg" type="image/x-icon">
+
     <link rel="stylesheet" href="index.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -33,13 +35,13 @@
             <a href="#" class="nav-link active text-light" onclick="showPage('add');">ADD</a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link active text-light">EDIT</a>
+            <a href="#" class="nav-link active text-dark ">EDIT</a>
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link active text-light" onclick="showPage('view');">VIEW</a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link active text-light">QUIZ</a>
+            <a href="#" class="nav-link active text-light" onclick="showPage('quiz');">QUIZ</a>
         </li>
     </ul>
 
@@ -277,6 +279,251 @@
         </div>
         
     </div>
+
+
+
+
+
+
+
+
+
+
+
+<!--    MMMMMM    MM    MM  MMMMMM  MMMMMMMMMM   -->
+<!--  MM      MM  MM    MM    MM          MM     -->
+<!--  MM      MM  MM    MM    MM        MM       -->
+<!--  MM  MM  MM  MM    MM    MM      MM         -->
+<!--  MM    MM    MM    MM    MM    MM           -->
+<!--    MMMM  MM    MMMM    MMMMMM  MMMMMMMMMM   -->
+
+    <div class="container-fluid" id="quiz-page" style="display:none;">
+
+        <div class="row" id="head">
+            <div class="col-12">
+                VOCAB HELPER QUIZZLER
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- QUIZ FILTER -->
+            <div class="col col-12 col-sm-11 col-md-9 col-lg-8 col-xl-6 mb-3">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col col-5">
+                                <form class="no-submit quiz-form">
+                                    <div class="form-row form-group">
+                                        <label for="" class="col-form-label col-4 text-right">
+                                            Start
+                                        </label>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control quiz-input" placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="no-submit quiz-form">
+                                    <div class="form-row form-group">
+                                        <label for="" class="col-form-label col-4 text-right">
+                                            End
+                                        </label>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control quiz-input" placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="no-submit quiz-form">
+                                    <div class="form-row form-group">
+                                        <label for="" class="col-form-label col-4 text-right">
+                                            #ofQ
+                                        </label>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control quiz-input" placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col col-7">
+                                <form class="no-submit quiz-form">
+                                    <div class="form-row form-group">
+                                        <label for="" class="col-form-label col-4 text-right">
+                                            Category
+                                        </label>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control quiz-input" placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="no-submit quiz-form">
+                                    <div class="form-row form-group">
+                                        <label for="" class="col-form-label col-4 text-right">
+                                            Frequency
+                                        </label>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control quiz-input" placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="no-submit quiz-form">
+                                    <div class="form-row form-group">
+                                        <div class="col col-4">
+                                        </div>
+                                        <div class="col col-6">
+                                            <button class="btn btn-primary">START</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- ACTUAL QUIZ -->
+            <div class="col col-12" id="quiz-cards">
+
+                
+                <div class="card bg-light mb-3 quiz-card">
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col col-12 col-md-8">
+                                <div class="row mb-3">
+                                    <div class="col col-2 text-right quiz-word">
+                                        UNO.&nbsp;
+                                    </div>
+                                    <div class="col col-10 ">
+                                        Hello
+                                    </div>
+                                </div>
+                                
+                                <form class="no-submit quiz-q-form">
+                                    <div class="form-row form-group">
+                                        <label for="" class="col-form-label col-2">
+                                            1. 
+                                        </label>
+                                        <div class="col-10">
+                                            <input type="text" class="form-control quiz-question" placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <form class="no-submit quiz-q-form">
+                                    <div class="form-row form-group">
+                                        <label for="" class="col-form-label col-2">
+                                            2. 
+                                        </label>
+                                        <div class="col-10">
+                                            <input type="text" class="form-control quiz-question" placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <form class="no-submit quiz-q-form">
+                                    <div class="form-row form-group">
+                                        <div class="col col-2">
+                                        </div>
+                                        <div class="col col-5">
+                                            <button class="btn btn-primary">NEXT</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+
+                            <div class="col col-12 col-md-4">
+                                <div class="card h-100 bg-warning">
+                                    <div class="card-body">
+                                        WOW
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card bg-light mb-3 quiz-card">
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col col-12 col-md-8">
+                                <div class="row mb-3">
+                                    <div class="col col-2 text-right">
+                                        DOS.&nbsp;
+                                    </div>
+                                    <div class="col col-10 quiz-word">
+                                        Hello
+                                    </div>
+                                </div>
+                                
+                                <form class="no-submit quiz-q-form">
+                                    <div class="form-row form-group">
+                                        <label for="" class="col-form-label col-2">
+                                            1. 
+                                        </label>
+                                        <div class="col-10">
+                                            <input type="text" class="form-control quiz-question" placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <form class="no-submit quiz-q-form">
+                                    <div class="form-row form-group">
+                                        <label for="" class="col-form-label col-2">
+                                            2. 
+                                        </label>
+                                        <div class="col-10">
+                                            <input type="text" class="form-control quiz-question" placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <form class="no-submit quiz-q-form">
+                                    <div class="form-row form-group">
+                                        <div class="col col-2">
+                                        </div>
+                                        <div class="col col-5">
+                                            <button class="btn btn-primary">NEXT</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+
+
+                            <div class="col col-12 col-md-4">
+                                <div class="card h-100 bg-warning">
+                                    <div class="card-body">
+                                        WOW
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+        
+
+
+        
+        
+    </div>
+
+
+
+
+
 
 
 
