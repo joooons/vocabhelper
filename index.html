@@ -338,7 +338,7 @@
                                             #ofQ
                                         </label>
                                         <div class="col-8">
-                                            <input type="text" class="form-control quiz-input" placeholder="" autocomplete="off">
+                                            <input readonly type="text" class="form-control quiz-input" placeholder="" autocomplete="off">
                                         </div>
                                     </div>
                                 </form>
@@ -350,7 +350,7 @@
                                             Category
                                         </label>
                                         <div class="col-8">
-                                            <input type="text" class="form-control quiz-input" placeholder="" autocomplete="off">
+                                            <input readonly type="text" class="form-control quiz-input" placeholder="" autocomplete="off">
                                         </div>
                                     </div>
                                 </form>
@@ -360,7 +360,7 @@
                                             Frequency
                                         </label>
                                         <div class="col-8">
-                                            <input type="text" class="form-control quiz-input" placeholder="" autocomplete="off">
+                                            <input readonly type="text" class="form-control quiz-input" placeholder="" autocomplete="off">
                                         </div>
                                     </div>
                                 </form>
@@ -385,16 +385,19 @@
                 SCORE
             </div>
             <div class="card-body bg-white">
-                <div class="card-title">
-                    5 out of 5
+                <div class="card-text" id="got-any">
+                    0 out of 0
                 </div>
-                <div class="card-text">
-                    Yes, this is the result.
+                <div class="card-text" id="got-main">
+                    
+                </div>
+                <div class="card-text" id="got-this-many">
+                    
                 </div>
             </div>
-            <div class="card-footer">
+            <!-- <div class="card-footer">
                 THE END
-            </div>
+            </div> -->
         </div>
 
         <div class="row">

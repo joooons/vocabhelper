@@ -296,17 +296,26 @@ $(document).on('change', '.quiz-question', function(ev) {
     // console.log(range);
 
     let isCorrect = false;
-    tempBank[ref].arr.forEach( list => {
-        if (list.includes(ans)) isCorrect = true;
+    tempBank[ref].arr.forEach( (list,i) => {
+        if ( scoreArr[ref].alreadyGot.includes(i) ) return;
+        if (list.includes(ans)) {
+            isCorrect = true;
+            scoreArr[ref].alreadyGot.push(i);
+            if ( i == 0 ) scoreArr[ref].gotMain = 1;
+            scoreArr[ref].gotAny = 1;
+            scoreArr[ref].gotThisMany++;
+        }
     });
 
     if (isCorrect) { 
         ev.target.readOnly = true;
         $('.quiz-question').get(index+1).focus(); 
+        fillScoreBoard();
     } 
     else { ev.target.value = ''; }
 
 });
+
 
 
 $('#add-push').on('click', ev => {
@@ -479,6 +488,24 @@ function fillTable(start, end) {
 //  MM  MM  MM  MM    MM    MM      MM              MM        MM    MM      MM    
 //  MM    MM    MM    MM    MM    MM                MM        MM    MM  MM    MM  
 //    MMMM  MM    MMMM    MMMMMM  MMMMMMMMMM        MM        MM    MM    MMMM    
+
+function fillScoreBoard() {
+    let total = scoreArr.length;
+    let gotAny = 0;
+    let gotMain = 0;
+    let gotThisMany = 0;
+    let totalQ = questionRef.length;
+    scoreArr.forEach( obj => {
+        gotAny += obj.gotAny;
+        gotMain += obj.gotMain;
+        gotThisMany += obj.gotThisMany;
+    });
+    $('#got-any').text(`You answered ${gotAny} out of ${total} questions correctly.`);
+    $('#got-main').text(`You found the main definition for ${gotMain} questions.`);
+    $('#got-this-many').text(`You found ${gotThisMany} out of ${totalQ} definitions.`);
+}
+
+
 
 function fillScoreArr() {
     if (!tempBank.length) return;
