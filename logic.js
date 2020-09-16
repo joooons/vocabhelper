@@ -146,7 +146,7 @@ const vowels = [
     '\–', ';', '\:', '}', '\‘', "\'", '\"', '\]', '\“', '‡'
 ]
     
-const editBox = {
+const addBoxFn = {
     getIndex : (el, str) => {
         for ( i=0 ; i<$(str).length ; i++ ) { if ( el == $(str).get(i)) return i; }
     },
@@ -158,14 +158,14 @@ const editBox = {
         str += '<div class="input-group col-9 col-md-9">';
         str += '<input type="text" class="form-control add-tab" placeholder="">';
         str += '<div class="input-group-append">';
-        str += '<button type="button" class="btn btn-primary" tabindex="-1" onclick="editBox.removeLine(this)">';
+        str += '<button type="button" class="btn btn-primary" tabindex="-1" onclick="addBoxFn.removeLine(this)">';
         str += '<b>&#x2715;</b></button></div></div></div></form>';
         $(str).insertAfter( $('.add-form').get(index-2) );
     },
     removeLine : (el) => {
         $(el).parents().eq(2).remove();
-        editBox.fillResult();
-        editBox.display();
+        addBoxFn.fillResult();
+        addBoxFn.display();
         console.table(result);
     },
     display : () => {        
@@ -179,7 +179,7 @@ const editBox = {
         result.frequency = $elem.eq(2).val();
         result.arr = [];
         for ( i=3 ; i<len-2 ; i++ ) {
-            result.arr.push( editBox.parse($elem.eq(i).val()) );
+            result.arr.push( addBoxFn.parse($elem.eq(i).val()) );
         }
     },
     parse : str => {
@@ -201,7 +201,7 @@ const editBox = {
     }
 };
 
-
+const tempBank = [];
 
 
 
@@ -222,7 +222,7 @@ $(document).on('submit', '.no-submit', function(ev) {
 });
 
 $(document).on('change', '.add-tab', function(ev) {
-    let num = editBox.getIndex(ev.target, '.add-tab');
+    let num = addBoxFn.getIndex(ev.target, '.add-tab');
     if ( num == 0 ) {
         let str = $('#add-word').val();
 
@@ -240,11 +240,11 @@ $(document).on('change', '.add-tab', function(ev) {
         $('#output').html( str );
     }
     if ( num > 0 ) { if (result.word == '') { return ev.target.value = ''; } }
-    if ( num == $('.add-tab').length - 2 ) editBox.addLine();
+    if ( num == $('.add-tab').length - 2 ) addBoxFn.addLine();
     $('.add-tab').get(num+1).focus();
-    editBox.fillResult();
-    editBox.display();
-    // console.table(result);
+    addBoxFn.fillResult();
+    addBoxFn.display();
+
 });
 
 $(document).on('change', '.view-input', function(ev) {
@@ -256,7 +256,6 @@ $(document).on('change', '.view-input', function(ev) {
     $('.view-input').get(index).focus();
     let viewStart = $('.view-input').get(0).value;
     let viewEnd = $('.view-input').get(1).value;
-    // console.log(viewStart, viewEnd);
     if ( viewEnd == '' ) viewEnd = bank.length;
     fillTable(viewStart,viewEnd);
     
@@ -264,7 +263,6 @@ $(document).on('change', '.view-input', function(ev) {
 
 $(document).on('change', '.quiz-form', function(ev) {
     let num = $('.quiz-question').length;
-    // console.log(num);
     let index = -1;
     for ( i=0 ; i<num ; i++ ) {
         if ( ev.target == $('.quiz-question').get(i) ) index = i;
@@ -272,14 +270,13 @@ $(document).on('change', '.quiz-form', function(ev) {
     index++;
     if ( index == num ) index = 0;
     $('.quiz-question').get(index).focus();
-    // console.log( index, num );
 });
 
 
 $('#add-push').on('click', ev => {
     showTextArea(result);
     result = {};
-    editBox.clear();
+    addBoxFn.clear();
     $('#total').select();
     document.execCommand('copy');
     console.log('text copied to clipboard');
@@ -330,13 +327,12 @@ function splitArrToLines(arrGroup) {
 
 
 
-//  MMMMMMMM  MMMMMM    MMMMMM  MMMMMM        MMMMMMMM  MM    MM    MMMM    
-//  MM        MM    MM    MM      MM          MM        MMMM  MM  MM    MM  
-//  MMMMMMMM  MM    MM    MM      MM          MMMMMMMM  MM  MMMM    MM      
-//  MM        MM    MM    MM      MM          MM        MM    MM      MM    
-//  MM        MM    MM    MM      MM          MM        MM    MM  MM    MM  
-//  MMMMMMMM  MMMMMM    MMMMMM    MM          MM        MM    MM    MMMM    
-
+//    MMMM    MMMMMM    MMMMMM          MMMMMMMM  MM    MM    MMMM    
+//  MM    MM  MM    MM  MM    MM        MM        MMMM  MM  MM    MM  
+//  MMMMMMMM  MM    MM  MM    MM        MMMMMMMM  MM  MMMM    MM      
+//  MM    MM  MM    MM  MM    MM        MM        MM    MM      MM    
+//  MM    MM  MM    MM  MM    MM        MM        MM    MM  MM    MM  
+//  MM    MM  MMMMMM    MMMMMM          MM        MM    MM    MMMM    
 
 // function reverseStr(str) { return str.split('').reverse().join(''); }
     // Not used at the moment
@@ -449,19 +445,23 @@ function fillTable(start, end) {
 //    MMMM  MM    MMMM    MMMMMM  MMMMMMMMMM        MM        MM    MM    MMMM    
 
 
-function removeQuizQuestions() {
-    let num = $('.quiz-card').length;
-    for ( i=0 ; i<num ; i++ ) { $('.quiz-card').eq(0).remove(); }
+function fillTempBank() {
+    let startNum = $('.quiz-input').get(0).value;
+    let endNum = $('.quiz-input').get(1).value;
+    removeQuizQuestions();
+    if ( startNum < 1 ) return;
+    if ( endNum > bank.length ) return;
+    if ( endNum < startNum ) return;
+    // console.log(startNum,endNum);
+    tempBank.splice(0, tempBank.length);
+    for ( i=startNum-1 ; i<endNum ; i++ ) { tempBank.push( bank[i] ); }
+    addQuizQuestions();
 }
 
-
-addQuizQuestions();
 function addQuizQuestions() {
-    removeQuizQuestions();
-
+    // removeQuizQuestions();
     let str = '';
-    
-    let loop = new Array(bank.length).fill(0);
+    let loop = new Array(tempBank.length).fill(0);
     loop.forEach( (v,i) => {
         str += '<div class="card bg-light mb-3 quiz-card">';
         str += '<div class="card-body">';
@@ -470,38 +470,40 @@ function addQuizQuestions() {
         str += '<div class="row mb-3">';
         str += '<div class="col col-2 text-right quiz-word ">';
         str += `${i+1}.</div>`;
-        str += `<div class="col col-5 hebrew bigger">${bank[i].word}</div>`;
-        str += `<div class="col col-2 text-right">${bank[i].category}</div>`;
-        str += `<div class="col col-3 text-right">${bank[i].frequency}</div></div>`;
+        str += `<div class="col col-5 hebrew bigger">${tempBank[i].word}</div>`;
+        str += `<div class="col col-2 text-right">${tempBank[i].category}</div>`;
+        str += `<div class="col col-3 text-right">${tempBank[i].frequency}</div></div>`;
 
-        let num = bank[i].arr.length;
+        let num = tempBank[i].arr.length;
 
         for ( n=0 ; n<num ; n++ ) {
             str += '<form class="no-submit quiz-form">';
             str += '<div class="form-row form-group">';
             str += `<label for="" class="col-form-label col-2 text-right"></label>`;
             str += '<div class="col-10">';
-
             str += '<div class="input-group">';
             str += '<input type="text" class="form-control quiz-question">';
             str += '<div class="input-group-append">';
-            str += '<span class="input-group-text bg-warning">';
-            str += '<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">';
+            str += '<span class="input-group-text bg-primary">';
+            str += '<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check" fill="white" xmlns="http://www.w3.org/2000/svg">';
             str += '<path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>';
             str += '</svg></span>';
             str += '</div></div>';
-
             str += '</div></div></form>';
         }
         str += '</div>';
-    
         str += '<div class="col col-12 col-md-4">';
         str += '<div class="card h-100 ">';
-        str += `<div class="card-body bg-light text-light">${splitArrToLines(bank[i].arr)}</div></div></div>`;
-
+        str += '<div class="card-body bg-light text-light quiz-spoiler">';
+        str += `${splitArrToLines(tempBank[i].arr)}`;
+        str += '</div></div></div>';
         str += '</div></div></div>';
     });
-
     $('#quiz-cards').append(str);
+}
 
+
+function removeQuizQuestions() {
+    let num = $('.quiz-card').length;
+    for ( i=0 ; i<num ; i++ ) { $('.quiz-card').eq(0).remove(); }
 }
