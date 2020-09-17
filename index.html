@@ -32,7 +32,8 @@
 
     <ul class="nav justify-content-left bg-secondary">
         <li class="nav-item">
-            <a href="#" class="nav-link active text-light" onclick="showPage('add');">ADD</a>
+            <!-- <a href="#" class="nav-link active text-light" onclick="showPage('add');">ADD</a> -->
+            <a href="#" class="nav-link active text-dark" >ADD</a>
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link active text-dark ">EDIT</a>
@@ -168,7 +169,7 @@
                 <div class="card bg-light">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col col-5">
+                            <div class="col col-12 col-sm-5">
                                 <form class="no-submit view-form">
                                     <div class="form-row form-group">
                                         <label for="" class="col-form-label col-4 text-right">
@@ -200,14 +201,14 @@
                                     </div>
                                 </form> -->
                             </div>
-                            <div class="col col-7">
+                            <div class="col col-12 col-sm-7">
                                 <form class="no-submit view-form">
                                     <div class="form-row form-group">
                                         <label for="" class="col-form-label col-4 text-right">
                                             Category
                                         </label>
                                         <div class="col-8">
-                                            <input type="text" class="form-control view-input" placeholder="" autocomplete="off">
+                                            <input readonly type="text" class="form-control view-input" placeholder="" autocomplete="off">
                                         </div>
                                     </div>
                                 </form>
@@ -217,7 +218,7 @@
                                             Frequency
                                         </label>
                                         <div class="col-8">
-                                            <input type="text" class="form-control view-input" placeholder="" autocomplete="off">
+                                            <input readonly type="text" class="form-control view-input" placeholder="" autocomplete="off">
                                         </div>
                                     </div>
                                 </form>
@@ -227,7 +228,7 @@
                                             Definition
                                         </label>
                                         <div class="col-8">
-                                            <input type="text" class="form-control view-input" placeholder="" autocomplete="off">
+                                            <input readonly type="text" class="form-control view-input" placeholder="" autocomplete="off">
                                         </div>
                                     </div>
                                 </form>
@@ -301,17 +302,17 @@
 
         <div class="row" id="head">
             <div class="col-12">
-                VOCAB HELPER QUIZZLER
+                PRACTICE QUIZ
             </div>
         </div>
 
         <div class="row mb-3">
             <!-- QUIZ FILTER -->
-            <div class="col col-12 col-sm-11 col-md-9 col-lg-8 col-xl-6">
+            <div class="col col-12 col-sm-11 col-md-9 col-lg-8 col-xl-6 mb-3">
                 <div class="card bg-light">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col col-5">
+                            <div class="col col-12 col-sm-5">
                                 <form class="no-submit quiz-filter">
                                     <div class="form-row form-group">
                                         <label for="" class="col-form-label col-4 text-right">
@@ -343,7 +344,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="col col-7">
+                            <div class="col col-12 col-sm-7">
                                 <form class="no-submit quiz-filter">
                                     <div class="form-row form-group">
                                         <label for="" class="col-form-label col-4 text-right">
@@ -378,27 +379,24 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col col-12 col-sm-11 col-md-9 col-lg-4 col-xl-6 mb-3">
+                <div class="card border-warning mb-3 h-100">
+                    <div class="card-header text-center">
+                        SCORE
+                    </div>
+                    <div class="card-body ">
+                        <div class="card-text" id="got-any"></div>
+                        <div class="card-text" id="got-main"></div>
+                        <div class="card-text" id="got-this-many"></div>
+                    </div>
+                </div>
+            </div>
+            
+
         </div>
 
-        <div class="card border-warning bg-warning mb-3 text-center">
-            <div class="card-header ">
-                SCORE
-            </div>
-            <div class="card-body bg-white">
-                <div class="card-text" id="got-any">
-                    0 out of 0
-                </div>
-                <div class="card-text" id="got-main">
-                    
-                </div>
-                <div class="card-text" id="got-this-many">
-                    
-                </div>
-            </div>
-            <!-- <div class="card-footer">
-                THE END
-            </div> -->
-        </div>
+        
 
         <div class="row">
             <!-- ACTUAL QUIZ -->

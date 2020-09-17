@@ -309,6 +309,7 @@ $(document).on('change', '.quiz-question', function(ev) {
 
     if (isCorrect) { 
         ev.target.readOnly = true;
+        if ( index == num -1 ) index = -1;
         $('.quiz-question').get(index+1).focus(); 
         fillScoreBoard();
     } 
@@ -410,7 +411,9 @@ function strToSyllableArr(str) {
 }
 
 function showTextArea(obj) {
-    let str = `bank[x] = ${JSON.stringify(obj)};`;
+    // let str = `bank[x] = ${JSON.stringify(obj)};`;
+    let text = JSON.stringify(obj);
+    let str = `bank.push( ${text} );`;
     $('#total').html(str);
     $('#output').html(obj.word);
 }
@@ -449,7 +452,7 @@ function showHE(a,b) {
 
 
 
-fillTable(1, 10);
+fillTable();
 function fillTable(start, end) {
     if ( start == undefined ) start = 1;
     if ( start < 1 ) start = 1;
@@ -500,9 +503,9 @@ function fillScoreBoard() {
         gotMain += obj.gotMain;
         gotThisMany += obj.gotThisMany;
     });
-    $('#got-any').text(`You answered ${gotAny} out of ${total} questions correctly.`);
-    $('#got-main').text(`You found the main definition for ${gotMain} questions.`);
-    $('#got-this-many').text(`You found ${gotThisMany} out of ${totalQ} definitions.`);
+    $('#got-any').text(`${gotAny} out of ${total} questions answered.`);
+    // $('#got-main').text(`You found the main definition for ${gotMain} questions.`);
+    $('#got-this-many').text(`${gotThisMany} out of ${totalQ} total definitions found.`);
 }
 
 
