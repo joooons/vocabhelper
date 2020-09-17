@@ -492,6 +492,11 @@ function fillTable(start, end) {
 //  MM    MM    MM    MM    MM    MM                MM        MM    MM  MM    MM  
 //    MMMM  MM    MMMM    MMMMMM  MMMMMMMMMM        MM        MM    MM    MMMM    
 
+function scrollToTop() {
+    document.documentElement.scrollTop = 0;
+}
+
+
 function fillScoreBoard() {
     let total = scoreArr.length;
     let gotAny = 0;
