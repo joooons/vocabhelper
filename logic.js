@@ -576,9 +576,9 @@ function addQuizQuestions(arr1) {
             str += '</div></div></form>';
         }
         str += '</div>';
-        str += '<div class="col col-12 col-md-4">';
-        str += '<div class="card h-100 ">';
-        str += '<div class="card-body bg-light text-light quiz-spoiler">';
+        str += '<div class="col col-12 col-md-4 ">';
+        str += '<div class="card h-100 bg-light quiz-spoiler">';
+        str += '<div class="card-body  text-light ">';
         str += `${splitArrToLines(tempBank[i].arr)}`;
         str += '</div></div></div>';
         str += '</div></div></div>';
