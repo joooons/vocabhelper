@@ -493,9 +493,7 @@ function fillTable(start, end) {
 //  MM    MM    MM    MM    MM    MM                MM        MM    MM  MM    MM  
 //    MMMM  MM    MMMM    MMMMMM  MMMMMMMMMM        MM        MM    MM    MMMM    
 
-function scrollToTop() {
-    document.documentElement.scrollTop = 0;
-}
+function scrollToTop() { document.documentElement.scrollTop = 0; }
 
 
 function fillScoreBoard() {
@@ -515,23 +513,23 @@ function fillScoreBoard() {
 }
 
 
-
 function fillScoreArr() {
     if (!tempBank.length) return;
     scoreArr.splice(0, scoreArr.length);
     tempBank.forEach( () => { scoreArr.push( new scoreObj() ); });
 }
 
-fillTempBank();
+// fillTempBank();
 function fillTempBank() {
     let startNum = $('.quiz-input').get(0).value;
     let endNum = $('.quiz-input').get(1).value;
     removeQuizQuestions();
+    tempBank.splice(0, tempBank.length);
     if ( startNum < 1 ) return;
     if ( endNum > bank.length ) return;
     if ( endNum < startNum ) return;
     // console.log(startNum,endNum);
-    tempBank.splice(0, tempBank.length);
+    
     let indexArr = [];
     for ( i=startNum-1 ; i<endNum ; i++ ) { 
         tempBank.push( bank[i] ); 
@@ -542,25 +540,30 @@ function fillTempBank() {
 }
 
 function addQuizQuestions(arr1) {
+    // arr1 contains the vocab id #
     let str = '';
     questionRef.splice(0,questionRef.length);
-    let loop = new Array(tempBank.length).fill(0);
-    loop.forEach( (v,i) => {
+
+    // let loop = new Array(tempBank.length).fill(0);
+    randomOrderArr(tempBank.length).forEach( (v,i) => {
+
+    // loop.forEach( (v,i) => {
         str += '<div class="card bg-light mb-3 quiz-card">';
         str += '<div class="card-body">';
         str += '<div class="row">';
         str += '<div class="col col-12 col-md-8">';
         str += '<div class="row mb-3">';
         str += '<div class="col col-2 text-right quiz-word pt-2">';
-        str += `${arr1[i]}.</div>`;
-        str += `<div class="col col-5 hebrew bigger">${tempBank[i].word}</div>`;
-        str += `<div class="col col-2 col-sm-3 text-right pt-2">${tempBank[i].category}</div>`;
-        str += `<div class="col col-3 col-sm-2 text-right pt-2">${tempBank[i].frequency}</div></div>`;
+        str += `#${arr1[i]}</div>`;
+        // str += `#${i+1}</div>`;
+        str += `<div class="col col-5 hebrew bigger">${tempBank[v].word}</div>`;
+        str += `<div class="col col-2 col-sm-3 text-right pt-2">${tempBank[v].category}</div>`;
+        str += `<div class="col col-3 col-sm-2 text-right pt-2">${tempBank[v].frequency}</div></div>`;
 
-        let num = tempBank[i].arr.length;
+        let num = tempBank[v].arr.length;
 
         for ( n=0 ; n<num ; n++ ) {
-            questionRef.push(i);
+            questionRef.push(v);
             str += '<form class="no-submit quiz-form">';
             str += '<div class="form-row form-group">';
             str += `<label for="" class="col-form-label col-2 text-right"></label>`;
@@ -579,13 +582,24 @@ function addQuizQuestions(arr1) {
         str += '<div class="col col-12 col-md-4 ">';
         str += '<div class="card h-100 bg-light quiz-spoiler">';
         str += '<div class="card-body  text-light ">';
-        str += `${splitArrToLines(tempBank[i].arr)}`;
+        str += `${splitArrToLines(tempBank[v].arr)}`;
         str += '</div></div></div>';
         str += '</div></div></div>';
     });
     $('#quiz-cards').append(str);
     $('.quiz-question').first().focus();
 }
+
+
+function randomOrderArr(length) {
+    let arr = [];
+    for ( i=0 ; i<1000 ; i++ ) {
+        let num = Math.floor( Math.random() * length );
+        if (!arr.includes(num)) arr.push(num);
+        if (arr.length >= length) return arr;
+    }
+}
+
 
 
 function removeQuizQuestions() {
