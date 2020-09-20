@@ -535,8 +535,10 @@ function fillScoreArr() {
 fillTempBank();
 function fillTempBank() {
     // Prepare the temporary array that contains the questions and associated data.
-    let startNum = $('.quiz-input').get(0).value;
-    let endNum = $('.quiz-input').get(1).value;
+
+    console.log('inside fillTempBank()');
+    let startNum = parseInt( $('.quiz-input').get(0).value );
+    let endNum = parseInt( $('.quiz-input').get(1).value );
     removeQuizQuestions();
     tempBank.splice(0, tempBank.length);
     if ( startNum < 1 ) return;
@@ -560,7 +562,8 @@ function addQuizQuestions() {
         str += '<div class="row mb-3">';
         str += '<div class="col col-2 text-right quiz-word pt-2">';
         str += `#${tempBank[v].id}</div>`;
-        str += `<div class="col col-5 hebrew bigger">${tempBank[v].word}</div>`;
+        str += `<div class="col col-5 hebrew bigger">`;
+        str += `${tempBank[v].word}</div>`;
         str += `<div class="col col-2 col-sm-3 text-right pt-2">${tempBank[v].category}</div>`;
         str += `<div class="col col-3 col-sm-2 text-right pt-2">${tempBank[v].frequency}</div></div>`;
 
