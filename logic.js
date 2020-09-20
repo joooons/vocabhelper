@@ -282,7 +282,6 @@ $(document).on('change', '.quiz-form', function(ev) {
     for ( i=0 ; i<num ; i++ ) { if ( ev.target == $('.quiz-question').get(i) ) index = i; }
     index++;
     if ( index == num ) index = 0;
-    // $('.quiz-question').get(index).focus();
 });
 
 $(document).on('change', '.quiz-question', function(ev) {
@@ -313,11 +312,6 @@ $(document).on('change', '.quiz-question', function(ev) {
     } 
     else { ev.target.value = ''; }
 });
-
-
-
-
-
 
 $('#add-push').on('click', ev => {
     showTextArea(result);
@@ -506,31 +500,24 @@ function fillTable(start, end) {
 
 function scrollToTop() { document.documentElement.scrollTop = 0; }
 
-
 function resetAnswers(wordIndex) {
     // reset the quiz-question values. Based on orderIndex.
     // reset the readOnly and color changes. Based on orderIndex.
     // reset the scoreArr for that question. Based on wordIndex.
-
     let list = [];
     questionRef.forEach( (v,i) => { if ( wordIndex == v ) list.push(i); });
-    
     list.forEach( v => {
         $('.quiz-question').eq(v).removeClass('bg-success');
         $('.quiz-question').eq(v).removeClass('text-white');
         $('.quiz-question').eq(v).attr("readOnly", false);
         $('.quiz-question').eq(v).val('');
     });
-
     scoreArr[wordIndex].gotMain = 0;
     scoreArr[wordIndex].gotAny = 0;
     scoreArr[wordIndex].gotThisMany = 0;
     scoreArr[wordIndex].alreadyGot = [];
-
+    fillScoreBoard();
 }
-
-
-
 
 function fillScoreBoard() {
     // Only for the purpose of showing the score at the top.
@@ -549,9 +536,10 @@ function fillScoreBoard() {
     $('#got-this-many').text(`${gotThisMany} out of ${totalQ} total definitions found.`);
 }
 
-
 function fillScoreArr() {
-    // Empty the scoreArr and fill it with number of items matching number of items in tempBank.
+    // Empty the scoreArr and fill it with number of items matching...
+    // ...number of items in tempBank.
+    // Assumes that tempBank is already filled.
     if (!tempBank.length) return;
     scoreArr.splice(0, scoreArr.length);
     tempBank.forEach( () => { scoreArr.push( new scoreObj() ); });
@@ -560,21 +548,31 @@ function fillScoreArr() {
 fillTempBank();
 function fillTempBank() {
     // Prepare the temporary array that contains the questions and associated data.
-
     let startNum = parseInt( $('.quiz-input').get(0).value );
     let endNum = parseInt( $('.quiz-input').get(1).value );
+    let limit = parseInt( $('.quiz-input').get(2).value );
+
     removeQuizQuestions();
     tempBank.splice(0, tempBank.length);
     if ( startNum < 1 ) return;
     if ( endNum > bank.length ) return;
     if ( endNum < startNum ) return;
-    
+    if ( limit < 1 ) return;
+    if ( limit > bank.length ) return;
     for ( i=startNum-1 ; i<endNum ; i++ ) { tempBank.push( {id:i+1,...bank[i]} ); }
+    if ( tempBank.length > limit ) {
+        console.log('is this true?');
+        let num = tempBank.length - limit;
+        tempBank.splice(0,num);
+    }
+    console.log(tempBank);
     fillScoreArr();
     addQuizQuestions();
 }
 
 function addQuizQuestions() {
+    // Adds quiz questions on the screen.
+    // Assumes that tempBank is ready.
     let str = '';
     questionRef.splice(0,questionRef.length);
 
@@ -587,7 +585,7 @@ function addQuizQuestions() {
 
         str += '<div class="row">';
         str += '<div class="col col-12 text-right ">';
-        str += `<button type="button" class="btn btn-sm btn-success reset-btn" onclick="resetAnswers(${v})">`;
+        str += `<button type="button" class="btn btn-sm btn-primary reset-btn" onclick="resetAnswers(${v})">`;
         // str += '<svg width="1em" height="1em" viewBox="0 0 18 18" class="bi bi-arrow-counterclockwise" fill="currentColor" xmlns="http://www.w3.org/2000/svg">';
         // str += '<path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>';
         // str += '<path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>';
@@ -596,18 +594,17 @@ function addQuizQuestions() {
         // str += '&olarr;';
         // str += '&#10226;';
         str += 'RESET'
-        
         str += '</button></div>';
-
-
 
         str += '</div>';
 
         str += '<div class="row mb-3">';
         str += '<div class="col col-7 text-left quiz-word pl-3">';
-        str += `#${tempBank[v].id}&nbsp;&nbsp;&nbsp;&nbsp;`;
+        // str += `#${tempBank[v].id}&nbsp;&nbsp;&nbsp;&nbsp;`;
+        str += `#${i+1}&nbsp;&nbsp;&nbsp;&nbsp;`;
+
         str += `<span class="hebrew bigger">${tempBank[v].word}</span></div>`;
-        str += `<div class="col col-5 col-sm-3 text-right pt-2">`;
+        str += `<div class="col col-5 text-right pt-2">`;
         str += `${tempBank[v].category}&nbsp;&nbsp;&nbsp;${tempBank[v].frequency}</div>`;
         str += `</div>`;
         let num = tempBank[v].arr.length;
@@ -619,15 +616,13 @@ function addQuizQuestions() {
             // str += `<label for="" class="col-form-label col-1 text-right"></label>`;
             str += '<div class="col col-12">';
             str += '<div class="input-group">';
-            str += '<input type="text" autocapitalize="none" class="form-control quiz-question">';
-            str += '<div class="input-group-append">';
+            str += '<div class="input-group-prepend">';
             str += '<span class="input-group-text bg-muted lex-cat">';
-            if (tempBank[v].arr[n][0].charAt(0) == "@") { 
-                str += `${tempBank[v].arr[n][0].slice(1)}`; 
-            } else {
-                str += '';
-            }
-            str += '</span></div></div></div></div></form>';
+            if (tempBank[v].arr[n][0].charAt(0) == "@") { str += `${tempBank[v].arr[n][0].slice(1)}`; } 
+            else { str += ''; }
+            str += '</span></div>';
+            str += '<input type="text" autocapitalize="none" class="form-control quiz-question">';
+            str += '</div></div></div></form>';
         }
         str += '</div>';
         str += '<div class="col col-12 col-md-4 ">';
@@ -639,7 +634,6 @@ function addQuizQuestions() {
     $('#quiz-cards').append(str);
     $('.quiz-question').first().focus();
 }
-
 
 function randomOrderArr(length) {
     // generates array with numbers counting from 0 to length, in random order.
@@ -653,13 +647,9 @@ function randomOrderArr(length) {
         }
         if (arr.length >= length) { return arr; }
     }
-
-    // temporarily disabling randomOrder
-    arr.forEach( (v,i) => { arr[i] = i; });
-    return arr;
+    // arr.forEach( (v,i) => { arr[i] = i; });
+    // return arr;
 }
-
-
 
 function removeQuizQuestions() {
     // Visually remove the question cards from screen.
