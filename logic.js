@@ -507,6 +507,22 @@ function fillTable(start, end) {
 function scrollToTop() { document.documentElement.scrollTop = 0; }
 
 
+function resetAnswers(index) {
+
+    let num = $('.reset-btn').length;
+    console.log(index,num);
+    
+
+    
+
+    // ev.target.readOnly = true;
+    // ev.target.classList.add("bg-success");
+    // ev.target.classList.add("text-white");
+}
+
+
+
+
 function fillScoreBoard() {
     // Only for the purpose of showing the score at the top.
     let total = scoreArr.length;
@@ -536,7 +552,6 @@ fillTempBank();
 function fillTempBank() {
     // Prepare the temporary array that contains the questions and associated data.
 
-    console.log('inside fillTempBank()');
     let startNum = parseInt( $('.quiz-input').get(0).value );
     let endNum = parseInt( $('.quiz-input').get(1).value );
     removeQuizQuestions();
@@ -557,24 +572,40 @@ function addQuizQuestions() {
     randomOrderArr(tempBank.length).forEach( (v,i) => {
         str += '<div class="card bg-light mb-3 quiz-card">';
         str += '<div class="card-body">';
+
         str += '<div class="row">';
         str += '<div class="col col-12 col-md-8">';
-        str += '<div class="row mb-3">';
-        str += '<div class="col col-2 text-right quiz-word pt-2">';
-        str += `#${tempBank[v].id}</div>`;
-        str += `<div class="col col-5 hebrew bigger">`;
-        str += `${tempBank[v].word}</div>`;
-        str += `<div class="col col-2 col-sm-3 text-right pt-2">${tempBank[v].category}</div>`;
-        str += `<div class="col col-3 col-sm-2 text-right pt-2">${tempBank[v].frequency}</div></div>`;
 
+        str += '<div class="row">';
+        str += '<div class="col col-12 text-right ">';
+        str += `<button type="button" class="btn btn-sm btn-success reset-btn" onclick="resetAnswers(${i})">`;
+        // str += '<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-counterclockwise" fill="currentColor" xmlns="http://www.w3.org/2000/svg">';
+        // str += '<path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>';
+        // str += '<path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>';
+        // str += '</svg>';
+        str += '&#10005;';
+        
+        str += '</button></div>';
+
+
+
+        str += '</div>';
+
+        str += '<div class="row mb-3">';
+        str += '<div class="col col-7 text-left quiz-word pl-3">';
+        str += `#${tempBank[v].id}&nbsp;&nbsp;&nbsp;&nbsp;`;
+        str += `<span class="hebrew bigger">${tempBank[v].word}</span></div>`;
+        str += `<div class="col col-5 col-sm-3 text-right pt-2">`;
+        str += `${tempBank[v].category}&nbsp;&nbsp;&nbsp;${tempBank[v].frequency}</div>`;
+        str += `</div>`;
         let num = tempBank[v].arr.length;
 
         for ( n=0 ; n<num ; n++ ) {
             questionRef.push(v);
             str += '<form class="no-submit quiz-form">';
             str += '<div class="form-row form-group">';
-            str += `<label for="" class="col-form-label col-2 text-right"></label>`;
-            str += '<div class="col-10">';
+            str += `<label for="" class="col-form-label col-1 text-right"></label>`;
+            str += '<div class="col col-11">';
             str += '<div class="input-group">';
             str += '<input type="text" autocapitalize="none" class="form-control quiz-question">';
             str += '<div class="input-group-append">';
