@@ -7,7 +7,7 @@ bank.push( {"word":"וְ/ וּ / וָ","category":"cj.","frequency":"50524","arr"
 bank.push( {"word":" ּהַ","category":"art.","frequency":"24058","arr":[["@","the"]]});
 bank.push( {"word":"ל","category":"prp.","frequency":"20321","arr":[["@","to"],["@","for"],["@","regarding"],["@","belonging to"]]});
 bank.push( {"word":"בּ","category":"prp.","frequency":"15559","arr":[["@","in"],["@","with"],["@","by"],["@","at"],["@","among"],["@","into"],["@","when"]]});
-bank.push( {"word":"אֵ֫ת / אֶת־","category":"prt.","frequency":"10987","arr":[["concept","definite direct object marker","DDOM"]]});
+bank.push( {"word":"אֵ֫ת / אֶת־","category":"prt.","frequency":"10987","arr":[["@concept","definite direct object marker","DDOM"]]});
 bank.push( {"word":" ּמִן / מִ","category":"prp.","frequency":"7529","arr":[["@","from"],["@","out of"],["@","since"],["@","than","more than","(more) than"]]});
 bank.push( {"word":"עַל","category":"prp.","frequency":"5777","arr":[["@","on"],["@","over"],["@","against"],["@","on account of"],["@","to"]]});
 bank.push( {"word":"אֶל","category":"prp.","frequency":"5518","arr":[["@","to"],["@","toward"],["@","against"],["@","at"],["@","unto"],["@","concerning"]]});

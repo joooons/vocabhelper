@@ -362,16 +362,19 @@ function splitArrToLines(arrGroup) {
     // The definition of each word is contained in an array of an array.
     // This function puts each array into a separate line.
     let str = '';
-    arrGroup.forEach( (arr,i) => { str += `${i+1}.&nbsp;&nbsp;${arr.join(', ')}<br>`; });
+    arrGroup.forEach( (arr,i) => { 
+        let arrNew = [...arr];
+        let first = arrNew.shift();
+        if ( first == "@" ) { first = ""; } 
+        else { first = `[${first.slice(1)}]&nbsp;&nbsp;`; }
+        str += `${i+1}.&nbsp;&nbsp;${first}${arrNew.join(', ')}<br>`; 
+    });
     return str;
 }
 
 function indexOfClass( elem, className ) {
     let num = $(`.${className}`).length;
-    // let index = -1;
-    for ( i=0 ; i<num ; i++ ) { 
-        if ( elem == $(`.${className}`).get(i) ) return i; 
-    }
+    for ( i=0 ; i<num ; i++ ) { if ( elem == $(`.${className}`).get(i) ) return i; }
     return -1;
 }
 
@@ -539,27 +542,17 @@ function fillTempBank() {
     if ( startNum < 1 ) return;
     if ( endNum > bank.length ) return;
     if ( endNum < startNum ) return;
-    // console.log(startNum,endNum);
     
-    let indexArr = [];
-    for ( i=startNum-1 ; i<endNum ; i++ ) { 
-        let obj = {id:i+1,...bank[i]}
-
-        tempBank.push( obj ); 
-        indexArr.push(i+1);
-    }
+    for ( i=startNum-1 ; i<endNum ; i++ ) { tempBank.push( {id:i+1,...bank[i]} ); }
     fillScoreArr();
-    addQuizQuestions(indexArr);
+    addQuizQuestions();
 }
 
-function addQuizQuestions(arr1) {
-    // arr1 contains the vocab id #
+function addQuizQuestions() {
     let str = '';
     questionRef.splice(0,questionRef.length);
 
-    // let loop = new Array(tempBank.length).fill(0);
     randomOrderArr(tempBank.length).forEach( (v,i) => {
-    // loop.forEach( (v,i) => {
         str += '<div class="card bg-light mb-3 quiz-card">';
         str += '<div class="card-body">';
         str += '<div class="row">';
@@ -567,8 +560,6 @@ function addQuizQuestions(arr1) {
         str += '<div class="row mb-3">';
         str += '<div class="col col-2 text-right quiz-word pt-2">';
         str += `#${tempBank[v].id}</div>`;
-        // str += `#${arr1[i]}</div>`;
-        // str += `#${i+1}</div>`;
         str += `<div class="col col-5 hebrew bigger">${tempBank[v].word}</div>`;
         str += `<div class="col col-2 col-sm-3 text-right pt-2">${tempBank[v].category}</div>`;
         str += `<div class="col col-3 col-sm-2 text-right pt-2">${tempBank[v].frequency}</div></div>`;
