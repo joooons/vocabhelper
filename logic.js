@@ -204,8 +204,8 @@ const addBoxFn = {
 const tempBank = [];
 
 const questionRef = [];
-
-
+    // The INDEX of questionRef refers to each of the question input elements.
+    // The VALUE of questionRef refers to the question word card.
 
 
 const scoreArr = [];
@@ -507,17 +507,26 @@ function fillTable(start, end) {
 function scrollToTop() { document.documentElement.scrollTop = 0; }
 
 
-function resetAnswers(index) {
+function resetAnswers(wordIndex) {
+    // reset the quiz-question values. Based on orderIndex.
+    // reset the readOnly and color changes. Based on orderIndex.
+    // reset the scoreArr for that question. Based on wordIndex.
 
-    let num = $('.reset-btn').length;
-    console.log(index,num);
+    let list = [];
+    questionRef.forEach( (v,i) => { if ( wordIndex == v ) list.push(i); });
     
+    list.forEach( v => {
+        $('.quiz-question').eq(v).removeClass('bg-success');
+        $('.quiz-question').eq(v).removeClass('text-white');
+        $('.quiz-question').eq(v).attr("readOnly", false);
+        $('.quiz-question').eq(v).val('');
+    });
 
-    
+    scoreArr[wordIndex].gotMain = 0;
+    scoreArr[wordIndex].gotAny = 0;
+    scoreArr[wordIndex].gotThisMany = 0;
+    scoreArr[wordIndex].alreadyGot = [];
 
-    // ev.target.readOnly = true;
-    // ev.target.classList.add("bg-success");
-    // ev.target.classList.add("text-white");
 }
 
 
@@ -578,12 +587,15 @@ function addQuizQuestions() {
 
         str += '<div class="row">';
         str += '<div class="col col-12 text-right ">';
-        str += `<button type="button" class="btn btn-sm btn-success reset-btn" onclick="resetAnswers(${i})">`;
-        // str += '<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-counterclockwise" fill="currentColor" xmlns="http://www.w3.org/2000/svg">';
+        str += `<button type="button" class="btn btn-sm btn-success reset-btn" onclick="resetAnswers(${v})">`;
+        // str += '<svg width="1em" height="1em" viewBox="0 0 18 18" class="bi bi-arrow-counterclockwise" fill="currentColor" xmlns="http://www.w3.org/2000/svg">';
         // str += '<path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>';
         // str += '<path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>';
         // str += '</svg>';
-        str += '&#10005;';
+        // str += '&#10006;';
+        // str += '&olarr;';
+        // str += '&#10226;';
+        str += 'RESET'
         
         str += '</button></div>';
 
@@ -604,8 +616,8 @@ function addQuizQuestions() {
             questionRef.push(v);
             str += '<form class="no-submit quiz-form">';
             str += '<div class="form-row form-group">';
-            str += `<label for="" class="col-form-label col-1 text-right"></label>`;
-            str += '<div class="col col-11">';
+            // str += `<label for="" class="col-form-label col-1 text-right"></label>`;
+            str += '<div class="col col-12">';
             str += '<div class="input-group">';
             str += '<input type="text" autocapitalize="none" class="form-control quiz-question">';
             str += '<div class="input-group-append">';
@@ -639,7 +651,7 @@ function randomOrderArr(length) {
             if (!arr.includes(n)) { arr.push(n); } 
             else { findEmptySlot( (n+1)%length ); }
         }
-        // if (arr.length >= length) { return arr; }
+        if (arr.length >= length) { return arr; }
     }
 
     // temporarily disabling randomOrder

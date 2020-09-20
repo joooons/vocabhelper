@@ -125,7 +125,7 @@ bank.push( {"word":"שָׁמַיִם","category":"n.m.","frequency":"421","arr":[
 bank.push( {"word":"תּוֹךְ / תָּ֑וֶךְ","category":"n.m.","frequency":"420","arr":[["@","midst of"]]});
 bank.push( {"word":"רַב","category":"adj.","frequency":"419","arr":[["@","many"]]});
 bank.push( {"word":"חֶרֶב","category":"n.f.","frequency":"413","arr":[["@","sword"]]});
-bank.push( {"word":"בֵּין / בֵּינוֹת","category":"prp.","frequency":"409","arr":[["@","between"],["@","interval"]]});
+bank.push( {"word":"בֵּין / בֵּינוֹת","category":"prp.","frequency":"409","arr":[["@","between"],["@concept","interval"]]});
 bank.push( {"word":"נָא","category":"prt.","frequency":"405","arr":[["@","please"],["@concept","particle of entreaty","(particle of entreaty)"]]});
 bank.push( {"word":"כֶּ֫סֶף","category":"n.m.","frequency":"403","arr":[["@","silver"],["@","money"]]});
 bank.push( {"word":"מִזְבֵּחַ","category":"n.m.","frequency":"403","arr":[["@","altar"]]});
