@@ -205,13 +205,16 @@ const tempBank = [];
 
 const questionRef = [];
 
+
+
+
 const scoreArr = [];
 
 function scoreObj() {
     this.gotMain = 0;
     this.gotAny = 0;
     this.gotThisMany = 0;
-    this.defs = [];
+    // this.defs = [];
     this.alreadyGot = [];
 }
 
@@ -284,19 +287,15 @@ $(document).on('change', '.quiz-form', function(ev) {
 
 $(document).on('change', '.quiz-question', function(ev) {
     let ans = ev.target.value;
-
     let num = $('.quiz-question').length;
-    let index = -1;
-    for ( i=0 ; i<num ; i++ ) { if ( ev.target == $('.quiz-question').get(i) ) index = i; }
+    let index = indexOfClass(ev.target, 'quiz-question');
     let ref = questionRef[index];
-    
-    // let range = tempBank[ref].arr.length;
-    // console.log(range);
-
     let isCorrect = false;
     tempBank[ref].arr.forEach( (list,i) => {
         if ( scoreArr[ref].alreadyGot.includes(i) ) return;
-        if (list.includes(ans)) {
+        if ( $('.lex-cat').eq(index).text() != list[0].slice(1) ) return;
+        let tempList = [...list].splice(1);
+        if (tempList.includes(ans)) {
             isCorrect = true;
             scoreArr[ref].alreadyGot.push(i);
             if ( i == 0 ) scoreArr[ref].gotMain = 1;
@@ -304,7 +303,6 @@ $(document).on('change', '.quiz-question', function(ev) {
             scoreArr[ref].gotThisMany++;
         }
     });
-
     if (isCorrect) { 
         ev.target.readOnly = true;
         ev.target.classList.add("bg-success");
@@ -314,8 +312,10 @@ $(document).on('change', '.quiz-question', function(ev) {
         fillScoreBoard();
     } 
     else { ev.target.value = ''; }
-
 });
+
+
+
 
 
 
@@ -366,6 +366,14 @@ function splitArrToLines(arrGroup) {
     return str;
 }
 
+function indexOfClass( elem, className ) {
+    let num = $(`.${className}`).length;
+    // let index = -1;
+    for ( i=0 ; i<num ; i++ ) { 
+        if ( elem == $(`.${className}`).get(i) ) return i; 
+    }
+    return -1;
+}
 
 
 
@@ -497,6 +505,7 @@ function scrollToTop() { document.documentElement.scrollTop = 0; }
 
 
 function fillScoreBoard() {
+    // Only for the purpose of showing the score at the top.
     let total = scoreArr.length;
     let gotAny = 0;
     let gotMain = 0;
@@ -514,13 +523,15 @@ function fillScoreBoard() {
 
 
 function fillScoreArr() {
+    // Empty the scoreArr and fill it with number of items matching number of items in tempBank.
     if (!tempBank.length) return;
     scoreArr.splice(0, scoreArr.length);
     tempBank.forEach( () => { scoreArr.push( new scoreObj() ); });
 }
 
-// fillTempBank();
+fillTempBank();
 function fillTempBank() {
+    // Prepare the temporary array that contains the questions and associated data.
     let startNum = $('.quiz-input').get(0).value;
     let endNum = $('.quiz-input').get(1).value;
     removeQuizQuestions();
@@ -532,7 +543,9 @@ function fillTempBank() {
     
     let indexArr = [];
     for ( i=startNum-1 ; i<endNum ; i++ ) { 
-        tempBank.push( bank[i] ); 
+        let obj = {id:i+1,...bank[i]}
+
+        tempBank.push( obj ); 
         indexArr.push(i+1);
     }
     fillScoreArr();
@@ -546,7 +559,6 @@ function addQuizQuestions(arr1) {
 
     // let loop = new Array(tempBank.length).fill(0);
     randomOrderArr(tempBank.length).forEach( (v,i) => {
-
     // loop.forEach( (v,i) => {
         str += '<div class="card bg-light mb-3 quiz-card">';
         str += '<div class="card-body">';
@@ -554,7 +566,8 @@ function addQuizQuestions(arr1) {
         str += '<div class="col col-12 col-md-8">';
         str += '<div class="row mb-3">';
         str += '<div class="col col-2 text-right quiz-word pt-2">';
-        str += `#${arr1[i]}</div>`;
+        str += `#${tempBank[v].id}</div>`;
+        // str += `#${arr1[i]}</div>`;
         // str += `#${i+1}</div>`;
         str += `<div class="col col-5 hebrew bigger">${tempBank[v].word}</div>`;
         str += `<div class="col col-2 col-sm-3 text-right pt-2">${tempBank[v].category}</div>`;
@@ -571,20 +584,20 @@ function addQuizQuestions(arr1) {
             str += '<div class="input-group">';
             str += '<input type="text" autocapitalize="none" class="form-control quiz-question">';
             str += '<div class="input-group-append">';
-            str += '<span class="input-group-text bg-muted">';
-            str += '<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check check-answer" fill="white" xmlns="http://www.w3.org/2000/svg">';
-            str += '<path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>';
-            str += '</svg></span>';
-            str += '</div></div>';
-            str += '</div></div></form>';
+            str += '<span class="input-group-text bg-muted lex-cat">';
+            if (tempBank[v].arr[n][0].charAt(0) == "@") { 
+                str += `${tempBank[v].arr[n][0].slice(1)}`; 
+            } else {
+                str += '';
+            }
+            str += '</span></div></div></div></div></form>';
         }
         str += '</div>';
         str += '<div class="col col-12 col-md-4 ">';
         str += '<div class="card h-100 bg-light quiz-spoiler">';
         str += '<div class="card-body  text-light ">';
         str += `${splitArrToLines(tempBank[v].arr)}`;
-        str += '</div></div></div>';
-        str += '</div></div></div>';
+        str += '</div></div></div></div></div></div>';
     });
     $('#quiz-cards').append(str);
     $('.quiz-question').first().focus();
@@ -592,17 +605,27 @@ function addQuizQuestions(arr1) {
 
 
 function randomOrderArr(length) {
+    // generates array with numbers counting from 0 to length, in random order.
     let arr = [];
-    for ( i=0 ; i<1000 ; i++ ) {
-        let num = Math.floor( Math.random() * length );
-        if (!arr.includes(num)) arr.push(num);
-        if (arr.length >= length) return arr;
+    for ( i=0 ; i<length ; i++ ) {
+        let num = Math.floor( Math.random() * length );        
+        findEmptySlot(num);
+        function findEmptySlot(n) {
+            if (!arr.includes(n)) { arr.push(n); } 
+            else { findEmptySlot( (n+1)%length ); }
+        }
+        // if (arr.length >= length) { return arr; }
     }
+
+    // temporarily disabling randomOrder
+    arr.forEach( (v,i) => { arr[i] = i; });
+    return arr;
 }
 
 
 
 function removeQuizQuestions() {
+    // Visually remove the question cards from screen.
     let num = $('.quiz-card').length;
     for ( i=0 ; i<num ; i++ ) { $('.quiz-card').eq(0).remove(); }
 }
