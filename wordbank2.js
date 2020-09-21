@@ -304,4 +304,49 @@ bank.push( {"word":"שָׁ / שַׁ / שֶׁ","category":"prt.","frequency":"143","
 bank.push( {"word":"אָז","category":"adv.","frequency":"141","arr":[["@","then"],["@","at that time"],["@","thereupon"]]} );
 bank.push( {"word":"יַיִן","category":"n.m.","frequency":"141","arr":[["@","wine"]]} );
 
+bank.push( {"word":"יָמִין","category":"n.f.","frequency":"141","arr":[["@","right","right hand","right (hand)"],["@","south"]]} );
+bank.push( {"word":"חַיִּים","category":"n.m.","frequency":"140","arr":[["@","life"]]} );
+bank.push( {"word":"מַעַל","category":"prp.","frequency":"140","arr":[["@","upwards"],["@","above"]]} );
+bank.push( {"word":"נוּחַ","category":"vb.","frequency":"140","arr":[["@","rest","to rest"]]} );
+bank.push( {"word":"מִשְׁכָּן","category":"n.m.","frequency":"139","arr":[["@","dwelling","dwelling place","dwelling (place)"],["@","abode"],["@","tabernacle"]]} );
+bank.push( {"word":"נְחֹשֶׁת","category":"n.m./f.","frequency":"139","arr":[["@","copper"],["@","bronze"],["@","fetter of","fetter of copper","fetter of bronze","fetter of copper/bronze"]]} );
+bank.push( {"word":"חָכָם","category":"adj.","frequency":"138","arr":[["@","wise"]]} );
+bank.push( {"word":"יֵשׁ","category":"subs.","frequency":"138","arr":[["@","there is"]]} );
+bank.push( {"word":"סוּס","category":"n.m.","frequency":"138","arr":[["@","horse"],["@","stallion"]]} );
+bank.push( {"word":"נַחַל","category":"n.m.","frequency":"137","arr":[["@","wadi"],["@","stream"],["@","valley"],["@","trench"]]} );
+bank.push( {"word":"לֶכֶת","category":"inf.","frequency":"136","arr":[["@","walk","to walk"]]} );
+bank.push( {"word":"פָּתַח","category":"vb.","frequency":"136","arr":[["@","open","to open"]]} );
+bank.push( {"word":"קָרָא 2","category":"vb.","frequency":"136","arr":[["@","meet","to meet"],["@","encounter","to encounter"],["@","befall","to befall"],["@","happen","to happen"]]} );
+bank.push( {"word":"חָלַל","category":"vb.","frequency":"135","arr":[["@Hi","begin","to begin"],["@Ni","be polluted","to be polluted"],["@Pi","defile","to defile"],["@Pu","be profaned","to be profaned"]]} );
+bank.push( {"word":"כִּסֵּא","category":"n.m.","frequency":"135","arr":[["@","throne"],["@","honored seat"]]} );
+bank.push( {"word":"זָבַח","category":"vb.","frequency":"134","arr":[["@","slaughter","to slaughter"],["@Pi","sacrifice","to sacrifice"]]} );
+bank.push( {"word":"מִסְפָּר","category":"n.m.","frequency":"134","arr":[["@","number"],["@","recounting","retelling"]]} );
+bank.push( {"word":"עֶרֶב","category":"n.m.","frequency":"134","arr":[["@","evening"],["@","night"]]} );
+bank.push( {"word":"פָּנָה","category":"vb.","frequency":"134","arr":[["@","turn","to turn"],["@","look","to look"]]} );
+bank.push( {"word":"אַף 1","category":"cj.","frequency":"133","arr":[["@","also"],["@","even"],["@","how much more","how much less","how much more/less","how much (more)","how much (less)","how much (more/less)"]]} );
+bank.push( {"word":"חֹומָה","category":"n.f.","frequency":"133","arr":[["@","wall"]]} );
+bank.push( {"word":"פֶּן","category":"cj.","frequency":"133","arr":[["@","lest"]]} );
+bank.push( {"word":"פַּר","category":"n.m.","frequency":"133","arr":[["@","young bull"],["@","steer"]]} );
+bank.push( {"word":"קָבַר","category":"vb.","frequency":"133","arr":[["@","bury","to bury"]]} );
+bank.push( {"word":"שָׁאַר","category":"vb.","frequency":"133","arr":[["@Ni","remain","to remain"],["@Ni","be left over","to be left over"],["@Hi","leave over","to leave over"],["@Hi","spare","to spare"]]} );
+bank.push( {"word":"חֹק","category":"n.m.","frequency":"131","arr":[["@","statute"],["@","decree"]]} );
+bank.push( {"word":"נָשִׂיא","category":"n.m.","frequency":"130","arr":[["@","chief"],["@","prince"]]} );
+bank.push( {"word":"שָׁכַן","category":"vb.","frequency":"130","arr":[["@","dwell","to dwell"],["@","settle","to settle"]]} );
+bank.push( {"word":"אֱמֶת","category":"n.f.","frequency":"127","arr":[["@","truth"],["@","reliability"],["@","firmness"]]} );
+bank.push( {"word":"קָבַץ","category":"vb.","frequency":"127","arr":[["@","gather","to gather"],["@","collect","to collect"],["@","assemble","to assemble"]]} );
+bank.push( {"word":"כֹּחַ","category":"n.m.","frequency":"126","arr":[["@","strength"],["@","power"]]} );
+bank.push( {"word":"עֶצֶם","category":"n.f.","frequency":"126","arr":[["@","bone"],["@","self"]]} );
+bank.push( {"word":"בּוֹשׁ","category":"vb.","frequency":"125","arr":[["@","be ashamed","to be ashamed"]]} );
+bank.push( {"word":"חֵמָה","category":"n.f.","frequency":"125","arr":[["@","heat"],["@","rage"],["@","venom"]]} );
+bank.push( {"word":"חֲצִי־ / חֵצִי","category":"n.m.","frequency":"125","arr":[["@","half"]]} );
+bank.push( {"word":"נָגַשׁ","category":"vb.","frequency":"125","arr":[["@","draw near","to draw near"],["@","approach","to approach"]]} );
+bank.push( {"word":"שָׁלַךְ","category":"vb.","frequency":"125","arr":[["@Hi","throw","to throw"]]} );
+bank.push( {"word":"חָשַׁב","category":"vb.","frequency":"124","arr":[["@","reckon","to reckon"],["@","account","to account"]]} );
+bank.push( {"word":"צדֶק","category":"n.m.","frequency":"123","arr":[["@","righteous"],["@","righteousness"],["@","justice"],["@","integrity"]]} );
+
+
+
+
+
+
 

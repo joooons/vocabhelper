@@ -343,8 +343,8 @@ $('#total').on('click', (ev) => {
     
 
 
-showPage('quiz');
-// showPage('add');
+// showPage('quiz');
+showPage('add');
 function showPage(str) {
     $('#add-page').hide();
     $('#view-page').hide();
