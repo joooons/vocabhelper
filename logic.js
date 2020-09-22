@@ -139,7 +139,8 @@ const En_to_He = {
 
     "\/" : '&#64331;',
 
-    "÷" : '/'
+    // "÷" : '/'
+    "÷" : '&#47;'
     
 };
 
@@ -241,20 +242,8 @@ $(document).on('submit', '.no-submit', function(ev) {
 $(document).on('change', '.add-tab', function(ev) {
     let num = addBoxFn.getIndex(ev.target, '.add-tab');
     if ( num == 0 ) {
-        let str = $('#add-word').val();
-
-        let arr = strToSyllableArr(str).reverse();
-        str = arr.join('');
-        arr = str.split('');
-    
-        Object.keys(En_to_He).forEach( key => {
-            arr.forEach( (char,i) => {
-                if ( char == key ) arr[i] = En_to_He[key];
-            });
-        });
-        str = arr.join('');
-        result.word = str;
-        $('#output').html( str );
+        result.word = convertGibberishToHebEnt( $('#add-word').val() );
+        $('#output').html( result.word );
     }
     if ( num > 0 ) { if (result.word == '') { return ev.target.value = ''; } }
     if ( num == $('.add-tab').length - 2 ) addBoxFn.addLine();
@@ -379,6 +368,28 @@ function indexOfClass( elem, className ) {
 function reverseStr(str) { return str.split('').reverse().join(''); }
     // Not used at the moment
 
+function convertGibberishToHebEnt(text) {
+    // let arr = strToSyllableArr(text).reverse();
+    // let string = arr.join('');
+    // arr = string.split('');
+
+    let arr = strToSyllableArr(text).reverse().join('').split('');
+    // let string = arr.join('');
+    // arr = string.split('');
+
+    Object.keys(En_to_He).forEach( key => {
+        arr.forEach( (char,i) => {
+            // if ( char == key ) arr[i] = En_to_He[key];
+            if ( char == key ) {
+                // arr[i] = String.fromCharCode(En_to_He[key].match(/\d+/)[0]);
+                arr[i] = En_to_He[key]; 
+                // newArr.push( String.fromCharCode(En_to_He[key].match(/\d+/)[0]) );
+            }
+
+        });
+    });
+    return arr.join('');
+}
 
 
 
@@ -678,6 +689,8 @@ $('#secret-input').on("change", () => {
 
     chopchop();
     function chopchop() {
+        // This function chop-chops the long string into separate lines...
+        // ...stored as separate items in the arr array.
         let num = str.search(/\d\*?\s\d/);
         if ( num <= 0 ) return console.log('stop');
         arr.push( str.slice(0, num + 2 ) );
@@ -689,13 +702,16 @@ $('#secret-input').on("change", () => {
     let final = '';
     arr.forEach( val => {
 
-        let cat = val.match(/\s\w+\.\S*\s/g)[0].replace(/\s*$/, '');
+        let cat = val.match(/\s\w+\.\S*\s/g)[0].replace(/^\s+/, '').replace(/\s*$/, '');
         let word = val.slice(0, val.search(cat) ).replace(/\d+\s/,'');
+        let wordHebEnt = convertGibberishToHebEnt( val.slice(0, val.search(cat) ).replace(/\d+\s/,'').replace(' ,',',') );
+        let wordHeb = wordHebEnt.match(/\d+/g).map( val => String.fromCharCode(val) ).join('');
+
         let freq = val.match(/\d+/g)[1];
-        let glossArr  = val.replace(word,'').replace(cat,'').replace(freq,'').replace(/\d+\s/,'').replace(/\s*$/, '').split(", ");
+        let glossArr  = val.replace(word,'').replace(cat,'').replace(freq,'').replace(/\d+\s+/,'').replace(/\s*$/, '').split(", ");
 
         final += `bank.push( {`;
-        final += `"word":"${word}", "category":"${cat}", "frequency":"${freq}",`;
+        final += `"word":"${wordHeb}", "category":"${cat}", "frequency":"${freq}",`;
         final += ` "arr":[`;
         glossArr.forEach( (def,i) => {
             if (i>0) final += ',';

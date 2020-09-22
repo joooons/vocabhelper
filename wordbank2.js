@@ -342,7 +342,11 @@ bank.push( {"word":"חֲצִי־ / חֵצִי","category":"n.m.","frequency":"12
 bank.push( {"word":"נָגַשׁ","category":"vb.","frequency":"125","arr":[["@","draw near","to draw near"],["@","approach","to approach"]]} );
 bank.push( {"word":"שָׁלַךְ","category":"vb.","frequency":"125","arr":[["@Hi","throw","to throw"]]} );
 bank.push( {"word":"חָשַׁב","category":"vb.","frequency":"124","arr":[["@","reckon","to reckon"],["@","account","to account"]]} );
-bank.push( {"word":"צדֶק","category":"n.m.","frequency":"123","arr":[["@","righteous"],["@","righteousness"],["@","justice"],["@","integrity"]]} );
+bank.push( {"word":"צדֶק","category":"n.m.","frequency":"123","arr":[["@","rightness"],["@","righteousness"],["@","justice"],["@","integrity"]]} );
+
+
+
+
 
 
 
