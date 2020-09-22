@@ -345,6 +345,20 @@ bank.push( {"word":"חָשַׁב","category":"vb.","frequency":"124","arr":[["@",
 bank.push( {"word":"צדֶק","category":"n.m.","frequency":"123","arr":[["@","rightness"],["@","righteousness"],["@","justice"],["@","integrity"]]} );
 
 
+bank.push( {"word":"נָחַם", "category":"vb. ", "frequency":"108", "arr":[["@Ni", "be sorry", "to be sorry"],["@Ni", "to change one’s mind", "change one’s mind"],["@Pi", "to comfort", "comfort"]] } ); 
+
+bank.push( {"word":"חַיָּה", "category":"n.f. ", "frequency":"107", "arr":[["@", "animal (living thing)"],["@", "life"]] } ); 
+
+bank.push( {"word":"כֶּבֶשׂ", "category":"n.m. ", "frequency":"107", "arr":[["@", "lamb"]] } ); 
+
+bank.push( {"word":"סָפַר", "category":"vb. ", "frequency":"107", "arr":[["@", "to count", "count"],["@Pi", "to recount", "recount"],["@Pi", "declare", "to declare"],["@Pi", "report", "to report"]] } ); 
+
+bank.push( {"word":"שֹׁמֵר", "category":"ptc. ", "frequency":"107", "arr":[["@", "watchman"],["@", "watch"],["@", "guard"],["@", "keeping"]] } ); 
+
+bank.push( {"word":"בָּמָה", "category":"n.f. ", "frequency":"106", "arr":[["@", "high place"]] } ); 
+
+bank.push( {"word":"יָתַר", "category":"vb. ", "frequency":"106", "arr":[["@Ni", "to remain", "remain"],["@Ni", "be left over", "to be left over"],["@Hi", "to leave", "leave"],["@Hi", "leave over", "to leave over"]] } ); 
+
 
 
 

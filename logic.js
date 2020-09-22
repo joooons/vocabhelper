@@ -692,7 +692,8 @@ $('#secret-input').on("change", () => {
         // This function chop-chops the long string into separate lines...
         // ...stored as separate items in the arr array.
         let num = str.search(/\d\*?\s\d/);
-        if ( num <= 0 ) return console.log('stop');
+        // if ( num <= 0 ) return console.log('stop');
+        if ( num <= 0 ) return;
         arr.push( str.slice(0, num + 2 ) );
         str = str.slice(num+2);
         chopchop();
@@ -702,6 +703,7 @@ $('#secret-input').on("change", () => {
     let final = '';
     arr.forEach( val => {
 
+        // console.log([val]);
         // let cat = val.match(/\s\w+\.\S*\s/g)[0].replace(/^\s+/, '').replace(/\s*$/, '');
         let cat = val.match(/\s\w+\.\S*\s/g)[0].replace(/^\s+/, '');
         let word = val.slice(0, val.search(cat) ).replace(/\d+\s/,'');
@@ -709,19 +711,45 @@ $('#secret-input').on("change", () => {
         let wordHeb = wordHebEnt.match(/\d+/g).map( val => String.fromCharCode(val) ).join('');
 
         let freq = val.match(/\d+/g)[1];
-        let glossArr  = val.replace(word,'').replace(cat,'').replace(freq,'').replace(/\d+\s+/,'').replace(/\s*$/, '').split(", ");
-        
+        let gloss = val.replace(word,'')
+            .replace(cat,'').replace(freq,'').replace(/\d+\s+/,'').replace(/\s*$/, '')
+            .replace(/[\.\;]/g,',').replace('*','');
+
+        let glossArr  = gloss.split(", ");
+
+        // console.table(glossArr);
+        // console.log([cat]);
+
         final += `bank.push( {`;
         final += `"word":"${wordHeb}", "category":"${cat}", "frequency":"${freq}",`;
         final += ` "arr":[`;
+
+        let stem = '';
+        let click = false;
         glossArr.forEach( (def,i) => {
-            if (i>0) final += ',';
-            final += `["@", "${def}"]`;
+
+            if ( cat == 'vb. ') {
+                if ( /^[A-Z]/.test(def) ) { stem = def; } 
+                else {
+                    let buddy = '';
+                    if (/^to\s/.test(def)) { buddy = def.slice(3); } 
+                    else { buddy = `to ${def}`; }
+                    if (click) final += ',';                    
+                    final += `["@${stem}", "${def}", "${buddy}"]`;
+                    click = true;
+                }
+            } 
+            else {
+                if (click) final += ',';
+                final += `["@", "${def}"]`;
+                click = true;
+            }
+            
         });
         
         final += `]`;
         final += ` } ); `;
-        final += `\n`;
+        final += `\n\n`;
     });
 
     $('#secret-text').val(final);
