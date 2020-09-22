@@ -344,8 +344,7 @@ $('#total').on('click', (ev) => {
     
 
 
-// showPage('quiz');
-showPage('view');
+showPage('quiz');
 // showPage('secret');
 function showPage(str) {
     $('#add-page').hide();

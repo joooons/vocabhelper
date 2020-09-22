@@ -1,5 +1,5 @@
 
-console.log('wordbank3.js at your service.',
+console.log('wordbank3.js at your service.');
 
 var bank = [
 
@@ -657,7 +657,7 @@ var bank = [
     {"word":"קָטָן", "category":"adj. ", "frequency":"27", "arr":[["@", "small"],["@", "young"]] } , 
     {"word":"אַתֵּנָה", "category":"prn. ", "frequency":"4", "arr":[["@", "you", "fem. pl. you"]] } 
 
-],
+];
 
 
 
