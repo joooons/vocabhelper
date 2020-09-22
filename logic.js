@@ -334,9 +334,9 @@ $('#total').on('click', (ev) => {
     
 
 
-// showPage('quiz');
+showPage('quiz');
 // showPage('add');
-showPage('secret');
+// showPage('secret');
 function showPage(str) {
     $('#add-page').hide();
     $('#view-page').hide();
@@ -650,7 +650,7 @@ function addQuizQuestions() {
 }
 
 function randomOrderArr(length) {
-    // generates array with numbers counting from 0 to length, in random order.
+    // returns array with numbers counting from 0 to length, in random order.
     let arr = [];
     for ( i=0 ; i<length ; i++ ) {
         let num = Math.floor( Math.random() * length );        
@@ -661,6 +661,8 @@ function randomOrderArr(length) {
         }
         if (arr.length >= length) { return arr; }
     }
+
+    // The code below cancels the randomization.
     // arr.forEach( (v,i) => { arr[i] = i; });
     // return arr;
 }
@@ -692,7 +694,6 @@ $('#secret-input').on("change", () => {
         // This function chop-chops the long string into separate lines...
         // ...stored as separate items in the arr array.
         let num = str.search(/\d\*?\s\d/);
-        // if ( num <= 0 ) return console.log('stop');
         if ( num <= 0 ) return;
         arr.push( str.slice(0, num + 2 ) );
         str = str.slice(num+2);
@@ -703,22 +704,13 @@ $('#secret-input').on("change", () => {
     let final = '';
     arr.forEach( val => {
 
-        // console.log([val]);
-        // let cat = val.match(/\s\w+\.\S*\s/g)[0].replace(/^\s+/, '').replace(/\s*$/, '');
         let cat = val.match(/\s\w+\.\S*\s/g)[0].replace(/^\s+/, '');
         let word = val.slice(0, val.search(cat) ).replace(/\d+\s/,'');
         let wordHebEnt = convertGibberishToHebEnt( val.slice(0, val.search(cat) ).replace(/\d+\s/,'').replace(' ,',',') );
         let wordHeb = wordHebEnt.match(/\d+/g).map( val => String.fromCharCode(val) ).join('');
-
         let freq = val.match(/\d+/g)[1];
-        let gloss = val.replace(word,'')
-            .replace(cat,'').replace(freq,'').replace(/\d+\s+/,'').replace(/\s*$/, '')
-            .replace(/[\.\;]/g,',').replace('*','');
-
+        let gloss = val.replace(word,'').replace(cat,'').replace(freq,'').replace(/\d+\s+/,'').replace(/\s*$/, '').replace(/[\.\;]/g,',').replace('*','');
         let glossArr  = gloss.split(", ");
-
-        // console.table(glossArr);
-        // console.log([cat]);
 
         final += `bank.push( {`;
         final += `"word":"${wordHeb}", "category":"${cat}", "frequency":"${freq}",`;
@@ -749,7 +741,7 @@ $('#secret-input').on("change", () => {
         
         final += `]`;
         final += ` } ); `;
-        final += `\n\n`;
+        final += `\n`;
     });
 
     $('#secret-text').val(final);
