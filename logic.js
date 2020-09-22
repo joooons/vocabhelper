@@ -267,13 +267,24 @@ $(document).on('change', '.view-input', function(ev) {
     
 });
 
-$(document).on('change', '.quiz-form', function(ev) {
-    let num = $('.quiz-question').length;
-    let index = -1;
-    for ( i=0 ; i<num ; i++ ) { if ( ev.target == $('.quiz-question').get(i) ) index = i; }
-    index++;
-    if ( index == num ) index = 0;
+$(document).on('submit', '.quiz-filter', function(ev) {
+    let index = indexOfClass(ev.target, 'quiz-filter') + 1;
+    if ( index > 3 ) return;
+    if ( index == 3 ) { return $('.quiz-start').get(0).focus(); }
+    $('.quiz-input').get(index).focus(); 
 });
+
+$(document).on('focusout', '.quiz-input', function(ev) {
+    let start = $('.quiz-input').get(0).value;
+    let end = $('.quiz-input').get(1).value;
+    let limit = $('.quiz-input').get(2).value;
+    if ( start < 1 || start > bank.length ) return $('.quiz-input').get(0).focus();
+    if ( end < 1 || end > bank.length ) $('.quiz-input').get(1).focus();
+    if ( limit < 1 || limit > 100 ) return $('.quiz-input').get(2).focus();
+});
+
+
+
 
 $(document).on('change', '.quiz-question', function(ev) {
     let ans = ev.target.value;
@@ -516,6 +527,20 @@ function fillTable(start, end) {
 
 function scrollToTop() { document.documentElement.scrollTop = 0; }
 
+
+
+initializeQuizInputLimits();
+function initializeQuizInputLimits() {
+    $('.quiz-input').get(0).max = bank.length;
+    $('.quiz-input').get(1).max = bank.length;
+    $('.quiz-input').get(2).max = 100;
+}
+
+
+
+
+
+
 function resetAnswers(wordIndex) {
     // reset the quiz-question values. Based on orderIndex.
     // reset the readOnly and color changes. Based on orderIndex.
@@ -613,14 +638,17 @@ function addQuizQuestions() {
         str += '</div>';
 
         str += '<div class="row mb-3">';
-        str += '<div class="col col-7 text-left quiz-word pl-3">';
+        str += '<div class="col col-12 text-left quiz-word pl-3">';
         // str += `#${tempBank[v].id}&nbsp;&nbsp;&nbsp;&nbsp;`;
         str += `#${i+1}&nbsp;&nbsp;&nbsp;&nbsp;`;
-
-        str += `<span class="hebrew bigger">${tempBank[v].word}</span></div>`;
-        str += `<div class="col col-5 text-right pt-2">`;
-        str += `${tempBank[v].category}&nbsp;&nbsp;&nbsp;${tempBank[v].frequency}</div>`;
+        str += `<span class="hebrew bigger">${tempBank[v].word}</span>`;
+        str += `&nbsp;&nbsp;&nbsp;${tempBank[v].category}`;
+        str += `&nbsp;&nbsp;&nbsp;${tempBank[v].frequency}`;
         str += `</div>`;
+        str += `</div>`;
+        // str += `<div class="col col-5 text-right pt-2">`;
+        // str += `${tempBank[v].category}&nbsp;&nbsp;&nbsp;${tempBank[v].frequency}</div>`;
+        // str += `</div>`;
         let num = tempBank[v].arr.length;
 
         for ( n=0 ; n<num ; n++ ) {
