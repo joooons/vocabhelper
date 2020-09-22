@@ -31,13 +31,12 @@
 <!--  MM    MM  MM    MM      MM       -->
 
     <ul class="nav justify-content-left bg-dark">
-        <li class="nav-item">
-            <!-- <a href="#" class="nav-link active text-light" onclick="showPage('add');">ADD</a> -->
+        <!-- <li class="nav-item">
             <a href="#" class="nav-link  text-body" >ADD</a>
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link  text-body ">EDIT</a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a href="#" class="nav-link  text-primary" onclick="showPage('view');">VIEW</a>
         </li>
@@ -176,7 +175,7 @@
                                             Start
                                         </label>
                                         <div class="col-8">
-                                            <input type="text" class="form-control view-input" placeholder="" value="1" autocomplete="off">
+                                            <input type="number" class="form-control view-input" placeholder="" min="1" value="1" autocomplete="off">
                                         </div>
                                     </div>
                                 </form>
@@ -186,7 +185,7 @@
                                             End
                                         </label>
                                         <div class="col-8">
-                                            <input type="text" class="form-control view-input" placeholder="" value="1" autocomplete="off">
+                                            <input type="number" class="form-control view-input" placeholder="" min="1" value="1" autocomplete="off">
                                         </div>
                                     </div>
                                 </form>
@@ -424,6 +423,14 @@
 
 
 
+
+
+
+
+
+
+
+
 <!--    MMMM    MMMMMMMM    MMMM    MMMMMM    MMMMMMMM  MMMMMM   -->
 <!--  MM    MM  MM        MM    MM  MM    MM  MM          MM     -->
 <!--    MM      MMMMMMMM  MM        MMMMMM    MMMMMMMM    MM     -->
@@ -432,8 +439,6 @@
 <!--    MMMM    MMMMMMMM    MMMM    MM    MM  MMMMMMMM    MM     -->
 
     <div class="container-fluid" id="secret-page" style="display:none;">
-
-
 
         <div class="row">
             <div class="col col-12 mt-3">
@@ -450,10 +455,6 @@
         
     </div>
     <!-- END OF SECRET -->
-
-
-
-
 
 
 

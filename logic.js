@@ -253,19 +253,20 @@ $(document).on('change', '.add-tab', function(ev) {
 
 });
 
-$(document).on('change', '.view-input', function(ev) {
-    let num = $('.view-input').length;
-    let index = -1;     // arbitrary -1
-    for ( i=0 ; i<num ; i++ ) { if ( ev.target == $('.view-input').get(i) ) { index = i; } }
-    index++;
-    if (index == num) index = 0;
-    $('.view-input').get(index).focus();
-    let viewStart = $('.view-input').get(0).value;
-    let viewEnd = $('.view-input').get(1).value;
-    if ( viewEnd == '' ) viewEnd = bank.length;
-    fillTable(viewStart,viewEnd);
-    
+$(document).on('submit', '.view-form', function() {
+    let start = $('.view-input').get(0).value;
+    let end = $('.view-input').get(1).value;
+    fillTable(start,end);
 });
+
+$(document).on('focusout', '.view-input', function() {
+    let start = $('.view-input').get(0).value;
+    let end = $('.view-input').get(1).value;
+    if ( start < 1 || start > bank.length ) return $('.view-input').get(0).focus();
+    if ( end < 1 || end > bank.length ) return $('.view-input').get(1).focus();
+    fillTable(start,end);
+});
+
 
 $(document).on('submit', '.quiz-filter', function(ev) {
     let index = indexOfClass(ev.target, 'quiz-filter') + 1;
@@ -282,8 +283,6 @@ $(document).on('focusout', '.quiz-input', function(ev) {
     if ( end < 1 || end > bank.length ) $('.quiz-input').get(1).focus();
     if ( limit < 1 || limit > 100 ) return $('.quiz-input').get(2).focus();
 });
-
-
 
 
 $(document).on('change', '.quiz-question', function(ev) {
@@ -345,8 +344,8 @@ $('#total').on('click', (ev) => {
     
 
 
-showPage('quiz');
-// showPage('add');
+// showPage('quiz');
+showPage('view');
 // showPage('secret');
 function showPage(str) {
     $('#add-page').hide();
@@ -484,6 +483,12 @@ function showHE(a,b) {
 //      MM      MMMMMM  MMMMMMMM    MM  MM          MM        MM    MM    MMMM    
 
 
+initializeViewInputLimits();
+function initializeViewInputLimits() {
+    $('.view-input').get(0).max = bank.length;
+    $('.view-input').get(1).max = bank.length;
+    // $('.quiz-input').get(2).max = 100;
+}
 
 fillTable(1,1);
 function fillTable(start, end) {
@@ -535,9 +540,6 @@ function initializeQuizInputLimits() {
     $('.quiz-input').get(1).max = bank.length;
     $('.quiz-input').get(2).max = 100;
 }
-
-
-
 
 
 
