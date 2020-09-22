@@ -303,7 +303,6 @@ bank.push( {"word":"חָנָה","category":"vb.","frequency":"143","arr":[["@","
 bank.push( {"word":"שָׁ / שַׁ / שֶׁ","category":"prt.","frequency":"143","arr":[["@","who"],["@","which"],["@","that"]]} );
 bank.push( {"word":"אָז","category":"adv.","frequency":"141","arr":[["@","then"],["@","at that time"],["@","thereupon"]]} );
 bank.push( {"word":"יַיִן","category":"n.m.","frequency":"141","arr":[["@","wine"]]} );
-
 bank.push( {"word":"יָמִין","category":"n.f.","frequency":"141","arr":[["@","right","right hand","right (hand)"],["@","south"]]} );
 bank.push( {"word":"חַיִּים","category":"n.m.","frequency":"140","arr":[["@","life"]]} );
 bank.push( {"word":"מַעַל","category":"prp.","frequency":"140","arr":[["@","upwards"],["@","above"]]} );
