@@ -702,14 +702,15 @@ $('#secret-input').on("change", () => {
     let final = '';
     arr.forEach( val => {
 
-        let cat = val.match(/\s\w+\.\S*\s/g)[0].replace(/^\s+/, '').replace(/\s*$/, '');
+        // let cat = val.match(/\s\w+\.\S*\s/g)[0].replace(/^\s+/, '').replace(/\s*$/, '');
+        let cat = val.match(/\s\w+\.\S*\s/g)[0].replace(/^\s+/, '');
         let word = val.slice(0, val.search(cat) ).replace(/\d+\s/,'');
         let wordHebEnt = convertGibberishToHebEnt( val.slice(0, val.search(cat) ).replace(/\d+\s/,'').replace(' ,',',') );
         let wordHeb = wordHebEnt.match(/\d+/g).map( val => String.fromCharCode(val) ).join('');
 
         let freq = val.match(/\d+/g)[1];
         let glossArr  = val.replace(word,'').replace(cat,'').replace(freq,'').replace(/\d+\s+/,'').replace(/\s*$/, '').split(", ");
-
+        
         final += `bank.push( {`;
         final += `"word":"${wordHeb}", "category":"${cat}", "frequency":"${freq}",`;
         final += ` "arr":[`;
