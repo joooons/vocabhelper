@@ -1,6 +1,8 @@
 
 
 console.log('logic.js at your service.');
+console.log('you have options for showPage();');
+console.log('"add"  "view"  "quiz"  "secret"');
 
 
 
@@ -344,11 +346,13 @@ $('#total').on('click', (ev) => {
 
 
 // showPage('quiz');
-showPage('add');
+// showPage('add');
+showPage('secret');
 function showPage(str) {
     $('#add-page').hide();
     $('#view-page').hide();
     $('#quiz-page').hide();
+    $('#secret-page').hide();
     $(`#${str}-page`).show();
 }
 
@@ -372,6 +376,8 @@ function indexOfClass( elem, className ) {
     return -1;
 }
 
+function reverseStr(str) { return str.split('').reverse().join(''); }
+    // Not used at the moment
 
 
 
@@ -386,8 +392,7 @@ function indexOfClass( elem, className ) {
 //  MM    MM  MM    MM  MM    MM        MM        MM    MM  MM    MM  
 //  MM    MM  MMMMMM    MMMMMM          MM        MM    MM    MMMM    
 
-// function reverseStr(str) { return str.split('').reverse().join(''); }
-    // Not used at the moment
+
 
 function strToSyllableArr(str) {
     let arr = str.split('');
@@ -561,11 +566,9 @@ function fillTempBank() {
     if ( limit > bank.length ) return;
     for ( i=startNum-1 ; i<endNum ; i++ ) { tempBank.push( {id:i+1,...bank[i]} ); }
     if ( tempBank.length > limit ) {
-        console.log('is this true?');
         let num = tempBank.length - limit;
         tempBank.splice(0,num);
     }
-    console.log(tempBank);
     fillScoreArr();
     addQuizQuestions();
 }
@@ -656,3 +659,59 @@ function removeQuizQuestions() {
     let num = $('.quiz-card').length;
     for ( i=0 ; i<num ; i++ ) { $('.quiz-card').eq(0).remove(); }
 }
+
+
+
+
+
+
+//    MMMM    MMMMMMMM    MMMM    MMMMMM    MMMMMMMM  MMMMMM  
+//  MM    MM  MM        MM    MM  MM    MM  MM          MM    
+//    MM      MMMMMMMM  MM        MMMMMM    MMMMMMMM    MM    
+//      MM    MM        MM        MM    MM  MM          MM    
+//  MM    MM  MM        MM    MM  MM    MM  MM          MM    
+//    MMMM    MMMMMMMM    MMMM    MM    MM  MMMMMMMM    MM    
+
+$('#secret-input').on("change", () => {
+    let str = $('#secret-input').val();
+    let arr = [];
+
+    chopchop();
+    function chopchop() {
+        let num = str.search(/\d\*?\s\d/);
+        if ( num <= 0 ) return console.log('stop');
+        arr.push( str.slice(0, num + 2 ) );
+        str = str.slice(num+2);
+        chopchop();
+    }
+    arr.push(str);
+
+    let final = '';
+    arr.forEach( val => {
+
+        let cat = val.match(/\s\w+\.\S*\s/g)[0].replace(/\s*$/, '');
+        let word = val.slice(0, val.search(cat) ).replace(/\d+\s/,'');
+        let freq = val.match(/\d+/g)[1];
+        let glossArr  = val.replace(word,'').replace(cat,'').replace(freq,'').replace(/\d+\s/,'').replace(/\s*$/, '').split(", ");
+
+        final += `bank.push( {`;
+        final += `"word":"${word}", "category":"${cat}", "frequency":"${freq}",`;
+        final += ` "arr":[`;
+        glossArr.forEach( (def,i) => {
+            if (i>0) final += ',';
+            final += `["@", "${def}"]`;
+        });
+        
+        final += `]`;
+        final += ` } ); `;
+        final += `\n`;
+    });
+
+    $('#secret-text').val(final);
+});
+
+
+
+
+
+
