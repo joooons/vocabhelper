@@ -1,7 +1,6 @@
 
-console.log('logic.js at your service.');
-console.log('you have options for showPage();');
-console.log('"add"  "view"  "quiz"  "secret"');
+console.warn('logic.js at your service.');
+console.warn('Options for showPage() : ["add", "view", "quiz", "secret"]');
 
 //  MM      MM    MMMM    MMMMMM    MMMMMM    MMMM    MMMMMM    MM      MMMMMMMM    MMMM    
 //  MM      MM  MM    MM  MM    MM    MM    MM    MM  MM    MM  MM      MM        MM    MM  
@@ -321,17 +320,23 @@ $(document).on('change', '.quiz-question', function (ev) {
     let index = indexOfClass(ev.target, 'quiz-question');
     let ref = questionRef[index];
     let isCorrect = false;
-    tempBank[ref].arr.forEach((list, i) => {
+
+    tempBank[ref].arr.forEach((obj, i) => {
         if (scoreArr[ref].alreadyGot.includes(i)) return;
-        if ($('.lex-cat').eq(index).text() != list[0].slice(1)) return;
-        let tempList = [...list].splice(1);
-        if (tempList.includes(ans)) {
-            isCorrect = true;
-            scoreArr[ref].alreadyGot.push(i);
-            if (i == 0) scoreArr[ref].gotMain = 1;
-            scoreArr[ref].gotAny = 1;
-            scoreArr[ref].gotThisMany++;
-        }
+
+        if ($('.lex-cat').eq(index).text() != obj.type.substring(1)) return;
+        let tempList = obj.glosses;
+
+        tempList.forEach((obj) => {
+            if (obj.gloss === ans) {
+                isCorrect = true;
+                scoreArr[ref].alreadyGot.push(i);
+                if (i == 0) scoreArr[ref].gotMain = 1;
+                scoreArr[ref].gotAny = 1;
+                scoreArr[ref].gotThisMany++;
+            }
+        })
+
     });
     if (isCorrect) {
         ev.target.readOnly = true;
@@ -391,7 +396,6 @@ function splitArrToLines(arr) {
     arr.forEach((obj, i) => {
         let type = (obj.type == "@") ? '' : `(${obj.type.slice(1)})&nbsp;&nbsp;`;
         let glosses = [...obj.glosses.map((gloss) => { return gloss.gloss })]
-        console.log('arrNew: ', obj)
         str += `${i + 1}.&nbsp;&nbsp;${type}${glosses.join(', ')}<br>`;
     });
     return str;
@@ -618,8 +622,6 @@ function fillScoreArr() {
 async function fillTempBank() {
     // Prepare the temporary array that contains the questions and associated data.
 
-    console.log('inside fillTempBank, tempBank: ', tempBank)
-
     let startNum = parseInt($('.quiz-input').get(0).value);
     let endNum = parseInt($('.quiz-input').get(1).value);
     let limit = parseInt($('.quiz-input').get(2).value);
@@ -633,8 +635,6 @@ async function fillTempBank() {
     if (limit < 1) return;
     if (limit > bank.length) return;
     for (i = startNum - 1; i < endNum; i++) { tempBank.push({ id: i + 1, ...bank[i] }); }
-
-    console.log('again, inside fillTempBank, tempBank: ', tempBank)
 
     if (tempBank.length > limit) {
         let num = tempBank.length - limit;
