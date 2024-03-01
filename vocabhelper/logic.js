@@ -353,14 +353,22 @@ $('#add-push').on('click', ev => {
     result = {};
     addBoxFn.clear();
     $('#total').select();
-    document.execCommand('copy');
-    console.log('text copied to clipboard');
+    navigator.clipboard.writeText($('#total')[0].textContent)
+        .then(() => {
+            console.log('text copied to clipboard');
+        }).catch(err => {
+            console.log('failed to copy text: ', err);
+        })
 });
 
 $('#total').on('click', (ev) => {
     ev.target.select();
-    document.execCommand('copy');
-    console.log('text copied to clipboard');
+    navigator.clipboard.writeText($('#total')[0].textContent)
+        .then(() => {
+            console.log('text copied to clipboard');
+        }).catch(err => {
+            console.log('failed to copy text: ', err);
+        })
 });
 
 
@@ -474,10 +482,7 @@ function strToSyllableArr(str) {
 }
 
 function showTextArea(obj) {
-    // let str = `bank[x] = ${JSON.stringify(obj)};`;
-    let text = JSON.stringify(obj);
-    let str = `bank.push( ${text} );`;
-    $('#total').html(str);
+    $('#total').html(JSON.stringify(obj));
     $('#output').html(obj.word);
 }
 
@@ -775,7 +780,7 @@ $('#secret-input').on("change", () => {
         let gloss = val.replace(word, '').replace(cat, '').replace(freq, '').replace(/\d+\s+/, '').replace(/\s*$/, '').replace(/[\.\;]/g, ',').replace('*', '');
         let glossArr = gloss.split(", ");
 
-        final += `bank.push( {`;
+        final += `{`;
         final += `"word":"${wordHeb}", "category":"${cat}", "frequency":"${freq}",`;
         final += ` "arr":[`;
 
@@ -803,7 +808,7 @@ $('#secret-input').on("change", () => {
         });
 
         final += `]`;
-        final += ` } ); `;
+        final += ` }`;
         final += `\n`;
     });
 
