@@ -34,16 +34,15 @@ async function getDataFromJSON() {
 }
 
 
+var result = {
+    "word": '',
+    "category": '',
+    "frequency": 0,
+    "arr": []
+
+};
 
 
-
-
-
-var result = {};
-result.word = '';
-result.category = '';
-result.frequency = 0;
-result.arr = [];
 
 const En_to_He = {
     'a': '&#1488;',
