@@ -10,6 +10,27 @@ console.log('"add"  "view"  "quiz"  "secret"');
 //    MM  MM    MM    MM  MM    MM    MM    MM    MM  MM    MM  MM      MM        MM    MM  
 //      MM      MM    MM  MM    MM  MMMMMM  MM    MM  MMMMMM    MMMMMM  MMMMMMMM    MMMM    
 
+
+let bank2 = null
+bank2 = getWordsFromVocabBank()
+
+async function getWordsFromVocabBank() {
+    fetch('./vocabhelper/vocab.json').then((res) => {
+        console.log('did it work')
+        return res.json()
+    }).then((res) => {
+        console.log('i guess it work')
+        console.log(res.bank[0].arr)
+        return res
+    }).catch((error) => {
+        console.log('oh wells')
+        console.log(error)
+    })
+}
+
+
+
+
 var result = {};
 result.word = '';
 result.category = '';
@@ -771,9 +792,3 @@ $('#secret-input').on("change", () => {
 
     $('#secret-text').val(final);
 });
-
-
-
-
-
-
