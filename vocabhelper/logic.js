@@ -11,22 +11,31 @@ console.log('"add"  "view"  "quiz"  "secret"');
 //      MM      MM    MM  MM    MM  MMMMMM  MM    MM  MMMMMM    MMMMMM  MMMMMMMM    MMMM    
 
 
-let bank2 = null
-bank2 = getWordsFromVocabBank()
+let bank = null
 
-async function getWordsFromVocabBank() {
-    fetch('./vocabhelper/vocab.json').then((res) => {
-        console.log('did it work')
+start()
+async function start() {
+    await getDataFromJSON()
+    await showPage('quiz');
+    await initializeViewInputLimits();
+    // await fillTable(1, 1);
+    await initializeQuizInputLimits();
+    await fillTempBank();
+}
+
+async function getDataFromJSON() {
+    await fetch('./vocabhelper/vocab.json').then((res) => {
         return res.json()
-    }).then((res) => {
-        console.log('i guess it work')
-        console.log(res.bank[0].arr)
-        return res
+    }).then((data) => {
+        bank = data.bank
+        return null
     }).catch((error) => {
-        console.log('oh wells')
         console.log(error)
     })
 }
+
+
+
 
 
 
@@ -250,7 +259,11 @@ function scoreObj() {
 //  MMMMMMMM  MM      MM  MMMMMMMM  MM  MMMM    MM          MMMMMMMM  MMMMMMMM  MM  MMMM  MM    MM  MM      MMMMMMMM  MMMMMM      MM      
 //  MM        MM      MM  MM        MM    MM    MM          MM    MM  MM    MM  MM    MM  MM    MM  MM      MM        MM    MM      MM    
 //  MM          MM  MM    MM        MM    MM    MM          MM    MM  MM    MM  MM    MM  MM    MM  MM      MM        MM    MM  MM    MM  
-//  MMMMMMMM      MM      MMMMMMMM  MM    MM    MM          MM    MM  MM    MM  MM    MM  MMMMMM    MMMMMM  MMMMMMMM  MM    MM    MMMM    
+//  MMMMMMMM      MM      MMMMMMMM  MM    MM    MM          MM    MM  MM    MM  MM    MM  MMMMMM    MMMMMM  MMMMMMMM  MM    MM    MMMM   
+
+$(document).on('load', function (ev) {
+    console.log('what is this?')
+})
 
 $(document).on('submit', '.no-submit', function (ev) {
     ev.preventDefault();
@@ -361,9 +374,9 @@ $('#total').on('click', (ev) => {
 
 
 
-showPage('quiz');
+// showPage('quiz');
 // showPage('secret');
-function showPage(str) {
+async function showPage(str) {
     $('#add-page').hide();
     $('#view-page').hide();
     $('#quiz-page').hide();
@@ -371,16 +384,15 @@ function showPage(str) {
     $(`#${str}-page`).show();
 }
 
-function splitArrToLines(arrGroup) {
+function splitArrToLines(arr) {
     // The definition of each word is contained in an array of an array.
     // This function puts each array into a separate line.
     let str = '';
-    arrGroup.forEach((arr, i) => {
-        let arrNew = [...arr];
-        let first = arrNew.shift();
-        if (first == "@") { first = ""; }
-        else { first = `[${first.slice(1)}]&nbsp;&nbsp;`; }
-        str += `${i + 1}.&nbsp;&nbsp;${first}${arrNew.join(', ')}<br>`;
+    arr.forEach((obj, i) => {
+        let type = (obj.type == "@") ? '' : `(${obj.type.slice(1)})&nbsp;&nbsp;`;
+        let glosses = [...obj.glosses.map((gloss) => { return gloss.gloss })]
+        console.log('arrNew: ', obj)
+        str += `${i + 1}.&nbsp;&nbsp;${type}${glosses.join(', ')}<br>`;
     });
     return str;
 }
@@ -499,15 +511,15 @@ function showHE(a, b) {
 //      MM      MMMMMM  MMMMMMMM    MM  MM          MM        MM    MM    MMMM    
 
 
-initializeViewInputLimits();
-function initializeViewInputLimits() {
+async function initializeViewInputLimits() {
     $('.view-input').get(0).max = bank.length;
     $('.view-input').get(1).max = bank.length;
-    // $('.quiz-input').get(2).max = 100;
 }
 
-fillTable(1, 1);
-function fillTable(start, end) {
+async function fillTable(start, end) {
+    // Let's isolate this for now!!!
+    if (true) return
+
     if (start == undefined) start = 1;
     if (start < 1) start = 1;
     if (start >= bank.length) start = bank.length - 1;
@@ -550,8 +562,7 @@ function scrollToTop() { document.documentElement.scrollTop = 0; }
 
 
 
-initializeQuizInputLimits();
-function initializeQuizInputLimits() {
+async function initializeQuizInputLimits() {
     $('.quiz-input').get(0).max = bank.length;
     $('.quiz-input').get(1).max = bank.length;
     $('.quiz-input').get(2).max = 100;
@@ -604,21 +615,27 @@ function fillScoreArr() {
     tempBank.forEach(() => { scoreArr.push(new scoreObj()); });
 }
 
-fillTempBank();
-function fillTempBank() {
+async function fillTempBank() {
     // Prepare the temporary array that contains the questions and associated data.
+
+    console.log('inside fillTempBank, tempBank: ', tempBank)
+
     let startNum = parseInt($('.quiz-input').get(0).value);
     let endNum = parseInt($('.quiz-input').get(1).value);
     let limit = parseInt($('.quiz-input').get(2).value);
 
     removeQuizQuestions();
     tempBank.splice(0, tempBank.length);
+
     if (startNum < 1) return;
     if (endNum > bank.length) return;
     if (endNum < startNum) return;
     if (limit < 1) return;
     if (limit > bank.length) return;
     for (i = startNum - 1; i < endNum; i++) { tempBank.push({ id: i + 1, ...bank[i] }); }
+
+    console.log('again, inside fillTempBank, tempBank: ', tempBank)
+
     if (tempBank.length > limit) {
         let num = tempBank.length - limit;
         tempBank.splice(0, num);
@@ -678,8 +695,10 @@ function addQuizQuestions() {
             str += '<div class="input-group">';
             str += '<div class="input-group-prepend">';
             str += '<span class="input-group-text bg-muted lex-cat">';
-            if (tempBank[v].arr[n][0].charAt(0) == "@") { str += `${tempBank[v].arr[n][0].slice(1)}`; }
+
+            if (tempBank[v].arr[n].type.charAt(0) == "@") { str += `${tempBank[v].arr[n].type.slice(1)}`; }
             else { str += ''; }
+
             str += '</span></div>';
             str += '<input type="text" autocapitalize="none" class="form-control quiz-question">';
             str += '</div></div></div></form>';
