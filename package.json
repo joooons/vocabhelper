@@ -14,5 +14,8 @@
   "bugs": {
     "url": "https://github.com/joooons/vocabhelper/issues"
   },
-  "homepage": "https://github.com/joooons/vocabhelper#readme"
+  "homepage": "https://github.com/joooons/vocabhelper#readme",
+  "dependencies": {
+    "csshake": "^1.7.0"
+  }
 }
