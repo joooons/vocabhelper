@@ -15,9 +15,9 @@ let bank = null
 start()
 async function start() {
     await getDataFromJSON()
-    await showPage('quiz');
+    await showPage('view');
     await initializeViewInputLimits();
-    await fillTable(1, 1);
+    await fillTable(1, 653);
     await initializeQuizInputLimits();
     await fillTempBank();
 }
