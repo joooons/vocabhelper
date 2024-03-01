@@ -17,7 +17,7 @@ async function start() {
     await getDataFromJSON()
     await showPage('quiz');
     await initializeViewInputLimits();
-    // await fillTable(1, 1);
+    await fillTable(1, 1);
     await initializeQuizInputLimits();
     await fillTempBank();
 }
@@ -522,7 +522,6 @@ async function initializeViewInputLimits() {
 
 async function fillTable(start, end) {
     // Let's isolate this for now!!!
-    if (true) return
 
     if (start == undefined) start = 1;
     if (start < 1) start = 1;
