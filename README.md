@@ -1,13 +1,26 @@
-# vocabhelper
+# Vocab Helper
 
-Biblical Hebrew vocab practice quiz that tests the user's knowledge of the lexical range of each word.
-The user has the option to enter just one of many possible definitions, or to enter them all.
+Vocab Helper allows the user to practice their knowledge of Biblical Hebrew words with a custom-made practice quiz. The quizzes are designed for practicing rather than testing.
+
+Vocab Helper was made with:
+
+- HTML, CSS, JavaScript, jQuery
+- [Bootstrap](https://getbootstrap.com/) for responsive web design
+- [GSAP](https://gsap.com/) for animation
+- [JSON](https://www.json.org/json-en.html) for vocabulary data
 
 You can try using it [here](https://hebrewpracticequiz.netlify.app/)!
 
-# How to use
+## Features
 
-## To start the quiz
+- Every question has multiple answer input fields to cover the lexical range of each word.
+- The `SCORE` box keeps track of the number of questions answered. If any of the multiple definitions of a word are correctly entered, that question is considered answered.
+- Hovering the mouse over the hint box reveals the answers for a quick reminder.
+- The `tab` key and `enter` key allow quick movement from one answer field to the next.
+- The left side of each answer field specifies the word type.
+- Incorrect answers are indicated by a the element shaking briefly.
+
+## How to start the quiz
 
 ![QUIZ page](./images/quiz.png)
 
@@ -25,7 +38,7 @@ You can try using it [here](https://hebrewpracticequiz.netlify.app/)!
 
 - click `START` to populate the quiz.
 
-- The `SCORE` window on the top right begins empty but starts showing the quiz stats once the user starts answering the questions.
+- The `SCORE` window on the top right shows the quiz stats once the user starts answering the questions.
 
 ## Components of the question element
 
@@ -63,7 +76,7 @@ You can try using it [here](https://hebrewpracticequiz.netlify.app/)!
 
 - Click on `TOP OF PAGE` to go back to the top of the page.
 
-## To see a list of Hebrew words
+## How to see the vocab list
 
 ![VIEW page](./images/view.png)
 
