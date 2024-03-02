@@ -284,7 +284,7 @@ $(document).on('focusout', '.quiz-input', function (ev) {
 });
 
 $(document).on('change', '.quiz-question', function (ev) {
-    let ans = ev.target.value;
+    let ans = ev.target.value.trim();
     let num = $('.quiz-question').length;
     let index = indexOfClass(ev.target, 'quiz-question');
     let ref = questionRef[index];
