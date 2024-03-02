@@ -1,6 +1,6 @@
 
-console.warn('logic.js at your service.');
-console.warn('Options for showPage() : ["add", "view", "quiz", "secret"]');
+console.log('logic.js at your service.');
+console.log('Options for showPage() : ["add", "view", "quiz", "secret"]');
 
 //  MM      MM    MMMM    MMMMMM    MMMMMM    MMMM    MMMMMM    MM      MMMMMMMM    MMMM    
 //  MM      MM  MM    MM  MM    MM    MM    MM    MM  MM    MM  MM      MM        MM    MM  
@@ -10,39 +10,16 @@ console.warn('Options for showPage() : ["add", "view", "quiz", "secret"]');
 //      MM      MM    MM  MM    MM  MMMMMM  MM    MM  MMMMMM    MMMMMM  MMMMMMMM    MMMM    
 
 
+initializeVocabHelper()
+
 let bank = null
-
-start()
-async function start() {
-    await getDataFromJSON()
-    await showPage('quiz');
-    await initializeViewInputLimits();
-    await fillTable(1, 653);
-    await initializeQuizInputLimits();
-    await fillTempBank();
-}
-
-async function getDataFromJSON() {
-    await fetch('./vocabhelper/vocab.json').then((res) => {
-        return res.json()
-    }).then((data) => {
-        bank = data.bank
-        return null
-    }).catch((error) => {
-        console.log(error)
-    })
-}
-
 
 var result = {
     "word": '',
     "category": '',
     "frequency": 0,
     "arr": []
-
 };
-
-
 
 const En_to_He = {
     'a': '&#1488;',
@@ -165,7 +142,6 @@ const En_to_He = {
 
     // "÷" : '/'
     "÷": '&#47;'
-
 };
 
 const vowels = [
@@ -234,7 +210,6 @@ const questionRef = [];
 // The INDEX of questionRef refers to each of the question input elements.
 // The VALUE of questionRef refers to the question word card.
 
-
 const scoreArr = [];
 
 function scoreObj() {
@@ -276,7 +251,6 @@ $(document).on('change', '.add-tab', function (ev) {
     $('.add-tab').get(num + 1).focus();
     addBoxFn.fillResult();
     addBoxFn.display();
-
 });
 
 $(document).on('submit', '.view-form', function () {
@@ -293,7 +267,6 @@ $(document).on('focusout', '.view-input', function () {
     fillTable(start, end);
 });
 
-
 $(document).on('submit', '.quiz-filter', function (ev) {
     let index = indexOfClass(ev.target, 'quiz-filter') + 1;
     if (index > 3) return;
@@ -309,7 +282,6 @@ $(document).on('focusout', '.quiz-input', function (ev) {
     if (end < 1 || end > bank.length) $('.quiz-input').get(1).focus();
     if (limit < 1 || limit > 100) return $('.quiz-input').get(2).focus();
 });
-
 
 $(document).on('change', '.quiz-question', function (ev) {
     let ans = ev.target.value;
@@ -384,11 +356,26 @@ $('#total').on('click', (ev) => {
 //  MM    MM  MM        MM    MM  MM        MM    MM  MM    MM  MM            MM        MM    MM  MM    MM  
 //    MMMM    MMMMMMMM  MM    MM  MMMMMMMM  MM    MM  MM    MM  MMMMMM        MM        MM    MM    MMMM    
 
+async function initializeVocabHelper() {
+    await getDataFromJSON('./vocabhelper/vocab.json')
+    await showPage('quiz');
+    await initializeViewInputLimits();
+    await fillTable(1, 653);
+    await initializeQuizInputLimits();
+    await fillTempBank();
+}
 
+async function getDataFromJSON(src) {
+    await fetch(src).then((res) => {
+        return res.json()
+    }).then((data) => {
+        bank = data.bank
+        return null
+    }).catch((error) => {
+        console.log(error)
+    })
+}
 
-
-// showPage('quiz');
-// showPage('secret');
 async function showPage(str) {
     $('#add-page').hide();
     $('#view-page').hide();
@@ -419,28 +406,16 @@ function reverseStr(str) { return str.split('').reverse().join(''); }
 // Not used at the moment
 
 function convertGibberishToHebEnt(text) {
-    // let arr = strToSyllableArr(text).reverse();
-    // let string = arr.join('');
-    // arr = string.split('');
-
     let arr = strToSyllableArr(text).reverse().join('').split('');
-    // let string = arr.join('');
-    // arr = string.split('');
-
     Object.keys(En_to_He).forEach(key => {
         arr.forEach((char, i) => {
-            // if ( char == key ) arr[i] = En_to_He[key];
             if (char == key) {
-                // arr[i] = String.fromCharCode(En_to_He[key].match(/\d+/)[0]);
                 arr[i] = En_to_He[key];
-                // newArr.push( String.fromCharCode(En_to_He[key].match(/\d+/)[0]) );
             }
-
         });
     });
     return arr.join('');
 }
-
 
 function shakeElement(elem) {
 
@@ -478,7 +453,6 @@ function shakeElement(elem) {
         ease: 'none',
         duration: 0.08
     })
-
 }
 
 
@@ -526,23 +500,23 @@ function showTextArea(obj) {
     $('#output').html(obj.word);
 }
 
-
-
-
-
-
 function showHE(a, b) {
-    // Temporarily useful function that shows all html entities between the
-    // specified range.
+    // Temporarily useful function that shows all html entities 
+    // between the specified range.
+    // Go to the ADD page first by doing showPage('add')
+    // Try these:
+    // showHE(1488, 1522);
+    // showHE(64285, 64334);
     let str = '';
     if (!b) { str += `${a} &nbsp;&nbsp;&nbsp;&#${a};&#10;`; }
     else if (a < b) {
         for (i = a; i <= b; i++) { str += `${i} &nbsp;&nbsp;&nbsp;&#${i};&#10;`; }
     }
     $('#total').html(str);
-    // showHE(1488, 1522);
-    // showHE(64285, 64334);
 }
+
+
+
 
 
 
