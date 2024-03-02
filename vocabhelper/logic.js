@@ -749,9 +749,10 @@ function addQuizQuestions() {
         str += '</div>';
         str += '<div class="col col-12 col-md-4 ">';
         str += '<div class="card h-100 bg-light quiz-spoiler">';
-        str += '<div class="card-body  text-light ">';
-        str += `${splitArrToLines(tempBank[v].arr)}`;
-        str += '</div></div></div></div></div></div>';
+        str += '<div class="card-body card-cover" ><div>HOVER TO SEE DEFINITIONS</div></div>';
+        str += '<div class="card-body card-hint">';
+        str += `${splitArrToLines(tempBank[v].arr)}</div>`;
+        str += '</div></div></div></div></div>';
     });
     $('#quiz-cards').append(str);
     $('.quiz-question').first().focus();

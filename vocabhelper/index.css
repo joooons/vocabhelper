@@ -49,10 +49,31 @@ div.rtl {
     unicode-bidi: bidi-override;
 }
 
-div .quiz-spoiler {
-    transition: 1s;
+.quiz-spoiler {
+    border-radius: 10px !important;
+    overflow: hidden;
 }
 
-div .quiz-spoiler:hover {
-    background: #ADF !important;
+.card-hint {
+    position: absolute;
+    color: gray;
+    font-size: 1rem;
+}
+
+.card-cover {
+    background-color: #ADF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    width: inherit;
+    opacity: 100%;
+    transition: opacity 1s;
+    z-index: 1;
+}
+
+.card-cover:hover {
+    opacity: 0%;
 }
