@@ -67,12 +67,12 @@ div.rtl {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: rgba(255, 255, 255, 0.9);
     text-align: center;
     font-size: 30px;
     width: inherit;
     opacity: 100%;
-    transition: opacity 1s;
+    transition: opacity 0.5s;
     z-index: 1;
 }
 
