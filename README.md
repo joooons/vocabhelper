@@ -50,11 +50,10 @@ You can try using it [here](https://hebrewpracticequiz.netlify.app/)!
   - frequency of occurrence in the Bible
   - A column of answer entry input fields, which consists of...
     - word type, such as Hi (Hiphil), Ni (Niphal), etc.
+      ![TYPES](./images/types.png)
     - input field for a gloss for the Hebrew word
   - the `RESET` button
   - word hint box, with the words `HOVER TO SEE DEFINITIONS`
-
-  ![TYPES](./images/types.png)
 
 - Press `tab` to navigate through each of the answer input fields.
 
