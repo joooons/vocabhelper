@@ -9,7 +9,7 @@ You can try using it [here](https://hebrewpracticequiz.netlify.app/)!
 
 ## To start the quiz
 
-[QUIZ page](./images/quiz.png)
+![QUIZ page](./images/quiz.png)
 
 - Click on `QUIZ` in the navigation bar.
 
@@ -41,7 +41,7 @@ You can try using it [here](https://hebrewpracticequiz.netlify.app/)!
   - the `RESET` button
   - word hint box, with the words `HOVER TO SEE DEFINITIONS`
 
-  [TYPES](./images/types.png)
+  ![TYPES](./images/types.png)
 
 - Press `tab` to navigate through each of the answer input fields.
 
@@ -53,7 +53,7 @@ You can try using it [here](https://hebrewpracticequiz.netlify.app/)!
 
 - A correct answer already submitted once cannot be used again in a different answer input field for the same Hebrew word.
 
-[QUESTION components](./images/answers.png)
+![QUESTION components](./images/answers.png)
 
 - Click on `RESET` to reset the answer input fields for that Hebrew word.
 
@@ -65,7 +65,7 @@ You can try using it [here](https://hebrewpracticequiz.netlify.app/)!
 
 ## To see a list of Hebrew words
 
-[VIEW page](./images/view.png)
+![VIEW page](./images/view.png)
 
 - Click on `VIEW` in the navigation bar.
 
