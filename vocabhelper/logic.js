@@ -15,7 +15,7 @@ let bank = null
 start()
 async function start() {
     await getDataFromJSON()
-    await showPage('view');
+    await showPage('quiz');
     await initializeViewInputLimits();
     await fillTable(1, 653);
     await initializeQuizInputLimits();
@@ -250,8 +250,6 @@ function scoreObj() {
 
 
 
-
-
 //  MMMMMMMM  MM      MM  MMMMMMMM  MM    MM  MMMMMM        MM    MM    MMMM    MM    MM  MMMMMM    MM      MMMMMMMM  MMMMMM      MMMM    
 //  MM        MM      MM  MM        MMMM  MM    MM          MM    MM  MM    MM  MMMM  MM  MM    MM  MM      MM        MM    MM  MM    MM  
 //  MMMMMMMM  MM      MM  MMMMMMMM  MM  MMMM    MM          MMMMMMMM  MMMMMMMM  MM  MMMM  MM    MM  MM      MMMMMMMM  MMMMMM      MM      
@@ -345,7 +343,10 @@ $(document).on('change', '.quiz-question', function (ev) {
         $('.quiz-question').get(index + 1).focus();
         fillScoreBoard();
     }
-    else { ev.target.value = ''; }
+    else {
+        shakeElement(ev.target.parentNode)
+        ev.target.value = '';
+    }
 });
 
 $('#add-push').on('click', ev => {
@@ -440,6 +441,45 @@ function convertGibberishToHebEnt(text) {
     return arr.join('');
 }
 
+
+function shakeElement(elem) {
+
+    let inputField = elem.querySelector('input')
+    let colorTimeline = gsap.timeline()
+    let shakeTimeline = gsap.timeline()
+
+    colorTimeline.to(inputField, {
+        backgroundColor: "pink",
+        duration: 0
+    }).to(inputField, {
+        backgroundColor: "white",
+        ease: "power2",
+        duration: 0.5
+    })
+
+    shakeTimeline.to(elem, {
+        x: 5,
+        ease: 'none',
+        duration: 0.08
+    }).to(elem, {
+        x: -5,
+        ease: 'none',
+        duration: 0.08
+    }).to(elem, {
+        x: 5,
+        ease: 'none',
+        duration: 0.08
+    }).to(elem, {
+        x: -5,
+        ease: 'none',
+        duration: 0.08
+    }).to(elem, {
+        x: 0,
+        ease: 'none',
+        duration: 0.08
+    })
+
+}
 
 
 
