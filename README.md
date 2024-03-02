@@ -16,7 +16,8 @@ You can try using it [here](https://hebrewpracticequiz.netlify.app/)!
 - Every question has multiple answer input fields to cover the lexical range of each word.
 - The `SCORE` box keeps track of the number of questions answered. If any of the multiple definitions of a word are correctly entered, that question is considered answered.
 - Hovering the mouse over the hint box reveals the answers for a quick reminder.
-- The `tab` key and `enter` key allow quick movement from one answer field to the next.
+- Answering the question correctly autofocuses on the next question.
+- The `tab` key moves to the next question.
 - The left side of each answer field specifies the word type.
 - Incorrect answers are indicated by a the element shaking briefly.
 

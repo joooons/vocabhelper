@@ -5,7 +5,9 @@
     font-style: normal;
 }
 
-
+html {
+    scroll-behavior: smooth;
+}
 
 #head {
     padding: 20px;
