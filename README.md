@@ -32,11 +32,11 @@ You can try using it [here](https://hebrewpracticequiz.netlify.app/)!
 - Each question item contains these items:
 
   - question number
-  - hebrew word
-  - word type
-  - frequency of occurence in the Bible
+  - The word in Hebrew
+  - word type, such as noun, verb, etc.
+  - frequency of occurrence in the Bible
   - A column of answer entry input fields, which consists of...
-    - word type
+    - word type, such as Hi (Hiphil), Ni (Niphal), etc.
     - input field for a gloss for the Hebrew word
   - the `RESET` button
   - word hint box, with the words `HOVER TO SEE DEFINITIONS`
