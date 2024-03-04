@@ -47,9 +47,9 @@ You can try using it [here](https://hebrewpracticequiz.netlify.app/)!
 
   - Question number
   - The Hebrew word
-  - Word type - `n.`, `vb.`, `adj.` etc. See [Abbreviations](## Abbreviations).
+  - Word type - `n.`, `vb.`, `adj.` etc. See [Abbreviations](#Abbreviations).
   - Frequency of occurrence in the Bible
-  - Answer input fields, including on the left side the word category, such as verb stems (Hiphil, Niphal, etc.) - See [Abbreviations](## Abbreviations).
+  - Answer input fields, including on the left side the word category, such as verb stems (Hiphil, Niphal, etc.) - See [Abbreviations](#Abbreviations).
     ![TYPES](./images/types.png)
   - `RESET` button
   - Definition hint box, with the words `HOVER TO SEE DEFINITIONS`
