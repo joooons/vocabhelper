@@ -344,7 +344,14 @@ $('#total').on('click', (ev) => {
         })
 });
 
+$('#last-button').on('keydown', (ev) => {
+    if (ev.key === 'Tab') ev.preventDefault()
+});
 
+$('#last-button').on('click', (ev) => {
+    scrollToTop()
+    $(".quiz-input").eq(0).focus()
+});
 
 
 
