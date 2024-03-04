@@ -1,6 +1,6 @@
 # Vocab Helper
 
-Vocab Helper allows the user to practice their knowledge of Biblical Hebrew words with a custom-made practice quiz. The quizzes are designed for practicing rather than testing.
+Vocab Helper allows the user to practice their knowledge of Biblical Hebrew words with a custom-made practice quiz. The quizzes are designed for practicing rather than for testing.
 
 Vocab Helper was made with:
 
@@ -43,18 +43,16 @@ You can try using it [here](https://hebrewpracticequiz.netlify.app/)!
 
 ## Components of the question element
 
-- Each question item contains these items:
+- Each question card contains:
 
-  - question number
-  - The word in Hebrew
-  - word type, such as noun, verb, etc.
-  - frequency of occurrence in the Bible
-  - A column of answer entry input fields, which consists of...
-    - word type, such as Hi (Hiphil), Ni (Niphal), etc.
-      ![TYPES](./images/types.png)
-    - input field for a gloss for the Hebrew word
-  - the `RESET` button
-  - word hint box, with the words `HOVER TO SEE DEFINITIONS`
+  - Question number
+  - The Hebrew word
+  - Word type - `n.`, `vb.`, `adj.` etc. See [Abbreviations](## Abbreviations).
+  - Frequency of occurrence in the Bible
+  - Answer input fields, including on the left side the word category, such as verb stems (Hiphil, Niphal, etc.) - See [Abbreviations](## Abbreviations).
+    ![TYPES](./images/types.png)
+  - `RESET` button
+  - Definition hint box, with the words `HOVER TO SEE DEFINITIONS`
 
 - Press `tab` to navigate through each of the answer input fields.
 
