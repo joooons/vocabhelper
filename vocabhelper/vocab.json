@@ -391,10 +391,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to say"
+                            "gloss": "say"
                         },
                         {
-                            "gloss": "say"
+                            "gloss": "to say"
                         }
                     ]
                 }
@@ -490,10 +490,19 @@
                             "gloss": "be"
                         },
                         {
+                            "gloss": "to be"
+                        },
+                        {
                             "gloss": "become"
                         },
                         {
+                            "gloss": "to become"
+                        },
+                        {
                             "gloss": "be(come)"
+                        },
+                        {
+                            "gloss": "to be(come)"
                         }
                     ]
                 },
@@ -502,6 +511,9 @@
                     "glosses": [
                         {
                             "gloss": "happen"
+                        },
+                        {
+                            "gloss": "to happen"
                         }
                     ]
                 }
@@ -1314,13 +1326,7 @@
                             "gloss": "go"
                         },
                         {
-                            "gloss": "come out"
-                        },
-                        {
                             "gloss": "to go"
-                        },
-                        {
-                            "gloss": "come out"
                         }
                     ]
                 }
@@ -6955,10 +6961,10 @@
                             "gloss": "do battle"
                         },
                         {
-                            "gloss": "do battle with"
+                            "gloss": "to do battle"
                         },
                         {
-                            "gloss": "to do battle"
+                            "gloss": "do battle with"
                         },
                         {
                             "gloss": "to do battle with"
@@ -9293,10 +9299,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to capture"
+                            "gloss": "capture"
                         },
                         {
-                            "gloss": "capture"
+                            "gloss": "to capture"
                         }
                     ]
                 },
@@ -9348,10 +9354,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to trust"
+                            "gloss": "trust"
                         },
                         {
-                            "gloss": "trust"
+                            "gloss": "to trust"
                         }
                     ]
                 },
@@ -9569,10 +9575,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to grow"
+                            "gloss": "grow"
                         },
                         {
-                            "gloss": "grow"
+                            "gloss": "to grow"
                         }
                     ]
                 },
@@ -9688,10 +9694,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to burn"
+                            "gloss": "burn"
                         },
                         {
-                            "gloss": "burn"
+                            "gloss": "to burn"
                         }
                     ]
                 }
@@ -9794,10 +9800,10 @@
                     "type": "@Pi",
                     "glosses": [
                         {
-                            "gloss": "to make a sacrifice"
+                            "gloss": "make a sacrifice"
                         },
                         {
-                            "gloss": "make a sacrifice"
+                            "gloss": "to make a sacrifice"
                         }
                     ]
                 },
@@ -9805,10 +9811,10 @@
                     "type": "@Pi",
                     "glosses": [
                         {
-                            "gloss": "to make go up in smoke"
+                            "gloss": "make go up in smoke"
                         },
                         {
-                            "gloss": "make go up in smoke"
+                            "gloss": "to make go up in smoke"
                         }
                     ]
                 }
@@ -9823,10 +9829,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to weep"
+                            "gloss": "weep"
                         },
                         {
-                            "gloss": "weep"
+                            "gloss": "to weep"
                         }
                     ]
                 }
@@ -9958,10 +9964,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to put on"
+                            "gloss": "put on"
                         },
                         {
-                            "gloss": "put on"
+                            "gloss": "to put on"
                         }
                     ]
                 },
@@ -10044,10 +10050,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to shoot"
+                            "gloss": "shoot"
                         },
                         {
-                            "gloss": "shoot"
+                            "gloss": "to shoot"
                         }
                     ]
                 },
@@ -10055,10 +10061,10 @@
                     "type": "@Pi",
                     "glosses": [
                         {
-                            "gloss": "to cast"
+                            "gloss": "cast"
                         },
                         {
-                            "gloss": "cast"
+                            "gloss": "to cast"
                         }
                     ]
                 },
@@ -10066,10 +10072,10 @@
                     "type": "@Hit",
                     "glosses": [
                         {
-                            "gloss": "to confess"
+                            "gloss": "confess"
                         },
                         {
-                            "gloss": "confess"
+                            "gloss": "to confess"
                         }
                     ]
                 },
@@ -10088,10 +10094,10 @@
                     "type": "@Hi",
                     "glosses": [
                         {
-                            "gloss": "to laud"
+                            "gloss": "laud"
                         },
                         {
-                            "gloss": "laud"
+                            "gloss": "to laud"
                         }
                     ]
                 },
@@ -10228,10 +10234,10 @@
                     "type": "@Ni",
                     "glosses": [
                         {
-                            "gloss": "to change one’s mind"
+                            "gloss": "change one’s mind"
                         },
                         {
-                            "gloss": "change one’s mind"
+                            "gloss": "to change one’s mind"
                         }
                     ]
                 },
@@ -10239,10 +10245,10 @@
                     "type": "@Pi",
                     "glosses": [
                         {
-                            "gloss": "to comfort"
+                            "gloss": "comfort"
                         },
                         {
-                            "gloss": "comfort"
+                            "gloss": "to comfort"
                         }
                     ]
                 }
@@ -10408,10 +10414,10 @@
                     "type": "@Ni",
                     "glosses": [
                         {
-                            "gloss": "to remain"
+                            "gloss": "remain"
                         },
                         {
-                            "gloss": "remain"
+                            "gloss": "to remain"
                         }
                     ]
                 },
@@ -10430,10 +10436,10 @@
                     "type": "@Hi",
                     "glosses": [
                         {
-                            "gloss": "to leave"
+                            "gloss": "leave"
                         },
                         {
-                            "gloss": "leave"
+                            "gloss": "to leave"
                         }
                     ]
                 },
@@ -10490,10 +10496,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to redeem"
+                            "gloss": "redeem"
                         },
                         {
-                            "gloss": "redeem"
+                            "gloss": "to redeem"
                         }
                     ]
                 },
@@ -10542,10 +10548,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to run"
+                            "gloss": "run"
                         },
                         {
-                            "gloss": "run"
+                            "gloss": "to run"
                         }
                     ]
                 }
@@ -10622,10 +10628,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to cover"
+                            "gloss": "cover"
                         },
                         {
-                            "gloss": "cover"
+                            "gloss": "to cover"
                         }
                     ]
                 },
@@ -10633,10 +10639,10 @@
                     "type": "@Pi",
                     "glosses": [
                         {
-                            "gloss": "to cover over"
+                            "gloss": "cover over"
                         },
                         {
-                            "gloss": "cover over"
+                            "gloss": "to cover over"
                         }
                     ]
                 },
@@ -10673,10 +10679,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to forget"
+                            "gloss": "forget"
                         },
                         {
-                            "gloss": "forget"
+                            "gloss": "to forget"
                         }
                     ]
                 }
@@ -10880,10 +10886,10 @@
                     "type": "@Pi",
                     "glosses": [
                         {
-                            "gloss": "to minister"
+                            "gloss": "minister"
                         },
                         {
-                            "gloss": "minister"
+                            "gloss": "to minister"
                         }
                     ]
                 },
@@ -10909,10 +10915,10 @@
                     "type": "@Hi",
                     "glosses": [
                         {
-                            "gloss": "to believe in"
+                            "gloss": "believe in"
                         },
                         {
-                            "gloss": "believe in"
+                            "gloss": "to believe in"
                         }
                     ]
                 },
@@ -10920,10 +10926,10 @@
                     "type": "@Ni",
                     "glosses": [
                         {
-                            "gloss": "to prove reliable"
+                            "gloss": "prove reliable"
                         },
                         {
-                            "gloss": "prove reliable"
+                            "gloss": "to prove reliable"
                         }
                     ]
                 },
@@ -11069,10 +11075,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to turn"
+                            "gloss": "turn"
                         },
                         {
-                            "gloss": "turn"
+                            "gloss": "to turn"
                         }
                     ]
                 },
@@ -11184,10 +11190,10 @@
                     "type": "@Ni",
                     "glosses": [
                         {
-                            "gloss": "to escape"
+                            "gloss": "escape"
                         },
                         {
-                            "gloss": "escape"
+                            "gloss": "to escape"
                         }
                     ]
                 },
@@ -11206,10 +11212,10 @@
                     "type": "@Hi",
                     "glosses": [
                         {
-                            "gloss": "to deliver"
+                            "gloss": "deliver"
                         },
                         {
-                            "gloss": "deliver"
+                            "gloss": "to deliver"
                         }
                     ]
                 },
@@ -11217,10 +11223,10 @@
                     "type": "@Hi",
                     "glosses": [
                         {
-                            "gloss": "to birth"
+                            "gloss": "birth"
                         },
                         {
-                            "gloss": "birth"
+                            "gloss": "to birth"
                         }
                     ]
                 }
@@ -11258,10 +11264,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to burn"
+                            "gloss": "burn"
                         },
                         {
-                            "gloss": "burn"
+                            "gloss": "to burn"
                         }
                     ]
                 },
@@ -11430,10 +11436,10 @@
                     "type": "@Ni",
                     "glosses": [
                         {
-                            "gloss": "to be destroyed"
+                            "gloss": "be destroyed"
                         },
                         {
-                            "gloss": "be destroyed"
+                            "gloss": "to be destroyed"
                         }
                     ]
                 },
@@ -11576,10 +11582,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to shut"
+                            "gloss": "shut"
                         },
                         {
-                            "gloss": "shut"
+                            "gloss": "to shut"
                         }
                     ]
                 },
@@ -11598,10 +11604,10 @@
                     "type": "@Pi",
                     "glosses": [
                         {
-                            "gloss": "to deliver up"
+                            "gloss": "deliver up"
                         },
                         {
-                            "gloss": "deliver up"
+                            "gloss": "to deliver up"
                         }
                     ]
                 },
@@ -11609,10 +11615,10 @@
                     "type": "@Hi",
                     "glosses": [
                         {
-                            "gloss": "to deliver up"
+                            "gloss": "deliver up"
                         },
                         {
-                            "gloss": "deliver up"
+                            "gloss": "to deliver up"
                         }
                     ]
                 }
@@ -11734,10 +11740,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to sing"
+                            "gloss": "sing"
                         },
                         {
-                            "gloss": "sing"
+                            "gloss": "to sing"
                         }
                     ]
                 }
@@ -11775,10 +11781,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to burn"
+                            "gloss": "burn"
                         },
                         {
-                            "gloss": "burn"
+                            "gloss": "to burn"
                         }
                     ]
                 },
@@ -11804,10 +11810,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to learn"
+                            "gloss": "learn"
                         },
                         {
-                            "gloss": "learn"
+                            "gloss": "to learn"
                         }
                     ]
                 },
@@ -11948,10 +11954,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to put"
+                            "gloss": "put"
                         },
                         {
-                            "gloss": "put"
+                            "gloss": "to put"
                         }
                     ]
                 },
@@ -12010,10 +12016,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to acquire"
+                            "gloss": "acquire"
                         },
                         {
-                            "gloss": "acquire"
+                            "gloss": "to acquire"
                         }
                     ]
                 },
@@ -12050,10 +12056,10 @@
                     "type": "@Hit",
                     "glosses": [
                         {
-                            "gloss": "to pray"
+                            "gloss": "pray"
                         },
                         {
-                            "gloss": "pray"
+                            "gloss": "to pray"
                         }
                     ]
                 },
@@ -12061,10 +12067,10 @@
                     "type": "@Pi",
                     "glosses": [
                         {
-                            "gloss": "to mediate"
+                            "gloss": "mediate"
                         },
                         {
-                            "gloss": "mediate"
+                            "gloss": "to mediate"
                         }
                     ]
                 },
@@ -12113,10 +12119,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to sojourn"
+                            "gloss": "sojourn"
                         },
                         {
-                            "gloss": "sojourn"
+                            "gloss": "to sojourn"
                         }
                     ]
                 }
@@ -12146,10 +12152,10 @@
                     "type": "@Hi",
                     "glosses": [
                         {
-                            "gloss": "to hide"
+                            "gloss": "hide"
                         },
                         {
-                            "gloss": "hide"
+                            "gloss": "to hide"
                         }
                     ]
                 },
@@ -12320,10 +12326,10 @@
                     "type": "@Pi",
                     "glosses": [
                         {
-                            "gloss": "to hurry"
+                            "gloss": "hurry"
                         },
                         {
-                            "gloss": "hurry"
+                            "gloss": "to hurry"
                         }
                     ]
                 },
@@ -12349,10 +12355,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to rule"
+                            "gloss": "rule"
                         },
                         {
-                            "gloss": "rule"
+                            "gloss": "to rule"
                         }
                     ]
                 }
@@ -12367,10 +12373,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to slaughter"
+                            "gloss": "slaughter"
                         },
                         {
-                            "gloss": "slaughter"
+                            "gloss": "to slaughter"
                         }
                     ]
                 },
@@ -12440,10 +12446,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to advise"
+                            "gloss": "advise"
                         },
                         {
-                            "gloss": "advise"
+                            "gloss": "to advise"
                         }
                     ]
                 },
@@ -12469,10 +12475,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to sell"
+                            "gloss": "sell"
                         },
                         {
-                            "gloss": "sell"
+                            "gloss": "to sell"
                         }
                     ]
                 }
@@ -12487,10 +12493,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to wake up"
+                            "gloss": "wake up"
                         },
                         {
-                            "gloss": "wake up"
+                            "gloss": "to wake up"
                         }
                     ]
                 },
@@ -12632,10 +12638,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to be oppressed"
+                            "gloss": "be oppressed"
                         },
                         {
-                            "gloss": "be oppressed"
+                            "gloss": "to be oppressed"
                         }
                     ]
                 },
@@ -12777,10 +12783,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to ride"
+                            "gloss": "ride"
                         },
                         {
-                            "gloss": "ride"
+                            "gloss": "to ride"
                         }
                     ]
                 },
@@ -12865,10 +12871,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to show favor"
+                            "gloss": "show favor"
                         },
                         {
-                            "gloss": "show favor"
+                            "gloss": "to show favor"
                         }
                     ]
                 },
@@ -13099,10 +13105,10 @@
                     "type": "@Pi",
                     "glosses": [
                         {
-                            "gloss": "to entreat"
+                            "gloss": "entreat"
                         },
                         {
-                            "gloss": "entreat"
+                            "gloss": "to entreat"
                         }
                     ]
                 }
@@ -13132,10 +13138,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to prepare"
+                            "gloss": "prepare"
                         },
                         {
-                            "gloss": "prepare"
+                            "gloss": "to prepare"
                         }
                     ]
                 },
@@ -13209,10 +13215,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to delight in"
+                            "gloss": "delight in"
                         },
                         {
-                            "gloss": "delight in"
+                            "gloss": "to delight in"
                         }
                     ]
                 }
@@ -13227,10 +13233,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to reject"
+                            "gloss": "reject"
                         },
                         {
-                            "gloss": "reject"
+                            "gloss": "to reject"
                         }
                     ]
                 },
@@ -13293,10 +13299,10 @@
                     "type": "@Ni",
                     "glosses": [
                         {
-                            "gloss": "to take one's stand"
+                            "gloss": "take one's stand"
                         },
                         {
-                            "gloss": "take one's stand"
+                            "gloss": "to take one's stand"
                         }
                     ]
                 },
@@ -13304,10 +13310,10 @@
                     "type": "@Hi",
                     "glosses": [
                         {
-                            "gloss": "to station"
+                            "gloss": "station"
                         },
                         {
-                            "gloss": "station"
+                            "gloss": "to station"
                         }
                     ]
                 },
@@ -13411,10 +13417,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to bind"
+                            "gloss": "bind"
                         },
                         {
-                            "gloss": "bind"
+                            "gloss": "to bind"
                         }
                     ]
                 },
@@ -13512,10 +13518,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to cry out"
+                            "gloss": "cry out"
                         },
                         {
-                            "gloss": "cry out"
+                            "gloss": "to cry out"
                         }
                     ]
                 },
@@ -13662,10 +13668,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to wash"
+                            "gloss": "wash"
                         },
                         {
-                            "gloss": "wash"
+                            "gloss": "to wash"
                         }
                     ]
                 }
@@ -13680,10 +13686,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to contend"
+                            "gloss": "contend"
                         },
                         {
-                            "gloss": "contend"
+                            "gloss": "to contend"
                         }
                     ]
                 },
@@ -13724,10 +13730,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to lodge"
+                            "gloss": "lodge"
                         },
                         {
-                            "gloss": "lodge"
+                            "gloss": "to lodge"
                         }
                     ]
                 }
@@ -13784,10 +13790,10 @@
                     "type": "@Hi",
                     "glosses": [
                         {
-                            "gloss": "to do wondrously"
+                            "gloss": "do wondrously"
                         },
                         {
-                            "gloss": "do wondrously"
+                            "gloss": "to do wondrously"
                         }
                     ]
                 }
@@ -13948,10 +13954,10 @@
                     "type": "@Pi",
                     "glosses": [
                         {
-                            "gloss": "to look at"
+                            "gloss": "look at"
                         },
                         {
-                            "gloss": "look at"
+                            "gloss": "to look at"
                         }
                     ]
                 },
@@ -13970,10 +13976,10 @@
                     "type": "@Hi",
                     "glosses": [
                         {
-                            "gloss": "to look at"
+                            "gloss": "look at"
                         },
                         {
-                            "gloss": "look at"
+                            "gloss": "to look at"
                         }
                     ]
                 },
@@ -14045,16 +14051,16 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to give a blow"
-                        },
-                        {
                             "gloss": "give a blow"
                         },
                         {
-                            "gloss": "to give a blow on a horn"
+                            "gloss": "to give a blow"
                         },
                         {
                             "gloss": "give a blow on a horn"
+                        },
+                        {
+                            "gloss": "to give a blow on a horn"
                         },
                         {
                             "gloss": "give a blast"
@@ -14196,10 +14202,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to heal"
+                            "gloss": "heal"
                         },
                         {
-                            "gloss": "heal"
+                            "gloss": "to heal"
                         }
                     ]
                 }
@@ -14362,10 +14368,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to spread out"
+                            "gloss": "spread out"
                         },
                         {
-                            "gloss": "spread out"
+                            "gloss": "to spread out"
                         }
                     ]
                 }
@@ -14579,10 +14585,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to stumble"
+                            "gloss": "stumble"
                         },
                         {
-                            "gloss": "stumble"
+                            "gloss": "to stumble"
                         }
                     ]
                 },
@@ -14689,10 +14695,10 @@
                     "type": "@Hi",
                     "glosses": [
                         {
-                            "gloss": "to rise early"
+                            "gloss": "rise early"
                         },
                         {
-                            "gloss": "rise early"
+                            "gloss": "to rise early"
                         }
                     ]
                 }
@@ -14707,10 +14713,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to seize"
+                            "gloss": "seize"
                         },
                         {
-                            "gloss": "seize"
+                            "gloss": "to seize"
                         }
                     ]
                 },
@@ -14820,10 +14826,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to grasp"
+                            "gloss": "grasp"
                         },
                         {
-                            "gloss": "grasp"
+                            "gloss": "to grasp"
                         }
                     ]
                 },
@@ -14849,10 +14855,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to curse"
+                            "gloss": "curse"
                         },
                         {
-                            "gloss": "curse"
+                            "gloss": "to curse"
                         }
                     ]
                 }
@@ -14867,10 +14873,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to flee"
+                            "gloss": "flee"
                         },
                         {
-                            "gloss": "flee"
+                            "gloss": "to flee"
                         }
                     ]
                 }
@@ -14885,10 +14891,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to tread"
+                            "gloss": "tread"
                         },
                         {
-                            "gloss": "tread"
+                            "gloss": "to tread"
                         }
                     ]
                 },
@@ -14937,10 +14943,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to form"
+                            "gloss": "form"
                         },
                         {
-                            "gloss": "form"
+                            "gloss": "to form"
                         }
                     ]
                 },
@@ -14978,10 +14984,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to watch over"
+                            "gloss": "watch over"
                         },
                         {
-                            "gloss": "watch over"
+                            "gloss": "to watch over"
                         }
                     ]
                 },
@@ -15018,10 +15024,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to tear"
+                            "gloss": "tear"
                         },
                         {
-                            "gloss": "tear"
+                            "gloss": "to tear"
                         }
                     ]
                 },
@@ -15172,10 +15178,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to drink"
+                            "gloss": "drink"
                         },
                         {
-                            "gloss": "drink"
+                            "gloss": "to drink"
                         }
                     ]
                 }
@@ -15402,10 +15408,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to fornicate"
+                            "gloss": "fornicate"
                         },
                         {
-                            "gloss": "fornicate"
+                            "gloss": "to fornicate"
                         }
                     ]
                 },
@@ -15507,10 +15513,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to ransom"
+                            "gloss": "ransom"
                         },
                         {
-                            "gloss": "ransom"
+                            "gloss": "to ransom"
                         }
                     ]
                 }
@@ -15618,10 +15624,10 @@
                     "type": "@Hi",
                     "glosses": [
                         {
-                            "gloss": "to decide"
+                            "gloss": "decide"
                         },
                         {
-                            "gloss": "decide"
+                            "gloss": "to decide"
                         }
                     ]
                 },
@@ -15651,10 +15657,10 @@
                     "type": "@Ni",
                     "glosses": [
                         {
-                            "gloss": "to reason"
+                            "gloss": "reason"
                         },
                         {
-                            "gloss": "reason"
+                            "gloss": "to reason"
                         },
                         {
                             "gloss": "reason together"
@@ -15674,10 +15680,10 @@
                     "type": "@Hit",
                     "glosses": [
                         {
-                            "gloss": "to argue"
+                            "gloss": "argue"
                         },
                         {
-                            "gloss": "argue"
+                            "gloss": "to argue"
                         }
                     ]
                 }
@@ -15710,16 +15716,16 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to get possession"
-                        },
-                        {
                             "gloss": "get possession"
                         },
                         {
-                            "gloss": "to take possession"
+                            "gloss": "to get possession"
                         },
                         {
                             "gloss": "take possession"
+                        },
+                        {
+                            "gloss": "to take possession"
                         }
                     ]
                 }
@@ -15734,10 +15740,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to plant"
+                            "gloss": "plant"
                         },
                         {
-                            "gloss": "plant"
+                            "gloss": "to plant"
                         }
                     ]
                 }
@@ -15805,10 +15811,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to devastate"
+                            "gloss": "devastate"
                         },
                         {
-                            "gloss": "devastate"
+                            "gloss": "to devastate"
                         }
                     ]
                 },
@@ -15876,10 +15882,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to do"
+                            "gloss": "do"
                         },
                         {
-                            "gloss": "do"
+                            "gloss": "to do"
                         }
                     ]
                 },
@@ -16103,10 +16109,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to sow"
+                            "gloss": "sow"
                         },
                         {
-                            "gloss": "sow"
+                            "gloss": "to sow"
                         }
                     ]
                 },
@@ -16274,10 +16280,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to cling"
+                            "gloss": "cling"
                         },
                         {
-                            "gloss": "cling"
+                            "gloss": "to cling"
                         }
                     ]
                 },
@@ -16303,10 +16309,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to cease"
+                            "gloss": "cease"
                         },
                         {
-                            "gloss": "cease"
+                            "gloss": "to cease"
                         }
                     ]
                 }
@@ -16321,10 +16327,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to gaze"
+                            "gloss": "gaze"
                         },
                         {
-                            "gloss": "gaze"
+                            "gloss": "to gaze"
                         }
                     ]
                 },
@@ -16350,10 +16356,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to divide"
+                            "gloss": "divide"
                         },
                         {
-                            "gloss": "divide"
+                            "gloss": "to divide"
                         }
                     ]
                 },
@@ -16481,10 +16487,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to cry out"
+                            "gloss": "cry out"
                         },
                         {
-                            "gloss": "cry out"
+                            "gloss": "to cry out"
                         }
                     ]
                 }
@@ -16788,10 +16794,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to pour"
+                            "gloss": "pour"
                         },
                         {
-                            "gloss": "pour"
+                            "gloss": "to pour"
                         }
                     ]
                 },
@@ -16901,16 +16907,16 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to give ringing cry"
-                        },
-                        {
                             "gloss": "give ringing cry"
                         },
                         {
-                            "gloss": "to give a ringing cry"
+                            "gloss": "to give ringing cry"
                         },
                         {
                             "gloss": "give a ringing cry"
+                        },
+                        {
+                            "gloss": "to give a ringing cry"
                         }
                     ]
                 }
@@ -16943,10 +16949,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to measure"
+                            "gloss": "measure"
                         },
                         {
-                            "gloss": "measure"
+                            "gloss": "to measure"
                         }
                     ]
                 }
@@ -17046,10 +17052,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to cleave"
+                            "gloss": "cleave"
                         },
                         {
-                            "gloss": "cleave"
+                            "gloss": "to cleave"
                         }
                     ]
                 },
@@ -17119,10 +17125,10 @@
                     "type": "@Pi",
                     "glosses": [
                         {
-                            "gloss": "to wash"
+                            "gloss": "wash"
                         },
                         {
-                            "gloss": "wash"
+                            "gloss": "to wash"
                         }
                     ]
                 },
@@ -17228,10 +17234,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to ban"
+                            "gloss": "ban"
                         },
                         {
-                            "gloss": "ban"
+                            "gloss": "to ban"
                         }
                     ]
                 },
@@ -17306,10 +17312,10 @@
                     "type": "@Hi",
                     "glosses": [
                         {
-                            "gloss": "to recognize"
+                            "gloss": "recognize"
                         },
                         {
-                            "gloss": "recognize"
+                            "gloss": "to recognize"
                         }
                     ]
                 },
@@ -17335,10 +17341,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to reach"
+                            "gloss": "reach"
                         },
                         {
-                            "gloss": "reach"
+                            "gloss": "to reach"
                         }
                     ]
                 },
@@ -17410,10 +17416,10 @@
                     "type": "@",
                     "glosses": [
                         {
-                            "gloss": "to steal"
+                            "gloss": "steal"
                         },
                         {
-                            "gloss": "steal"
+                            "gloss": "to steal"
                         }
                     ]
                 }
